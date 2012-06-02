@@ -1,0 +1,1285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F22463A615790B8B009323FE /* CarePassRRXClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463A415790B8B009323FE /* CarePassRRXClient.h */; };
+		F22463A715790B8B009323FE /* CarePassRRXClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463A515790B8B009323FE /* CarePassRRXClient.m */; };
+		F22463AA15790BB9009323FE /* RRXSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463A815790BB9009323FE /* RRXSearchRequest.h */; };
+		F22463AB15790BB9009323FE /* RRXSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463A915790BB9009323FE /* RRXSearchRequest.m */; };
+		F22463AE15790C92009323FE /* RRXRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463AC15790C92009323FE /* RRXRequest.h */; };
+		F22463AF15790C92009323FE /* RRXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463AD15790C92009323FE /* RRXRequest.m */; };
+		F22463B215790CA1009323FE /* RRXResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463B015790CA0009323FE /* RRXResponse.h */; };
+		F22463B315790CA1009323FE /* RRXResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463B115790CA0009323FE /* RRXResponse.m */; };
+		F22463BE15790CE3009323FE /* RRXSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463BC15790CE2009323FE /* RRXSearchResponse.h */; };
+		F22463BF15790CE3009323FE /* RRXSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463BD15790CE3009323FE /* RRXSearchResponse.m */; };
+		F22463C215790D95009323FE /* RRXSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463C015790D95009323FE /* RRXSearchRequestMarshaller.h */; };
+		F22463C315790D95009323FE /* RRXSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463C115790D95009323FE /* RRXSearchRequestMarshaller.m */; };
+		F22463C615790DA7009323FE /* RRXSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463C415790DA6009323FE /* RRXSearchResponseUnmarshaller.h */; };
+		F22463C715790DA7009323FE /* RRXSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463C515790DA7009323FE /* RRXSearchResponseUnmarshaller.m */; };
+		F22463D215791410009323FE /* RRXSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463D01579140F009323FE /* RRXSearchResult.h */; };
+		F22463D315791410009323FE /* RRXSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463D115791410009323FE /* RRXSearchResult.m */; };
+		F22463D9157919A8009323FE /* CarePassRRXClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463D61579194B009323FE /* CarePassRRXClientTests.m */; };
+		F22463DE1579213E009323FE /* CarePassECCClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463DC1579213E009323FE /* CarePassECCClient.h */; };
+		F22463DF1579213E009323FE /* CarePassECCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463DD1579213E009323FE /* CarePassECCClient.m */; };
+		F22463E215792151009323FE /* ECCRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463E015792151009323FE /* ECCRequest.h */; };
+		F22463E315792151009323FE /* ECCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463E115792151009323FE /* ECCRequest.m */; };
+		F22463E61579215E009323FE /* ECCResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463E41579215E009323FE /* ECCResponse.h */; };
+		F22463E71579215E009323FE /* ECCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463E51579215E009323FE /* ECCResponse.m */; };
+		F22463EA15792BED009323FE /* ECCCostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463E815792BED009323FE /* ECCCostRequest.h */; };
+		F22463EB15792BED009323FE /* ECCCostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463E915792BED009323FE /* ECCCostRequest.m */; };
+		F22463F215792C18009323FE /* ECCCategoryRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463F015792C18009323FE /* ECCCategoryRequest.h */; };
+		F22463F315792C18009323FE /* ECCCategoryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463F115792C18009323FE /* ECCCategoryRequest.m */; };
+		F22463F615793007009323FE /* ECCCostRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463F415793006009323FE /* ECCCostRequestMarshaller.h */; };
+		F22463F715793007009323FE /* ECCCostRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463F515793007009323FE /* ECCCostRequestMarshaller.m */; };
+		F22463FE1579325D009323FE /* ECCCategoryRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463FC1579325B009323FE /* ECCCategoryRequestMarshaller.h */; };
+		F22463FF1579325D009323FE /* ECCCategoryRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463FD1579325C009323FE /* ECCCategoryRequestMarshaller.m */; };
+		F2246402157933B6009323FE /* ECCCostResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246400157933B4009323FE /* ECCCostResponse.h */; };
+		F2246403157933B6009323FE /* ECCCostResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246401157933B5009323FE /* ECCCostResponse.m */; };
+		F2246406157933CA009323FE /* ECCCostResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246404157933C8009323FE /* ECCCostResponseUnmarshaller.h */; };
+		F2246407157933CA009323FE /* ECCCostResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246405157933C9009323FE /* ECCCostResponseUnmarshaller.m */; };
+		F224640A15793646009323FE /* ECCCostResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F22464081579362E009323FE /* ECCCostResult.h */; };
+		F224640B15793646009323FE /* ECCCostResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F224640915793633009323FE /* ECCCostResult.m */; };
+		F224641115793A78009323FE /* CarePassECCClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F224640E15793A70009323FE /* CarePassECCClientTests.m */; };
+		F224641415793D47009323FE /* ECCCategoryResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F224641215793D44009323FE /* ECCCategoryResponse.h */; };
+		F224641515793D47009323FE /* ECCCategoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F224641315793D45009323FE /* ECCCategoryResponse.m */; };
+		F224641815793D62009323FE /* ECCCategoryResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F224641615793D5E009323FE /* ECCCategoryResponseUnmarshaller.h */; };
+		F224641915793D62009323FE /* ECCCategoryResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F224641715793D5F009323FE /* ECCCategoryResponseUnmarshaller.m */; };
+		F2431F1515756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F1315756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F1615756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F1415756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m */; };
+		F2431F1A15756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F1815756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F1B15756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F1915756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.m */; };
+		F2431F2515759E0E0055345F /* HHSDrugsSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F2315759E0E0055345F /* HHSDrugsSearchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F2615759E0E0055345F /* HHSDrugsSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F2415759E0E0055345F /* HHSDrugsSearchRequest.m */; };
+		F2431F2915759E1D0055345F /* HHSDrugsSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F2715759E1D0055345F /* HHSDrugsSearchResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F2A15759E1D0055345F /* HHSDrugsSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F2815759E1D0055345F /* HHSDrugsSearchResponse.m */; };
+		F2431F2D15759E320055345F /* HHSDrugsSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F2B15759E320055345F /* HHSDrugsSearchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F2E15759E320055345F /* HHSDrugsSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F2C15759E320055345F /* HHSDrugsSearchResult.m */; };
+		F2431F3115759E410055345F /* HHSDrugsSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F2F15759E410055345F /* HHSDrugsSearchRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F3215759E410055345F /* HHSDrugsSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F3015759E410055345F /* HHSDrugsSearchRequestMarshaller.m */; };
+		F2431F3515759E510055345F /* HHSDrugsSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F3315759E510055345F /* HHSDrugsSearchResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F3615759E510055345F /* HHSDrugsSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F3415759E510055345F /* HHSDrugsSearchResponseUnmarshaller.m */; };
+		F2431F391575A37D0055345F /* HHSDrugsNDCRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F371575A37C0055345F /* HHSDrugsNDCRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F3A1575A37D0055345F /* HHSDrugsNDCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F381575A37D0055345F /* HHSDrugsNDCRequest.m */; };
+		F2431F3D1575A39B0055345F /* HHSDrugsNDCResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F3B1575A39A0055345F /* HHSDrugsNDCResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F3E1575A39B0055345F /* HHSDrugsNDCResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F3C1575A39B0055345F /* HHSDrugsNDCResponse.m */; };
+		F2431F411575A3B30055345F /* HHSDrugsNDCPackagesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F3F1575A3B20055345F /* HHSDrugsNDCPackagesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F421575A3B30055345F /* HHSDrugsNDCPackagesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F401575A3B30055345F /* HHSDrugsNDCPackagesResponse.m */; };
+		F2431F451575A3C50055345F /* HHSDrugsNDCImagesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F431575A3C40055345F /* HHSDrugsNDCImagesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F461575A3C50055345F /* HHSDrugsNDCImagesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F441575A3C50055345F /* HHSDrugsNDCImagesResponse.m */; };
+		F2431F491575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F471575A3DE0055345F /* HHSDrugsNDCRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F4A1575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F481575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.m */; };
+		F2431F4D1575A4300055345F /* HHSDrugsNDCResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F4B1575A42E0055345F /* HHSDrugsNDCResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F4E1575A4300055345F /* HHSDrugsNDCResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F4C1575A42F0055345F /* HHSDrugsNDCResponseUnmarshaller.m */; };
+		F2431F511575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F4F1575A4430055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F521575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F501575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.m */; };
+		F2431F551575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F531575A45A0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F561575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F541575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.m */; };
+		F2431F591575A4760055345F /* HHSDrugsNDCResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F571575A4740055345F /* HHSDrugsNDCResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2431F5A1575A4760055345F /* HHSDrugsNDCResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F581575A4760055345F /* HHSDrugsNDCResult.m */; };
+		F260945C157683360006F100 /* HHSDrugsNDCPackageResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F260945A1576832F0006F100 /* HHSDrugsNDCPackageResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F260945D157683360006F100 /* HHSDrugsNDCPackageResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F260945B157683310006F100 /* HHSDrugsNDCPackageResult.m */; };
+		F2609461157685C90006F100 /* HHSDrugsNDCPackageImprintResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F260945F157685C50006F100 /* HHSDrugsNDCPackageImprintResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2609462157685C90006F100 /* HHSDrugsNDCPackageImprintResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2609460157685C70006F100 /* HHSDrugsNDCPackageImprintResult.m */; };
+		F270F322156EABE0008E8AEC /* HHSInternalErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F31E156EABE0008E8AEC /* HHSInternalErrorException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F323156EABE0008E8AEC /* HHSInternalErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F31F156EABE0008E8AEC /* HHSInternalErrorException.m */; };
+		F270F324156EABE0008E8AEC /* HHSValidationErrorException.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F320156EABE0008E8AEC /* HHSValidationErrorException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F325156EABE0008E8AEC /* HHSValidationErrorException.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F321156EABE0008E8AEC /* HHSValidationErrorException.m */; };
+		F270F32C156EC5F4008E8AEC /* HHSARTSearchYearResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F32A156EC5F3008E8AEC /* HHSARTSearchYearResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F32D156EC5F4008E8AEC /* HHSARTSearchYearResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F32B156EC5F4008E8AEC /* HHSARTSearchYearResult.m */; };
+		F270F330156EC609008E8AEC /* HHSARTSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F32E156EC608008E8AEC /* HHSARTSearchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F331156EC609008E8AEC /* HHSARTSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F32F156EC608008E8AEC /* HHSARTSearchResult.m */; };
+		F270F335156ED931008E8AEC /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F333156ED931008E8AEC /* JSONKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F336156ED931008E8AEC /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F334156ED931008E8AEC /* JSONKit.m */; };
+		F270F33C156FBD5E008E8AEC /* HHSARTSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F33A156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F33D156FBD5E008E8AEC /* HHSARTSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F33B156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.m */; };
+		F270F341156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F33F156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F342156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F340156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.m */; };
+		F270F34A156FD2BE008E8AEC /* CarePassHHSClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F349156FD2BE008E8AEC /* CarePassHHSClientTests.m */; };
+		F270F35915701D52008E8AEC /* HHSFDARecallsSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F35715701D52008E8AEC /* HHSFDARecallsSearchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F35A15701D52008E8AEC /* HHSFDARecallsSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F35815701D52008E8AEC /* HHSFDARecallsSearchRequest.m */; };
+		F270F35D15701D6A008E8AEC /* HHSFDARecallsSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F35B15701D6A008E8AEC /* HHSFDARecallsSearchResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F35E15701D6A008E8AEC /* HHSFDARecallsSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F35C15701D6A008E8AEC /* HHSFDARecallsSearchResponse.m */; };
+		F270F36115701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F35F15701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F36215701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F36015701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.m */; };
+		F270F36515701DAE008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F36315701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F36615701DAE008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F36415701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.m */; };
+		F270F36915701DFF008E8AEC /* HHSFDARecallsSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F36715701DFF008E8AEC /* HHSFDARecallsSearchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F36A15701DFF008E8AEC /* HHSFDARecallsSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F36815701DFF008E8AEC /* HHSFDARecallsSearchResult.m */; };
+		F270F36D15702E61008E8AEC /* HHSFDADrugsRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F36B15702E61008E8AEC /* HHSFDADrugsRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F36E15702E61008E8AEC /* HHSFDADrugsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F36C15702E61008E8AEC /* HHSFDADrugsRequest.m */; };
+		F270F37115702EBF008E8AEC /* HHSFDADrugsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F36F15702EBE008E8AEC /* HHSFDADrugsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F37215702EBF008E8AEC /* HHSFDADrugsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F37015702EBE008E8AEC /* HHSFDADrugsResponse.m */; };
+		F270F37515702F2A008E8AEC /* HHSFDADrugsRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F37315702F29008E8AEC /* HHSFDADrugsRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F37615702F2A008E8AEC /* HHSFDADrugsRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F37415702F29008E8AEC /* HHSFDADrugsRequestMarshaller.m */; };
+		F270F37915702FB7008E8AEC /* HHSFDADrugsResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F37715702FB5008E8AEC /* HHSFDADrugsResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F37A15702FB7008E8AEC /* HHSFDADrugsResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F37815702FB6008E8AEC /* HHSFDADrugsResponseUnmarshaller.m */; };
+		F270F37D15703013008E8AEC /* HHSFDADrugsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F37B15703011008E8AEC /* HHSFDADrugsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F37E15703013008E8AEC /* HHSFDADrugsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F37C15703012008E8AEC /* HHSFDADrugsResult.m */; };
+		F270F3891570317B008E8AEC /* HHSFDADrugsAlternativesDrugResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3831570315B008E8AEC /* HHSFDADrugsAlternativesDrugResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F38A1570317B008E8AEC /* HHSFDADrugsAlternativesDrugResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3841570315D008E8AEC /* HHSFDADrugsAlternativesDrugResult.m */; };
+		F270F38B1570317B008E8AEC /* HHSFDADrugsAlternativesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3851570315F008E8AEC /* HHSFDADrugsAlternativesResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F38C1570317B008E8AEC /* HHSFDADrugsAlternativesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F38615703164008E8AEC /* HHSFDADrugsAlternativesResult.m */; };
+		F270F38D1570317B008E8AEC /* HHSFDADrugsDocumentResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F38715703167008E8AEC /* HHSFDADrugsDocumentResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F38E1570317B008E8AEC /* HHSFDADrugsDocumentResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F38815703172008E8AEC /* HHSFDADrugsDocumentResult.m */; };
+		F270F39915750AD3008E8AEC /* HHSFDADrugsAlternativesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F39315750A24008E8AEC /* HHSFDADrugsAlternativesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F39A15750AD3008E8AEC /* HHSFDADrugsAlternativesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F39415750A27008E8AEC /* HHSFDADrugsAlternativesResponse.m */; };
+		F270F39B15750AD3008E8AEC /* HHSFDADrugsDocumentsResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F39515750A2B008E8AEC /* HHSFDADrugsDocumentsResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F39C15750AD3008E8AEC /* HHSFDADrugsDocumentsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F39615750A44008E8AEC /* HHSFDADrugsDocumentsResponse.m */; };
+		F270F39D15750AD3008E8AEC /* HHSFDADrugsResourcesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F39715750A56008E8AEC /* HHSFDADrugsResourcesResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F39E15750AD3008E8AEC /* HHSFDADrugsResourcesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F39815750A8D008E8AEC /* HHSFDADrugsResourcesResponse.m */; };
+		F270F3A115753200008E8AEC /* HHSClinicalTrialsSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F39F15753200008E8AEC /* HHSClinicalTrialsSearchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3A215753200008E8AEC /* HHSClinicalTrialsSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3A015753200008E8AEC /* HHSClinicalTrialsSearchRequest.m */; };
+		F270F3A515753215008E8AEC /* HHSClinicalTrialsSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3A315753215008E8AEC /* HHSClinicalTrialsSearchResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3A615753215008E8AEC /* HHSClinicalTrialsSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3A415753215008E8AEC /* HHSClinicalTrialsSearchResponse.m */; };
+		F270F3A915753232008E8AEC /* HHSClinicalTrialsSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3A715753232008E8AEC /* HHSClinicalTrialsSearchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3AA15753232008E8AEC /* HHSClinicalTrialsSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3A815753232008E8AEC /* HHSClinicalTrialsSearchResult.m */; };
+		F270F3AD1575324C008E8AEC /* HHSClinicalTrialsResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3AB1575324B008E8AEC /* HHSClinicalTrialsResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3AE1575324C008E8AEC /* HHSClinicalTrialsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3AC1575324C008E8AEC /* HHSClinicalTrialsResult.m */; };
+		F270F3B115753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3AF15753268008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3B215753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3B015753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.m */; };
+		F270F3B51575327E008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3B31575327C008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3B61575327E008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3B41575327D008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.m */; };
+		F270F3B915754871008E8AEC /* HHSClinicalTrialsNCTRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3B71575486D008E8AEC /* HHSClinicalTrialsNCTRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3BA15754871008E8AEC /* HHSClinicalTrialsNCTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3B815754870008E8AEC /* HHSClinicalTrialsNCTRequest.m */; };
+		F270F3BD157548D0008E8AEC /* HHSClinicalTrialsNCTResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3BB15754883008E8AEC /* HHSClinicalTrialsNCTResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3BE157548D0008E8AEC /* HHSClinicalTrialsNCTResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3BC15754886008E8AEC /* HHSClinicalTrialsNCTResponse.m */; };
+		F270F3C11575490B008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3BF15754904008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3C21575490B008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3C015754907008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.m */; };
+		F270F3C515754924008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3C31575491F008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3C615754924008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3C415754921008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.m */; };
+		F270F3C91575496C008E8AEC /* HHSClinicalTrialsNCTResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3C71575495E008E8AEC /* HHSClinicalTrialsNCTResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3CA1575496C008E8AEC /* HHSClinicalTrialsNCTResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3C815754960008E8AEC /* HHSClinicalTrialsNCTResult.m */; };
+		F270F3CD15755511008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F270F3CB1575521A008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F270F3CE15755514008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F270F3CC1575521F008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.m */; };
+		F290044715798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F290044515798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h */; };
+		F290044815798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F290044615798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m */; };
+		F290044C15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F290044A15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h */; };
+		F290044D15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F290044B15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m */; };
+		F290045015798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F290044E15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h */; };
+		F290045115798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F290044F15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m */; };
+		F2BDA1EC156D60090008C2C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1EB156D60090008C2C8 /* Foundation.framework */; };
+		F2BDA1F2156D60090008C2C8 /* CarePassFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA1F1156D60090008C2C8 /* CarePassFramework.m */; };
+		F2BDA1FA156D60090008C2C8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1F9156D60090008C2C8 /* SenTestingKit.framework */; };
+		F2BDA1FC156D60090008C2C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1FB156D60090008C2C8 /* UIKit.framework */; };
+		F2BDA1FD156D60090008C2C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1EB156D60090008C2C8 /* Foundation.framework */; };
+		F2BDA200156D60090008C2C8 /* libCarePassFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1E8156D60090008C2C8 /* libCarePassFramework.a */; };
+		F2BDA206156D60090008C2C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2BDA204156D60090008C2C8 /* InfoPlist.strings */; };
+		F2BDA209156D60090008C2C8 /* CarePassFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA208156D60090008C2C8 /* CarePassFrameworkTests.m */; };
+		F2BDA215156D611A0008C2C8 /* CarePassHHSClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA213156D611A0008C2C8 /* CarePassHHSClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA216156D611A0008C2C8 /* CarePassHHSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA214156D611A0008C2C8 /* CarePassHHSClient.m */; };
+		F2BDA219156D618F0008C2C8 /* HHSRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA217156D618F0008C2C8 /* HHSRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA21A156D618F0008C2C8 /* HHSRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA218156D618F0008C2C8 /* HHSRequest.m */; };
+		F2BDA21D156D619D0008C2C8 /* HHSResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA21B156D619D0008C2C8 /* HHSResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA21E156D619D0008C2C8 /* HHSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA21C156D619D0008C2C8 /* HHSResponse.m */; };
+		F2BDA222156D61E70008C2C8 /* HHSARTSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA220156D61E70008C2C8 /* HHSARTSearchRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA223156D61E70008C2C8 /* HHSARTSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA221156D61E70008C2C8 /* HHSARTSearchRequest.m */; };
+		F2BDA226156D61FF0008C2C8 /* HHSARTSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA224156D61FF0008C2C8 /* HHSARTSearchResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA227156D61FF0008C2C8 /* HHSARTSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA225156D61FF0008C2C8 /* HHSARTSearchResponse.m */; };
+		F2BDA22A156D62FA0008C2C8 /* CarePassServiceRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA228156D62FA0008C2C8 /* CarePassServiceRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA22B156D62FA0008C2C8 /* CarePassServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA229156D62FA0008C2C8 /* CarePassServiceRequest.m */; };
+		F2BDA22E156D630C0008C2C8 /* CarePassServiceResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA22C156D630B0008C2C8 /* CarePassServiceResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA22F156D630C0008C2C8 /* CarePassServiceResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA22D156D630B0008C2C8 /* CarePassServiceResponse.m */; };
+		F2BDA232156D633F0008C2C8 /* CarePassServiceException.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA230156D633E0008C2C8 /* CarePassServiceException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA233156D633F0008C2C8 /* CarePassServiceException.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA231156D633E0008C2C8 /* CarePassServiceException.m */; };
+		F2BDA236156D64B50008C2C8 /* CarePassURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA234156D64B50008C2C8 /* CarePassURLRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA237156D64B50008C2C8 /* CarePassURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA235156D64B50008C2C8 /* CarePassURLRequest.m */; };
+		F2BDA23A156D65390008C2C8 /* CarePassCredentials.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA238156D65390008C2C8 /* CarePassCredentials.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA23B156D65390008C2C8 /* CarePassCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA239156D65390008C2C8 /* CarePassCredentials.m */; };
+		F2BDA23E156D69700008C2C8 /* CarePassSDKUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA23C156D69700008C2C8 /* CarePassSDKUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA23F156D69700008C2C8 /* CarePassSDKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA23D156D69700008C2C8 /* CarePassSDKUtil.m */; };
+		F2BDA242156E8EC00008C2C8 /* CarePassClientException.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA240156E8EBE0008C2C8 /* CarePassClientException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA243156E8EC00008C2C8 /* CarePassClientException.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA241156E8EBE0008C2C8 /* CarePassClientException.m */; };
+		F2BDA24A156E9E410008C2C8 /* CarePassServiceRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA248156E9E400008C2C8 /* CarePassServiceRequestConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA24B156E9E410008C2C8 /* CarePassServiceRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA249156E9E400008C2C8 /* CarePassServiceRequestConfig.m */; };
+		F2BDA24E156EA2460008C2C8 /* CarePassWebServiceClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA24C156EA2450008C2C8 /* CarePassWebServiceClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA24F156EA2460008C2C8 /* CarePassWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA24D156EA2450008C2C8 /* CarePassWebServiceClient.m */; };
+		F2BDA252156EA3EA0008C2C8 /* CarePassRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA250156EA3E90008C2C8 /* CarePassRequestDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2BDA253156EA3EA0008C2C8 /* CarePassRequestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA251156EA3E90008C2C8 /* CarePassRequestDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2BDA1FE156D60090008C2C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2BDA1DF156D60080008C2C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2BDA1E7156D60090008C2C8;
+			remoteInfo = CarePassFramework;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F22463A415790B8B009323FE /* CarePassRRXClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassRRXClient.h; path = RetailRx/CarePassRRXClient.h; sourceTree = "<group>"; };
+		F22463A515790B8B009323FE /* CarePassRRXClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassRRXClient.m; path = RetailRx/CarePassRRXClient.m; sourceTree = "<group>"; };
+		F22463A815790BB9009323FE /* RRXSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchRequest.h; path = RetailRx/Model/RRXSearchRequest.h; sourceTree = "<group>"; };
+		F22463A915790BB9009323FE /* RRXSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXSearchRequest.m; path = RetailRx/Model/RRXSearchRequest.m; sourceTree = "<group>"; };
+		F22463AC15790C92009323FE /* RRXRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXRequest.h; path = RetailRx/RRXRequest.h; sourceTree = "<group>"; };
+		F22463AD15790C92009323FE /* RRXRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXRequest.m; path = RetailRx/RRXRequest.m; sourceTree = "<group>"; };
+		F22463B015790CA0009323FE /* RRXResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXResponse.h; path = RetailRx/RRXResponse.h; sourceTree = "<group>"; };
+		F22463B115790CA0009323FE /* RRXResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXResponse.m; path = RetailRx/RRXResponse.m; sourceTree = "<group>"; };
+		F22463BC15790CE2009323FE /* RRXSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchResponse.h; path = RetailRx/Model/RRXSearchResponse.h; sourceTree = "<group>"; };
+		F22463BD15790CE3009323FE /* RRXSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXSearchResponse.m; path = RetailRx/Model/RRXSearchResponse.m; sourceTree = "<group>"; };
+		F22463C015790D95009323FE /* RRXSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchRequestMarshaller.h; path = RetailRx/Model/RRXSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F22463C115790D95009323FE /* RRXSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXSearchRequestMarshaller.m; path = RetailRx/Model/RRXSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F22463C415790DA6009323FE /* RRXSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchResponseUnmarshaller.h; path = RetailRx/Model/RRXSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F22463C515790DA7009323FE /* RRXSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXSearchResponseUnmarshaller.m; path = RetailRx/Model/RRXSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22463D01579140F009323FE /* RRXSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchResult.h; path = RetailRx/Model/RRXSearchResult.h; sourceTree = "<group>"; };
+		F22463D115791410009323FE /* RRXSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RRXSearchResult.m; path = RetailRx/Model/RRXSearchResult.m; sourceTree = "<group>"; };
+		F22463D51579194B009323FE /* CarePassRRXClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassRRXClientTests.h; path = RetailRx/CarePassRRXClientTests.h; sourceTree = "<group>"; };
+		F22463D61579194B009323FE /* CarePassRRXClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassRRXClientTests.m; path = RetailRx/CarePassRRXClientTests.m; sourceTree = "<group>"; };
+		F22463DC1579213E009323FE /* CarePassECCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassECCClient.h; path = EstimatedCostOfCare/CarePassECCClient.h; sourceTree = "<group>"; };
+		F22463DD1579213E009323FE /* CarePassECCClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassECCClient.m; path = EstimatedCostOfCare/CarePassECCClient.m; sourceTree = "<group>"; };
+		F22463E015792151009323FE /* ECCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCRequest.h; path = EstimatedCostOfCare/ECCRequest.h; sourceTree = "<group>"; };
+		F22463E115792151009323FE /* ECCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCRequest.m; path = EstimatedCostOfCare/ECCRequest.m; sourceTree = "<group>"; };
+		F22463E41579215E009323FE /* ECCResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCResponse.h; path = EstimatedCostOfCare/ECCResponse.h; sourceTree = "<group>"; };
+		F22463E51579215E009323FE /* ECCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCResponse.m; path = EstimatedCostOfCare/ECCResponse.m; sourceTree = "<group>"; };
+		F22463E815792BED009323FE /* ECCCostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCostRequest.h; path = EstimatedCostOfCare/Model/ECCCostRequest.h; sourceTree = "<group>"; };
+		F22463E915792BED009323FE /* ECCCostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCostRequest.m; path = EstimatedCostOfCare/Model/ECCCostRequest.m; sourceTree = "<group>"; };
+		F22463F015792C18009323FE /* ECCCategoryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCategoryRequest.h; path = EstimatedCostOfCare/Model/ECCCategoryRequest.h; sourceTree = "<group>"; };
+		F22463F115792C18009323FE /* ECCCategoryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryRequest.m; path = EstimatedCostOfCare/Model/ECCCategoryRequest.m; sourceTree = "<group>"; };
+		F22463F415793006009323FE /* ECCCostRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCostRequestMarshaller.h; path = EstimatedCostOfCare/Model/ECCCostRequestMarshaller.h; sourceTree = "<group>"; };
+		F22463F515793007009323FE /* ECCCostRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCostRequestMarshaller.m; path = EstimatedCostOfCare/Model/ECCCostRequestMarshaller.m; sourceTree = "<group>"; };
+		F22463FC1579325B009323FE /* ECCCategoryRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCategoryRequestMarshaller.h; path = EstimatedCostOfCare/Model/ECCCategoryRequestMarshaller.h; sourceTree = "<group>"; };
+		F22463FD1579325C009323FE /* ECCCategoryRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryRequestMarshaller.m; path = EstimatedCostOfCare/Model/ECCCategoryRequestMarshaller.m; sourceTree = "<group>"; };
+		F2246400157933B4009323FE /* ECCCostResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCostResponse.h; path = EstimatedCostOfCare/Model/ECCCostResponse.h; sourceTree = "<group>"; };
+		F2246401157933B5009323FE /* ECCCostResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCostResponse.m; path = EstimatedCostOfCare/Model/ECCCostResponse.m; sourceTree = "<group>"; };
+		F2246404157933C8009323FE /* ECCCostResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCostResponseUnmarshaller.h; path = EstimatedCostOfCare/Model/ECCCostResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2246405157933C9009323FE /* ECCCostResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCostResponseUnmarshaller.m; path = EstimatedCostOfCare/Model/ECCCostResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22464081579362E009323FE /* ECCCostResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCostResult.h; path = EstimatedCostOfCare/Model/ECCCostResult.h; sourceTree = "<group>"; };
+		F224640915793633009323FE /* ECCCostResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCostResult.m; path = EstimatedCostOfCare/Model/ECCCostResult.m; sourceTree = "<group>"; };
+		F224640D15793A70009323FE /* CarePassECCClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassECCClientTests.h; path = EstimateCostOfCare/CarePassECCClientTests.h; sourceTree = "<group>"; };
+		F224640E15793A70009323FE /* CarePassECCClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassECCClientTests.m; path = EstimateCostOfCare/CarePassECCClientTests.m; sourceTree = "<group>"; };
+		F224641215793D44009323FE /* ECCCategoryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCategoryResponse.h; path = EstimatedCostOfCare/Model/ECCCategoryResponse.h; sourceTree = "<group>"; };
+		F224641315793D45009323FE /* ECCCategoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryResponse.m; path = EstimatedCostOfCare/Model/ECCCategoryResponse.m; sourceTree = "<group>"; };
+		F224641615793D5E009323FE /* ECCCategoryResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCategoryResponseUnmarshaller.h; path = EstimatedCostOfCare/Model/ECCCategoryResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F224641715793D5F009323FE /* ECCCategoryResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryResponseUnmarshaller.m; path = EstimatedCostOfCare/Model/ECCCategoryResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2431F1315756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTResponsibleParty.h; path = HHS/Model/HHSClinicalTrialsNCTResponsibleParty.h; sourceTree = "<group>"; };
+		F2431F1415756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTResponsibleParty.m; path = HHS/Model/HHSClinicalTrialsNCTResponsibleParty.m; sourceTree = "<group>"; };
+		F2431F1815756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTUrlContactInfo.h; path = HHS/Model/HHSClinicalTrialsNCTUrlContactInfo.h; sourceTree = "<group>"; };
+		F2431F1915756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTUrlContactInfo.m; path = HHS/Model/HHSClinicalTrialsNCTUrlContactInfo.m; sourceTree = "<group>"; };
+		F2431F2315759E0E0055345F /* HHSDrugsSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsSearchRequest.h; path = HHS/Model/HHSDrugsSearchRequest.h; sourceTree = "<group>"; };
+		F2431F2415759E0E0055345F /* HHSDrugsSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsSearchRequest.m; path = HHS/Model/HHSDrugsSearchRequest.m; sourceTree = "<group>"; };
+		F2431F2715759E1D0055345F /* HHSDrugsSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsSearchResponse.h; path = HHS/Model/HHSDrugsSearchResponse.h; sourceTree = "<group>"; };
+		F2431F2815759E1D0055345F /* HHSDrugsSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsSearchResponse.m; path = HHS/Model/HHSDrugsSearchResponse.m; sourceTree = "<group>"; };
+		F2431F2B15759E320055345F /* HHSDrugsSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsSearchResult.h; path = HHS/Model/HHSDrugsSearchResult.h; sourceTree = "<group>"; };
+		F2431F2C15759E320055345F /* HHSDrugsSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsSearchResult.m; path = HHS/Model/HHSDrugsSearchResult.m; sourceTree = "<group>"; };
+		F2431F2F15759E410055345F /* HHSDrugsSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsSearchRequestMarshaller.h; path = HHS/Model/HHSDrugsSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F2431F3015759E410055345F /* HHSDrugsSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsSearchRequestMarshaller.m; path = HHS/Model/HHSDrugsSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F2431F3315759E510055345F /* HHSDrugsSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsSearchResponseUnmarshaller.h; path = HHS/Model/HHSDrugsSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2431F3415759E510055345F /* HHSDrugsSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsSearchResponseUnmarshaller.m; path = HHS/Model/HHSDrugsSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2431F371575A37C0055345F /* HHSDrugsNDCRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCRequest.h; path = HHS/Model/HHSDrugsNDCRequest.h; sourceTree = "<group>"; };
+		F2431F381575A37D0055345F /* HHSDrugsNDCRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCRequest.m; path = HHS/Model/HHSDrugsNDCRequest.m; sourceTree = "<group>"; };
+		F2431F3B1575A39A0055345F /* HHSDrugsNDCResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCResponse.h; path = HHS/Model/HHSDrugsNDCResponse.h; sourceTree = "<group>"; };
+		F2431F3C1575A39B0055345F /* HHSDrugsNDCResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCResponse.m; path = HHS/Model/HHSDrugsNDCResponse.m; sourceTree = "<group>"; };
+		F2431F3F1575A3B20055345F /* HHSDrugsNDCPackagesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCPackagesResponse.h; path = HHS/Model/HHSDrugsNDCPackagesResponse.h; sourceTree = "<group>"; };
+		F2431F401575A3B30055345F /* HHSDrugsNDCPackagesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCPackagesResponse.m; path = HHS/Model/HHSDrugsNDCPackagesResponse.m; sourceTree = "<group>"; };
+		F2431F431575A3C40055345F /* HHSDrugsNDCImagesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCImagesResponse.h; path = HHS/Model/HHSDrugsNDCImagesResponse.h; sourceTree = "<group>"; };
+		F2431F441575A3C50055345F /* HHSDrugsNDCImagesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCImagesResponse.m; path = HHS/Model/HHSDrugsNDCImagesResponse.m; sourceTree = "<group>"; };
+		F2431F471575A3DE0055345F /* HHSDrugsNDCRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCRequestMarshaller.h; path = HHS/Model/HHSDrugsNDCRequestMarshaller.h; sourceTree = "<group>"; };
+		F2431F481575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCRequestMarshaller.m; path = HHS/Model/HHSDrugsNDCRequestMarshaller.m; sourceTree = "<group>"; };
+		F2431F4B1575A42E0055345F /* HHSDrugsNDCResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCResponseUnmarshaller.h; path = HHS/Model/HHSDrugsNDCResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2431F4C1575A42F0055345F /* HHSDrugsNDCResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCResponseUnmarshaller.m; path = HHS/Model/HHSDrugsNDCResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2431F4F1575A4430055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCPackagesResponseUnmarshaller.h; path = HHS/Model/HHSDrugsNDCPackagesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2431F501575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCPackagesResponseUnmarshaller.m; path = HHS/Model/HHSDrugsNDCPackagesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2431F531575A45A0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCImagesResponseUnmarshaller.h; path = HHS/Model/HHSDrugsNDCImagesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2431F541575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCImagesResponseUnmarshaller.m; path = HHS/Model/HHSDrugsNDCImagesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2431F571575A4740055345F /* HHSDrugsNDCResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCResult.h; path = HHS/Model/HHSDrugsNDCResult.h; sourceTree = "<group>"; };
+		F2431F581575A4760055345F /* HHSDrugsNDCResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCResult.m; path = HHS/Model/HHSDrugsNDCResult.m; sourceTree = "<group>"; };
+		F260945A1576832F0006F100 /* HHSDrugsNDCPackageResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCPackageResult.h; path = HHS/Model/HHSDrugsNDCPackageResult.h; sourceTree = "<group>"; };
+		F260945B157683310006F100 /* HHSDrugsNDCPackageResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCPackageResult.m; path = HHS/Model/HHSDrugsNDCPackageResult.m; sourceTree = "<group>"; };
+		F260945F157685C50006F100 /* HHSDrugsNDCPackageImprintResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSDrugsNDCPackageImprintResult.h; path = HHS/Model/HHSDrugsNDCPackageImprintResult.h; sourceTree = "<group>"; };
+		F2609460157685C70006F100 /* HHSDrugsNDCPackageImprintResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSDrugsNDCPackageImprintResult.m; path = HHS/Model/HHSDrugsNDCPackageImprintResult.m; sourceTree = "<group>"; };
+		F270F31E156EABE0008E8AEC /* HHSInternalErrorException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSInternalErrorException.h; path = HHS/Model/HHSInternalErrorException.h; sourceTree = "<group>"; };
+		F270F31F156EABE0008E8AEC /* HHSInternalErrorException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSInternalErrorException.m; path = HHS/Model/HHSInternalErrorException.m; sourceTree = "<group>"; };
+		F270F320156EABE0008E8AEC /* HHSValidationErrorException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSValidationErrorException.h; path = HHS/Model/HHSValidationErrorException.h; sourceTree = "<group>"; };
+		F270F321156EABE0008E8AEC /* HHSValidationErrorException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSValidationErrorException.m; path = HHS/Model/HHSValidationErrorException.m; sourceTree = "<group>"; };
+		F270F32A156EC5F3008E8AEC /* HHSARTSearchYearResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchYearResult.h; path = HHS/Model/HHSARTSearchYearResult.h; sourceTree = "<group>"; };
+		F270F32B156EC5F4008E8AEC /* HHSARTSearchYearResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchYearResult.m; path = HHS/Model/HHSARTSearchYearResult.m; sourceTree = "<group>"; };
+		F270F32E156EC608008E8AEC /* HHSARTSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchResult.h; path = HHS/Model/HHSARTSearchResult.h; sourceTree = "<group>"; };
+		F270F32F156EC608008E8AEC /* HHSARTSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchResult.m; path = HHS/Model/HHSARTSearchResult.m; sourceTree = "<group>"; };
+		F270F333156ED931008E8AEC /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		F270F334156ED931008E8AEC /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		F270F33A156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchRequestMarshaller.h; path = HHS/Model/HHSARTSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F270F33B156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchRequestMarshaller.m; path = HHS/Model/HHSARTSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F270F33F156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchResponseUnmarshaller.h; path = HHS/Model/HHSARTSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F270F340156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchResponseUnmarshaller.m; path = HHS/Model/HHSARTSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F270F348156FD2BE008E8AEC /* CarePassHHSClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassHHSClientTests.h; path = HHS/CarePassHHSClientTests.h; sourceTree = "<group>"; };
+		F270F349156FD2BE008E8AEC /* CarePassHHSClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassHHSClientTests.m; path = HHS/CarePassHHSClientTests.m; sourceTree = "<group>"; };
+		F270F35715701D52008E8AEC /* HHSFDARecallsSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDARecallsSearchRequest.h; path = HHS/Model/HHSFDARecallsSearchRequest.h; sourceTree = "<group>"; };
+		F270F35815701D52008E8AEC /* HHSFDARecallsSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDARecallsSearchRequest.m; path = HHS/Model/HHSFDARecallsSearchRequest.m; sourceTree = "<group>"; };
+		F270F35B15701D6A008E8AEC /* HHSFDARecallsSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDARecallsSearchResponse.h; path = HHS/Model/HHSFDARecallsSearchResponse.h; sourceTree = "<group>"; };
+		F270F35C15701D6A008E8AEC /* HHSFDARecallsSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDARecallsSearchResponse.m; path = HHS/Model/HHSFDARecallsSearchResponse.m; sourceTree = "<group>"; };
+		F270F35F15701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDARecallsSearchRequestMarshaller.h; path = HHS/Model/HHSFDARecallsSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F270F36015701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDARecallsSearchRequestMarshaller.m; path = HHS/Model/HHSFDARecallsSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F270F36315701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDARecallsSearchResponseUnmarshaller.h; path = HHS/Model/HHSFDARecallsSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F270F36415701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDARecallsSearchResponseUnmarshaller.m; path = HHS/Model/HHSFDARecallsSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F270F36715701DFF008E8AEC /* HHSFDARecallsSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDARecallsSearchResult.h; path = HHS/Model/HHSFDARecallsSearchResult.h; sourceTree = "<group>"; };
+		F270F36815701DFF008E8AEC /* HHSFDARecallsSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDARecallsSearchResult.m; path = HHS/Model/HHSFDARecallsSearchResult.m; sourceTree = "<group>"; };
+		F270F36B15702E61008E8AEC /* HHSFDADrugsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsRequest.h; path = HHS/Model/HHSFDADrugsRequest.h; sourceTree = "<group>"; };
+		F270F36C15702E61008E8AEC /* HHSFDADrugsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsRequest.m; path = HHS/Model/HHSFDADrugsRequest.m; sourceTree = "<group>"; };
+		F270F36F15702EBE008E8AEC /* HHSFDADrugsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResponse.h; path = HHS/Model/HHSFDADrugsResponse.h; sourceTree = "<group>"; };
+		F270F37015702EBE008E8AEC /* HHSFDADrugsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResponse.m; path = HHS/Model/HHSFDADrugsResponse.m; sourceTree = "<group>"; };
+		F270F37315702F29008E8AEC /* HHSFDADrugsRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsRequestMarshaller.h; path = HHS/Model/HHSFDADrugsRequestMarshaller.h; sourceTree = "<group>"; };
+		F270F37415702F29008E8AEC /* HHSFDADrugsRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsRequestMarshaller.m; path = HHS/Model/HHSFDADrugsRequestMarshaller.m; sourceTree = "<group>"; };
+		F270F37715702FB5008E8AEC /* HHSFDADrugsResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResponseUnmarshaller.h; path = HHS/Model/HHSFDADrugsResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F270F37815702FB6008E8AEC /* HHSFDADrugsResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F270F37B15703011008E8AEC /* HHSFDADrugsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResult.h; path = HHS/Model/HHSFDADrugsResult.h; sourceTree = "<group>"; };
+		F270F37C15703012008E8AEC /* HHSFDADrugsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResult.m; path = HHS/Model/HHSFDADrugsResult.m; sourceTree = "<group>"; };
+		F270F3831570315B008E8AEC /* HHSFDADrugsAlternativesDrugResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsAlternativesDrugResult.h; path = HHS/Model/HHSFDADrugsAlternativesDrugResult.h; sourceTree = "<group>"; };
+		F270F3841570315D008E8AEC /* HHSFDADrugsAlternativesDrugResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsAlternativesDrugResult.m; path = HHS/Model/HHSFDADrugsAlternativesDrugResult.m; sourceTree = "<group>"; };
+		F270F3851570315F008E8AEC /* HHSFDADrugsAlternativesResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsAlternativesResult.h; path = HHS/Model/HHSFDADrugsAlternativesResult.h; sourceTree = "<group>"; };
+		F270F38615703164008E8AEC /* HHSFDADrugsAlternativesResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsAlternativesResult.m; path = HHS/Model/HHSFDADrugsAlternativesResult.m; sourceTree = "<group>"; };
+		F270F38715703167008E8AEC /* HHSFDADrugsDocumentResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsDocumentResult.h; path = HHS/Model/HHSFDADrugsDocumentResult.h; sourceTree = "<group>"; };
+		F270F38815703172008E8AEC /* HHSFDADrugsDocumentResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsDocumentResult.m; path = HHS/Model/HHSFDADrugsDocumentResult.m; sourceTree = "<group>"; };
+		F270F39315750A24008E8AEC /* HHSFDADrugsAlternativesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsAlternativesResponse.h; path = HHS/Model/HHSFDADrugsAlternativesResponse.h; sourceTree = "<group>"; };
+		F270F39415750A27008E8AEC /* HHSFDADrugsAlternativesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsAlternativesResponse.m; path = HHS/Model/HHSFDADrugsAlternativesResponse.m; sourceTree = "<group>"; };
+		F270F39515750A2B008E8AEC /* HHSFDADrugsDocumentsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsDocumentsResponse.h; path = HHS/Model/HHSFDADrugsDocumentsResponse.h; sourceTree = "<group>"; };
+		F270F39615750A44008E8AEC /* HHSFDADrugsDocumentsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsDocumentsResponse.m; path = HHS/Model/HHSFDADrugsDocumentsResponse.m; sourceTree = "<group>"; };
+		F270F39715750A56008E8AEC /* HHSFDADrugsResourcesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResourcesResponse.h; path = HHS/Model/HHSFDADrugsResourcesResponse.h; sourceTree = "<group>"; };
+		F270F39815750A8D008E8AEC /* HHSFDADrugsResourcesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResourcesResponse.m; path = HHS/Model/HHSFDADrugsResourcesResponse.m; sourceTree = "<group>"; };
+		F270F39F15753200008E8AEC /* HHSClinicalTrialsSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsSearchRequest.h; path = HHS/Model/HHSClinicalTrialsSearchRequest.h; sourceTree = "<group>"; };
+		F270F3A015753200008E8AEC /* HHSClinicalTrialsSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsSearchRequest.m; path = HHS/Model/HHSClinicalTrialsSearchRequest.m; sourceTree = "<group>"; };
+		F270F3A315753215008E8AEC /* HHSClinicalTrialsSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsSearchResponse.h; path = HHS/Model/HHSClinicalTrialsSearchResponse.h; sourceTree = "<group>"; };
+		F270F3A415753215008E8AEC /* HHSClinicalTrialsSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsSearchResponse.m; path = HHS/Model/HHSClinicalTrialsSearchResponse.m; sourceTree = "<group>"; };
+		F270F3A715753232008E8AEC /* HHSClinicalTrialsSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsSearchResult.h; path = HHS/Model/HHSClinicalTrialsSearchResult.h; sourceTree = "<group>"; };
+		F270F3A815753232008E8AEC /* HHSClinicalTrialsSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsSearchResult.m; path = HHS/Model/HHSClinicalTrialsSearchResult.m; sourceTree = "<group>"; };
+		F270F3AB1575324B008E8AEC /* HHSClinicalTrialsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsResult.h; path = HHS/Model/HHSClinicalTrialsResult.h; sourceTree = "<group>"; };
+		F270F3AC1575324C008E8AEC /* HHSClinicalTrialsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsResult.m; path = HHS/Model/HHSClinicalTrialsResult.m; sourceTree = "<group>"; };
+		F270F3AF15753268008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsSearchRequestMarshaller.h; path = HHS/Model/HHSClinicalTrialsSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F270F3B015753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsSearchRequestMarshaller.m; path = HHS/Model/HHSClinicalTrialsSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F270F3B31575327C008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsSearchResponseUnmarshaller.h; path = HHS/Model/HHSClinicalTrialsSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F270F3B41575327D008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsSearchResponseUnmarshaller.m; path = HHS/Model/HHSClinicalTrialsSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F270F3B71575486D008E8AEC /* HHSClinicalTrialsNCTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTRequest.h; path = HHS/Model/HHSClinicalTrialsNCTRequest.h; sourceTree = "<group>"; };
+		F270F3B815754870008E8AEC /* HHSClinicalTrialsNCTRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTRequest.m; path = HHS/Model/HHSClinicalTrialsNCTRequest.m; sourceTree = "<group>"; };
+		F270F3BB15754883008E8AEC /* HHSClinicalTrialsNCTResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTResponse.h; path = HHS/Model/HHSClinicalTrialsNCTResponse.h; sourceTree = "<group>"; };
+		F270F3BC15754886008E8AEC /* HHSClinicalTrialsNCTResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTResponse.m; path = HHS/Model/HHSClinicalTrialsNCTResponse.m; sourceTree = "<group>"; };
+		F270F3BF15754904008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTRequestMarshaller.h; path = HHS/Model/HHSClinicalTrialsNCTRequestMarshaller.h; sourceTree = "<group>"; };
+		F270F3C015754907008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTRequestMarshaller.m; path = HHS/Model/HHSClinicalTrialsNCTRequestMarshaller.m; sourceTree = "<group>"; };
+		F270F3C31575491F008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTResponseUnmarshaller.h; path = HHS/Model/HHSClinicalTrialsNCTResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F270F3C415754921008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTResponseUnmarshaller.m; path = HHS/Model/HHSClinicalTrialsNCTResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F270F3C71575495E008E8AEC /* HHSClinicalTrialsNCTResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTResult.h; path = HHS/Model/HHSClinicalTrialsNCTResult.h; sourceTree = "<group>"; };
+		F270F3C815754960008E8AEC /* HHSClinicalTrialsNCTResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTResult.m; path = HHS/Model/HHSClinicalTrialsNCTResult.m; sourceTree = "<group>"; };
+		F270F3CB1575521A008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTAgesEligibleResult.h; path = HHS/Model/HHSClinicalTrialsNCTAgesEligibleResult.h; sourceTree = "<group>"; };
+		F270F3CC1575521F008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTAgesEligibleResult.m; path = HHS/Model/HHSClinicalTrialsNCTAgesEligibleResult.m; sourceTree = "<group>"; };
+		F290044515798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsAlternativesResponseUnmarshaller.h; path = HHS/Model/HHSFDADrugsAlternativesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F290044615798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsAlternativesResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsAlternativesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F290044A15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsDocumentsResponseUnmarshaller.h; path = HHS/Model/HHSFDADrugsDocumentsResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F290044B15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsDocumentsResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsDocumentsResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F290044E15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResourcesResponseUnmarshaller.h; path = HHS/Model/HHSFDADrugsResourcesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F290044F15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResourcesResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsResourcesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2BDA1E8156D60090008C2C8 /* libCarePassFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCarePassFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2BDA1EB156D60090008C2C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2BDA1EF156D60090008C2C8 /* CarePassFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarePassFramework-Prefix.pch"; sourceTree = "<group>"; };
+		F2BDA1F0156D60090008C2C8 /* CarePassFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePassFramework.h; sourceTree = "<group>"; };
+		F2BDA1F1156D60090008C2C8 /* CarePassFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePassFramework.m; sourceTree = "<group>"; };
+		F2BDA1F8156D60090008C2C8 /* CarePassFrameworkTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarePassFrameworkTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2BDA1F9156D60090008C2C8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F2BDA1FB156D60090008C2C8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		F2BDA203156D60090008C2C8 /* CarePassFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CarePassFrameworkTests-Info.plist"; sourceTree = "<group>"; };
+		F2BDA205156D60090008C2C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2BDA207156D60090008C2C8 /* CarePassFrameworkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePassFrameworkTests.h; sourceTree = "<group>"; };
+		F2BDA208156D60090008C2C8 /* CarePassFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePassFrameworkTests.m; sourceTree = "<group>"; };
+		F2BDA213156D611A0008C2C8 /* CarePassHHSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassHHSClient.h; path = HHS/CarePassHHSClient.h; sourceTree = "<group>"; };
+		F2BDA214156D611A0008C2C8 /* CarePassHHSClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassHHSClient.m; path = HHS/CarePassHHSClient.m; sourceTree = "<group>"; };
+		F2BDA217156D618F0008C2C8 /* HHSRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSRequest.h; path = HHS/HHSRequest.h; sourceTree = "<group>"; };
+		F2BDA218156D618F0008C2C8 /* HHSRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSRequest.m; path = HHS/HHSRequest.m; sourceTree = "<group>"; };
+		F2BDA21B156D619D0008C2C8 /* HHSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSResponse.h; path = HHS/HHSResponse.h; sourceTree = "<group>"; };
+		F2BDA21C156D619D0008C2C8 /* HHSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSResponse.m; path = HHS/HHSResponse.m; sourceTree = "<group>"; };
+		F2BDA220156D61E70008C2C8 /* HHSARTSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchRequest.h; path = HHS/Model/HHSARTSearchRequest.h; sourceTree = "<group>"; };
+		F2BDA221156D61E70008C2C8 /* HHSARTSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchRequest.m; path = HHS/Model/HHSARTSearchRequest.m; sourceTree = "<group>"; };
+		F2BDA224156D61FF0008C2C8 /* HHSARTSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSARTSearchResponse.h; path = HHS/Model/HHSARTSearchResponse.h; sourceTree = "<group>"; };
+		F2BDA225156D61FF0008C2C8 /* HHSARTSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSARTSearchResponse.m; path = HHS/Model/HHSARTSearchResponse.m; sourceTree = "<group>"; };
+		F2BDA228156D62FA0008C2C8 /* CarePassServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassServiceRequest.h; sourceTree = "<group>"; };
+		F2BDA229156D62FA0008C2C8 /* CarePassServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassServiceRequest.m; sourceTree = "<group>"; };
+		F2BDA22C156D630B0008C2C8 /* CarePassServiceResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassServiceResponse.h; sourceTree = "<group>"; };
+		F2BDA22D156D630B0008C2C8 /* CarePassServiceResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassServiceResponse.m; sourceTree = "<group>"; };
+		F2BDA230156D633E0008C2C8 /* CarePassServiceException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassServiceException.h; sourceTree = "<group>"; };
+		F2BDA231156D633E0008C2C8 /* CarePassServiceException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassServiceException.m; sourceTree = "<group>"; };
+		F2BDA234156D64B50008C2C8 /* CarePassURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassURLRequest.h; sourceTree = "<group>"; };
+		F2BDA235156D64B50008C2C8 /* CarePassURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassURLRequest.m; sourceTree = "<group>"; };
+		F2BDA238156D65390008C2C8 /* CarePassCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassCredentials.h; sourceTree = "<group>"; };
+		F2BDA239156D65390008C2C8 /* CarePassCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassCredentials.m; sourceTree = "<group>"; };
+		F2BDA23C156D69700008C2C8 /* CarePassSDKUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassSDKUtil.h; sourceTree = "<group>"; };
+		F2BDA23D156D69700008C2C8 /* CarePassSDKUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassSDKUtil.m; sourceTree = "<group>"; };
+		F2BDA240156E8EBE0008C2C8 /* CarePassClientException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassClientException.h; sourceTree = "<group>"; };
+		F2BDA241156E8EBE0008C2C8 /* CarePassClientException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassClientException.m; sourceTree = "<group>"; };
+		F2BDA248156E9E400008C2C8 /* CarePassServiceRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassServiceRequestConfig.h; sourceTree = "<group>"; };
+		F2BDA249156E9E400008C2C8 /* CarePassServiceRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassServiceRequestConfig.m; sourceTree = "<group>"; };
+		F2BDA24C156EA2450008C2C8 /* CarePassWebServiceClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassWebServiceClient.h; sourceTree = "<group>"; };
+		F2BDA24D156EA2450008C2C8 /* CarePassWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassWebServiceClient.m; sourceTree = "<group>"; };
+		F2BDA250156EA3E90008C2C8 /* CarePassRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassRequestDelegate.h; sourceTree = "<group>"; };
+		F2BDA251156EA3E90008C2C8 /* CarePassRequestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassRequestDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2BDA1E5156D60090008C2C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA1EC156D60090008C2C8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2BDA1F4156D60090008C2C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA1FA156D60090008C2C8 /* SenTestingKit.framework in Frameworks */,
+				F2BDA1FC156D60090008C2C8 /* UIKit.framework in Frameworks */,
+				F2BDA1FD156D60090008C2C8 /* Foundation.framework in Frameworks */,
+				F2BDA200156D60090008C2C8 /* libCarePassFramework.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F224639E1578FE08009323FE /* RetailRx */ = {
+			isa = PBXGroup;
+			children = (
+				F22463A315790B05009323FE /* Model */,
+				F22463A415790B8B009323FE /* CarePassRRXClient.h */,
+				F22463A515790B8B009323FE /* CarePassRRXClient.m */,
+				F22463AC15790C92009323FE /* RRXRequest.h */,
+				F22463AD15790C92009323FE /* RRXRequest.m */,
+				F22463B015790CA0009323FE /* RRXResponse.h */,
+				F22463B115790CA0009323FE /* RRXResponse.m */,
+			);
+			name = RetailRx;
+			sourceTree = "<group>";
+		};
+		F22463A315790B05009323FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F22463A815790BB9009323FE /* RRXSearchRequest.h */,
+				F22463A915790BB9009323FE /* RRXSearchRequest.m */,
+				F22463C015790D95009323FE /* RRXSearchRequestMarshaller.h */,
+				F22463C115790D95009323FE /* RRXSearchRequestMarshaller.m */,
+				F22463BC15790CE2009323FE /* RRXSearchResponse.h */,
+				F22463BD15790CE3009323FE /* RRXSearchResponse.m */,
+				F22463C415790DA6009323FE /* RRXSearchResponseUnmarshaller.h */,
+				F22463C515790DA7009323FE /* RRXSearchResponseUnmarshaller.m */,
+				F22463D01579140F009323FE /* RRXSearchResult.h */,
+				F22463D115791410009323FE /* RRXSearchResult.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F22463D415791923009323FE /* RetailRx */ = {
+			isa = PBXGroup;
+			children = (
+				F22463D51579194B009323FE /* CarePassRRXClientTests.h */,
+				F22463D61579194B009323FE /* CarePassRRXClientTests.m */,
+			);
+			name = RetailRx;
+			sourceTree = "<group>";
+		};
+		F22463DA15792092009323FE /* EstimatedCostOfCare */ = {
+			isa = PBXGroup;
+			children = (
+				F22463DB157920BB009323FE /* Model */,
+				F22463DC1579213E009323FE /* CarePassECCClient.h */,
+				F22463DD1579213E009323FE /* CarePassECCClient.m */,
+				F22463E015792151009323FE /* ECCRequest.h */,
+				F22463E115792151009323FE /* ECCRequest.m */,
+				F22463E41579215E009323FE /* ECCResponse.h */,
+				F22463E51579215E009323FE /* ECCResponse.m */,
+			);
+			name = EstimatedCostOfCare;
+			sourceTree = "<group>";
+		};
+		F22463DB157920BB009323FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F22463E815792BED009323FE /* ECCCostRequest.h */,
+				F22463E915792BED009323FE /* ECCCostRequest.m */,
+				F22463F415793006009323FE /* ECCCostRequestMarshaller.h */,
+				F22463F515793007009323FE /* ECCCostRequestMarshaller.m */,
+				F2246400157933B4009323FE /* ECCCostResponse.h */,
+				F2246401157933B5009323FE /* ECCCostResponse.m */,
+				F2246404157933C8009323FE /* ECCCostResponseUnmarshaller.h */,
+				F2246405157933C9009323FE /* ECCCostResponseUnmarshaller.m */,
+				F22463F015792C18009323FE /* ECCCategoryRequest.h */,
+				F22463F115792C18009323FE /* ECCCategoryRequest.m */,
+				F22463FC1579325B009323FE /* ECCCategoryRequestMarshaller.h */,
+				F22463FD1579325C009323FE /* ECCCategoryRequestMarshaller.m */,
+				F224641215793D44009323FE /* ECCCategoryResponse.h */,
+				F224641315793D45009323FE /* ECCCategoryResponse.m */,
+				F224641615793D5E009323FE /* ECCCategoryResponseUnmarshaller.h */,
+				F224641715793D5F009323FE /* ECCCategoryResponseUnmarshaller.m */,
+				F22464081579362E009323FE /* ECCCostResult.h */,
+				F224640915793633009323FE /* ECCCostResult.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F224640C15793A50009323FE /* EstimatedCostOfCare */ = {
+			isa = PBXGroup;
+			children = (
+				F224640D15793A70009323FE /* CarePassECCClientTests.h */,
+				F224640E15793A70009323FE /* CarePassECCClientTests.m */,
+			);
+			name = EstimatedCostOfCare;
+			sourceTree = "<group>";
+		};
+		F270F332156ED902008E8AEC /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				F270F333156ED931008E8AEC /* JSONKit.h */,
+				F270F334156ED931008E8AEC /* JSONKit.m */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		F270F346156FD278008E8AEC /* HHS */ = {
+			isa = PBXGroup;
+			children = (
+				F270F348156FD2BE008E8AEC /* CarePassHHSClientTests.h */,
+				F270F349156FD2BE008E8AEC /* CarePassHHSClientTests.m */,
+			);
+			name = HHS;
+			sourceTree = "<group>";
+		};
+		F270F35215701CAA008E8AEC /* ART */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA220156D61E70008C2C8 /* HHSARTSearchRequest.h */,
+				F2BDA221156D61E70008C2C8 /* HHSARTSearchRequest.m */,
+				F2BDA224156D61FF0008C2C8 /* HHSARTSearchResponse.h */,
+				F2BDA225156D61FF0008C2C8 /* HHSARTSearchResponse.m */,
+				F270F32A156EC5F3008E8AEC /* HHSARTSearchYearResult.h */,
+				F270F32B156EC5F4008E8AEC /* HHSARTSearchYearResult.m */,
+				F270F32E156EC608008E8AEC /* HHSARTSearchResult.h */,
+				F270F32F156EC608008E8AEC /* HHSARTSearchResult.m */,
+				F270F33A156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.h */,
+				F270F33B156FBD5D008E8AEC /* HHSARTSearchRequestMarshaller.m */,
+				F270F33F156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.h */,
+				F270F340156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.m */,
+			);
+			name = ART;
+			sourceTree = "<group>";
+		};
+		F270F35315701CD0008E8AEC /* Drugs */ = {
+			isa = PBXGroup;
+			children = (
+				F2431F2315759E0E0055345F /* HHSDrugsSearchRequest.h */,
+				F2431F2415759E0E0055345F /* HHSDrugsSearchRequest.m */,
+				F2431F2715759E1D0055345F /* HHSDrugsSearchResponse.h */,
+				F2431F2815759E1D0055345F /* HHSDrugsSearchResponse.m */,
+				F2431F2B15759E320055345F /* HHSDrugsSearchResult.h */,
+				F2431F2C15759E320055345F /* HHSDrugsSearchResult.m */,
+				F2431F2F15759E410055345F /* HHSDrugsSearchRequestMarshaller.h */,
+				F2431F3015759E410055345F /* HHSDrugsSearchRequestMarshaller.m */,
+				F2431F3315759E510055345F /* HHSDrugsSearchResponseUnmarshaller.h */,
+				F2431F3415759E510055345F /* HHSDrugsSearchResponseUnmarshaller.m */,
+				F2431F371575A37C0055345F /* HHSDrugsNDCRequest.h */,
+				F2431F381575A37D0055345F /* HHSDrugsNDCRequest.m */,
+				F2431F3B1575A39A0055345F /* HHSDrugsNDCResponse.h */,
+				F2431F3C1575A39B0055345F /* HHSDrugsNDCResponse.m */,
+				F2431F3F1575A3B20055345F /* HHSDrugsNDCPackagesResponse.h */,
+				F2431F401575A3B30055345F /* HHSDrugsNDCPackagesResponse.m */,
+				F2431F431575A3C40055345F /* HHSDrugsNDCImagesResponse.h */,
+				F2431F441575A3C50055345F /* HHSDrugsNDCImagesResponse.m */,
+				F2431F471575A3DE0055345F /* HHSDrugsNDCRequestMarshaller.h */,
+				F2431F481575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.m */,
+				F2431F4B1575A42E0055345F /* HHSDrugsNDCResponseUnmarshaller.h */,
+				F2431F4C1575A42F0055345F /* HHSDrugsNDCResponseUnmarshaller.m */,
+				F2431F4F1575A4430055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.h */,
+				F2431F501575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.m */,
+				F2431F531575A45A0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.h */,
+				F2431F541575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.m */,
+				F2431F571575A4740055345F /* HHSDrugsNDCResult.h */,
+				F2431F581575A4760055345F /* HHSDrugsNDCResult.m */,
+				F260945A1576832F0006F100 /* HHSDrugsNDCPackageResult.h */,
+				F260945B157683310006F100 /* HHSDrugsNDCPackageResult.m */,
+				F260945F157685C50006F100 /* HHSDrugsNDCPackageImprintResult.h */,
+				F2609460157685C70006F100 /* HHSDrugsNDCPackageImprintResult.m */,
+			);
+			name = Drugs;
+			sourceTree = "<group>";
+		};
+		F270F35415701CDC008E8AEC /* FDADrugs */ = {
+			isa = PBXGroup;
+			children = (
+				F270F36B15702E61008E8AEC /* HHSFDADrugsRequest.h */,
+				F270F36C15702E61008E8AEC /* HHSFDADrugsRequest.m */,
+				F270F36F15702EBE008E8AEC /* HHSFDADrugsResponse.h */,
+				F270F37015702EBE008E8AEC /* HHSFDADrugsResponse.m */,
+				F270F39315750A24008E8AEC /* HHSFDADrugsAlternativesResponse.h */,
+				F270F39415750A27008E8AEC /* HHSFDADrugsAlternativesResponse.m */,
+				F270F39515750A2B008E8AEC /* HHSFDADrugsDocumentsResponse.h */,
+				F270F39615750A44008E8AEC /* HHSFDADrugsDocumentsResponse.m */,
+				F270F39715750A56008E8AEC /* HHSFDADrugsResourcesResponse.h */,
+				F270F39815750A8D008E8AEC /* HHSFDADrugsResourcesResponse.m */,
+				F270F37315702F29008E8AEC /* HHSFDADrugsRequestMarshaller.h */,
+				F270F37415702F29008E8AEC /* HHSFDADrugsRequestMarshaller.m */,
+				F270F37715702FB5008E8AEC /* HHSFDADrugsResponseUnmarshaller.h */,
+				F270F37815702FB6008E8AEC /* HHSFDADrugsResponseUnmarshaller.m */,
+				F270F37B15703011008E8AEC /* HHSFDADrugsResult.h */,
+				F270F37C15703012008E8AEC /* HHSFDADrugsResult.m */,
+				F270F3851570315F008E8AEC /* HHSFDADrugsAlternativesResult.h */,
+				F270F38615703164008E8AEC /* HHSFDADrugsAlternativesResult.m */,
+				F270F3831570315B008E8AEC /* HHSFDADrugsAlternativesDrugResult.h */,
+				F270F3841570315D008E8AEC /* HHSFDADrugsAlternativesDrugResult.m */,
+				F270F38715703167008E8AEC /* HHSFDADrugsDocumentResult.h */,
+				F270F38815703172008E8AEC /* HHSFDADrugsDocumentResult.m */,
+				F290044515798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h */,
+				F290044615798B9300F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m */,
+				F290044A15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h */,
+				F290044B15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m */,
+				F290044E15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h */,
+				F290044F15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m */,
+			);
+			name = FDADrugs;
+			sourceTree = "<group>";
+		};
+		F270F35515701CED008E8AEC /* FDARecalls */ = {
+			isa = PBXGroup;
+			children = (
+				F270F35715701D52008E8AEC /* HHSFDARecallsSearchRequest.h */,
+				F270F35815701D52008E8AEC /* HHSFDARecallsSearchRequest.m */,
+				F270F35B15701D6A008E8AEC /* HHSFDARecallsSearchResponse.h */,
+				F270F35C15701D6A008E8AEC /* HHSFDARecallsSearchResponse.m */,
+				F270F35F15701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.h */,
+				F270F36015701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.m */,
+				F270F36315701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.h */,
+				F270F36415701DAD008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.m */,
+				F270F36715701DFF008E8AEC /* HHSFDARecallsSearchResult.h */,
+				F270F36815701DFF008E8AEC /* HHSFDARecallsSearchResult.m */,
+			);
+			name = FDARecalls;
+			sourceTree = "<group>";
+		};
+		F270F35615701CFB008E8AEC /* ClinicalTrials */ = {
+			isa = PBXGroup;
+			children = (
+				F270F39F15753200008E8AEC /* HHSClinicalTrialsSearchRequest.h */,
+				F270F3A015753200008E8AEC /* HHSClinicalTrialsSearchRequest.m */,
+				F270F3A315753215008E8AEC /* HHSClinicalTrialsSearchResponse.h */,
+				F270F3A415753215008E8AEC /* HHSClinicalTrialsSearchResponse.m */,
+				F270F3A715753232008E8AEC /* HHSClinicalTrialsSearchResult.h */,
+				F270F3A815753232008E8AEC /* HHSClinicalTrialsSearchResult.m */,
+				F270F3AB1575324B008E8AEC /* HHSClinicalTrialsResult.h */,
+				F270F3AC1575324C008E8AEC /* HHSClinicalTrialsResult.m */,
+				F270F3AF15753268008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.h */,
+				F270F3B015753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.m */,
+				F270F3B31575327C008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.h */,
+				F270F3B41575327D008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.m */,
+				F270F3B71575486D008E8AEC /* HHSClinicalTrialsNCTRequest.h */,
+				F270F3B815754870008E8AEC /* HHSClinicalTrialsNCTRequest.m */,
+				F270F3BB15754883008E8AEC /* HHSClinicalTrialsNCTResponse.h */,
+				F270F3BC15754886008E8AEC /* HHSClinicalTrialsNCTResponse.m */,
+				F270F3BF15754904008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.h */,
+				F270F3C015754907008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.m */,
+				F270F3C31575491F008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.h */,
+				F270F3C415754921008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.m */,
+				F270F3C71575495E008E8AEC /* HHSClinicalTrialsNCTResult.h */,
+				F270F3C815754960008E8AEC /* HHSClinicalTrialsNCTResult.m */,
+				F270F3CB1575521A008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.h */,
+				F270F3CC1575521F008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.m */,
+				F2431F1315756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h */,
+				F2431F1415756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m */,
+				F2431F1815756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h */,
+				F2431F1915756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.m */,
+			);
+			name = ClinicalTrials;
+			sourceTree = "<group>";
+		};
+		F2BDA1DD156D60080008C2C8 = {
+			isa = PBXGroup;
+			children = (
+				F2BDA1ED156D60090008C2C8 /* CarePassFramework */,
+				F2BDA201156D60090008C2C8 /* CarePassFrameworkTests */,
+				F2BDA1EA156D60090008C2C8 /* Frameworks */,
+				F2BDA1E9156D60090008C2C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2BDA1E9156D60090008C2C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA1E8156D60090008C2C8 /* libCarePassFramework.a */,
+				F2BDA1F8156D60090008C2C8 /* CarePassFrameworkTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2BDA1EA156D60090008C2C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA1EB156D60090008C2C8 /* Foundation.framework */,
+				F2BDA1F9156D60090008C2C8 /* SenTestingKit.framework */,
+				F2BDA1FB156D60090008C2C8 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2BDA1ED156D60090008C2C8 /* CarePassFramework */ = {
+			isa = PBXGroup;
+			children = (
+				F22463DA15792092009323FE /* EstimatedCostOfCare */,
+				F224639E1578FE08009323FE /* RetailRx */,
+				F270F332156ED902008E8AEC /* ThirdParty */,
+				F2BDA212156D60A30008C2C8 /* HHS */,
+				F2BDA1F0156D60090008C2C8 /* CarePassFramework.h */,
+				F2BDA1F1156D60090008C2C8 /* CarePassFramework.m */,
+				F2BDA1EE156D60090008C2C8 /* Supporting Files */,
+				F2BDA240156E8EBE0008C2C8 /* CarePassClientException.h */,
+				F2BDA241156E8EBE0008C2C8 /* CarePassClientException.m */,
+				F2BDA228156D62FA0008C2C8 /* CarePassServiceRequest.h */,
+				F2BDA229156D62FA0008C2C8 /* CarePassServiceRequest.m */,
+				F2BDA22C156D630B0008C2C8 /* CarePassServiceResponse.h */,
+				F2BDA22D156D630B0008C2C8 /* CarePassServiceResponse.m */,
+				F2BDA230156D633E0008C2C8 /* CarePassServiceException.h */,
+				F2BDA231156D633E0008C2C8 /* CarePassServiceException.m */,
+				F2BDA234156D64B50008C2C8 /* CarePassURLRequest.h */,
+				F2BDA235156D64B50008C2C8 /* CarePassURLRequest.m */,
+				F2BDA238156D65390008C2C8 /* CarePassCredentials.h */,
+				F2BDA239156D65390008C2C8 /* CarePassCredentials.m */,
+				F2BDA23C156D69700008C2C8 /* CarePassSDKUtil.h */,
+				F2BDA23D156D69700008C2C8 /* CarePassSDKUtil.m */,
+				F2BDA248156E9E400008C2C8 /* CarePassServiceRequestConfig.h */,
+				F2BDA249156E9E400008C2C8 /* CarePassServiceRequestConfig.m */,
+				F2BDA24C156EA2450008C2C8 /* CarePassWebServiceClient.h */,
+				F2BDA24D156EA2450008C2C8 /* CarePassWebServiceClient.m */,
+				F2BDA250156EA3E90008C2C8 /* CarePassRequestDelegate.h */,
+				F2BDA251156EA3E90008C2C8 /* CarePassRequestDelegate.m */,
+			);
+			path = CarePassFramework;
+			sourceTree = "<group>";
+		};
+		F2BDA1EE156D60090008C2C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA1EF156D60090008C2C8 /* CarePassFramework-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2BDA201156D60090008C2C8 /* CarePassFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				F224640C15793A50009323FE /* EstimatedCostOfCare */,
+				F22463D415791923009323FE /* RetailRx */,
+				F270F346156FD278008E8AEC /* HHS */,
+				F2BDA207156D60090008C2C8 /* CarePassFrameworkTests.h */,
+				F2BDA208156D60090008C2C8 /* CarePassFrameworkTests.m */,
+				F2BDA202156D60090008C2C8 /* Supporting Files */,
+			);
+			path = CarePassFrameworkTests;
+			sourceTree = "<group>";
+		};
+		F2BDA202156D60090008C2C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA203156D60090008C2C8 /* CarePassFrameworkTests-Info.plist */,
+				F2BDA204156D60090008C2C8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2BDA212156D60A30008C2C8 /* HHS */ = {
+			isa = PBXGroup;
+			children = (
+				F2BDA21F156D61AA0008C2C8 /* Model */,
+				F2BDA213156D611A0008C2C8 /* CarePassHHSClient.h */,
+				F2BDA214156D611A0008C2C8 /* CarePassHHSClient.m */,
+				F2BDA217156D618F0008C2C8 /* HHSRequest.h */,
+				F2BDA218156D618F0008C2C8 /* HHSRequest.m */,
+				F2BDA21B156D619D0008C2C8 /* HHSResponse.h */,
+				F2BDA21C156D619D0008C2C8 /* HHSResponse.m */,
+			);
+			name = HHS;
+			sourceTree = "<group>";
+		};
+		F2BDA21F156D61AA0008C2C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F270F35215701CAA008E8AEC /* ART */,
+				F270F35615701CFB008E8AEC /* ClinicalTrials */,
+				F270F35315701CD0008E8AEC /* Drugs */,
+				F270F35415701CDC008E8AEC /* FDADrugs */,
+				F270F35515701CED008E8AEC /* FDARecalls */,
+				F270F31E156EABE0008E8AEC /* HHSInternalErrorException.h */,
+				F270F31F156EABE0008E8AEC /* HHSInternalErrorException.m */,
+				F270F320156EABE0008E8AEC /* HHSValidationErrorException.h */,
+				F270F321156EABE0008E8AEC /* HHSValidationErrorException.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F2BDA1E6156D60090008C2C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA215156D611A0008C2C8 /* CarePassHHSClient.h in Headers */,
+				F2BDA219156D618F0008C2C8 /* HHSRequest.h in Headers */,
+				F2BDA21D156D619D0008C2C8 /* HHSResponse.h in Headers */,
+				F2BDA222156D61E70008C2C8 /* HHSARTSearchRequest.h in Headers */,
+				F2BDA226156D61FF0008C2C8 /* HHSARTSearchResponse.h in Headers */,
+				F2BDA22A156D62FA0008C2C8 /* CarePassServiceRequest.h in Headers */,
+				F2BDA22E156D630C0008C2C8 /* CarePassServiceResponse.h in Headers */,
+				F2BDA232156D633F0008C2C8 /* CarePassServiceException.h in Headers */,
+				F2BDA236156D64B50008C2C8 /* CarePassURLRequest.h in Headers */,
+				F2BDA23A156D65390008C2C8 /* CarePassCredentials.h in Headers */,
+				F2BDA23E156D69700008C2C8 /* CarePassSDKUtil.h in Headers */,
+				F2BDA242156E8EC00008C2C8 /* CarePassClientException.h in Headers */,
+				F2BDA24A156E9E410008C2C8 /* CarePassServiceRequestConfig.h in Headers */,
+				F2BDA24E156EA2460008C2C8 /* CarePassWebServiceClient.h in Headers */,
+				F2BDA252156EA3EA0008C2C8 /* CarePassRequestDelegate.h in Headers */,
+				F270F322156EABE0008E8AEC /* HHSInternalErrorException.h in Headers */,
+				F270F324156EABE0008E8AEC /* HHSValidationErrorException.h in Headers */,
+				F270F32C156EC5F4008E8AEC /* HHSARTSearchYearResult.h in Headers */,
+				F270F330156EC609008E8AEC /* HHSARTSearchResult.h in Headers */,
+				F270F335156ED931008E8AEC /* JSONKit.h in Headers */,
+				F270F33C156FBD5E008E8AEC /* HHSARTSearchRequestMarshaller.h in Headers */,
+				F270F341156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.h in Headers */,
+				F270F35915701D52008E8AEC /* HHSFDARecallsSearchRequest.h in Headers */,
+				F270F35D15701D6A008E8AEC /* HHSFDARecallsSearchResponse.h in Headers */,
+				F270F36115701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.h in Headers */,
+				F270F36515701DAE008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.h in Headers */,
+				F270F36915701DFF008E8AEC /* HHSFDARecallsSearchResult.h in Headers */,
+				F270F36D15702E61008E8AEC /* HHSFDADrugsRequest.h in Headers */,
+				F270F37115702EBF008E8AEC /* HHSFDADrugsResponse.h in Headers */,
+				F270F37515702F2A008E8AEC /* HHSFDADrugsRequestMarshaller.h in Headers */,
+				F270F37915702FB7008E8AEC /* HHSFDADrugsResponseUnmarshaller.h in Headers */,
+				F270F37D15703013008E8AEC /* HHSFDADrugsResult.h in Headers */,
+				F270F3891570317B008E8AEC /* HHSFDADrugsAlternativesDrugResult.h in Headers */,
+				F270F38B1570317B008E8AEC /* HHSFDADrugsAlternativesResult.h in Headers */,
+				F270F38D1570317B008E8AEC /* HHSFDADrugsDocumentResult.h in Headers */,
+				F270F39915750AD3008E8AEC /* HHSFDADrugsAlternativesResponse.h in Headers */,
+				F270F39B15750AD3008E8AEC /* HHSFDADrugsDocumentsResponse.h in Headers */,
+				F270F39D15750AD3008E8AEC /* HHSFDADrugsResourcesResponse.h in Headers */,
+				F270F3A115753200008E8AEC /* HHSClinicalTrialsSearchRequest.h in Headers */,
+				F270F3A515753215008E8AEC /* HHSClinicalTrialsSearchResponse.h in Headers */,
+				F270F3A915753232008E8AEC /* HHSClinicalTrialsSearchResult.h in Headers */,
+				F270F3AD1575324C008E8AEC /* HHSClinicalTrialsResult.h in Headers */,
+				F270F3B115753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.h in Headers */,
+				F270F3B51575327E008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.h in Headers */,
+				F270F3B915754871008E8AEC /* HHSClinicalTrialsNCTRequest.h in Headers */,
+				F270F3BD157548D0008E8AEC /* HHSClinicalTrialsNCTResponse.h in Headers */,
+				F270F3C11575490B008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.h in Headers */,
+				F270F3C515754924008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.h in Headers */,
+				F270F3C91575496C008E8AEC /* HHSClinicalTrialsNCTResult.h in Headers */,
+				F270F3CD15755511008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.h in Headers */,
+				F2431F1515756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h in Headers */,
+				F2431F1A15756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h in Headers */,
+				F2431F2515759E0E0055345F /* HHSDrugsSearchRequest.h in Headers */,
+				F2431F2915759E1D0055345F /* HHSDrugsSearchResponse.h in Headers */,
+				F2431F2D15759E320055345F /* HHSDrugsSearchResult.h in Headers */,
+				F2431F3115759E410055345F /* HHSDrugsSearchRequestMarshaller.h in Headers */,
+				F2431F3515759E510055345F /* HHSDrugsSearchResponseUnmarshaller.h in Headers */,
+				F2431F391575A37D0055345F /* HHSDrugsNDCRequest.h in Headers */,
+				F2431F3D1575A39B0055345F /* HHSDrugsNDCResponse.h in Headers */,
+				F2431F411575A3B30055345F /* HHSDrugsNDCPackagesResponse.h in Headers */,
+				F2431F451575A3C50055345F /* HHSDrugsNDCImagesResponse.h in Headers */,
+				F2431F491575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.h in Headers */,
+				F2431F4D1575A4300055345F /* HHSDrugsNDCResponseUnmarshaller.h in Headers */,
+				F2431F511575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.h in Headers */,
+				F2431F551575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.h in Headers */,
+				F2431F591575A4760055345F /* HHSDrugsNDCResult.h in Headers */,
+				F260945C157683360006F100 /* HHSDrugsNDCPackageResult.h in Headers */,
+				F2609461157685C90006F100 /* HHSDrugsNDCPackageImprintResult.h in Headers */,
+				F22463A615790B8B009323FE /* CarePassRRXClient.h in Headers */,
+				F22463AA15790BB9009323FE /* RRXSearchRequest.h in Headers */,
+				F22463AE15790C92009323FE /* RRXRequest.h in Headers */,
+				F22463B215790CA1009323FE /* RRXResponse.h in Headers */,
+				F22463BE15790CE3009323FE /* RRXSearchResponse.h in Headers */,
+				F22463C215790D95009323FE /* RRXSearchRequestMarshaller.h in Headers */,
+				F22463C615790DA7009323FE /* RRXSearchResponseUnmarshaller.h in Headers */,
+				F22463D215791410009323FE /* RRXSearchResult.h in Headers */,
+				F22463DE1579213E009323FE /* CarePassECCClient.h in Headers */,
+				F22463E215792151009323FE /* ECCRequest.h in Headers */,
+				F22463E61579215E009323FE /* ECCResponse.h in Headers */,
+				F22463EA15792BED009323FE /* ECCCostRequest.h in Headers */,
+				F22463F215792C18009323FE /* ECCCategoryRequest.h in Headers */,
+				F22463F615793007009323FE /* ECCCostRequestMarshaller.h in Headers */,
+				F22463FE1579325D009323FE /* ECCCategoryRequestMarshaller.h in Headers */,
+				F2246402157933B6009323FE /* ECCCostResponse.h in Headers */,
+				F2246406157933CA009323FE /* ECCCostResponseUnmarshaller.h in Headers */,
+				F224640A15793646009323FE /* ECCCostResult.h in Headers */,
+				F224641415793D47009323FE /* ECCCategoryResponse.h in Headers */,
+				F224641815793D62009323FE /* ECCCategoryResponseUnmarshaller.h in Headers */,
+				F290044715798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h in Headers */,
+				F290044C15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h in Headers */,
+				F290045015798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F2BDA1E7156D60090008C2C8 /* CarePassFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2BDA20C156D60090008C2C8 /* Build configuration list for PBXNativeTarget "CarePassFramework" */;
+			buildPhases = (
+				F2BDA1E4156D60090008C2C8 /* Sources */,
+				F2BDA1E5156D60090008C2C8 /* Frameworks */,
+				F2BDA1E6156D60090008C2C8 /* Headers */,
+				F224639615785D5F009323FE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarePassFramework;
+			productName = CarePassFramework;
+			productReference = F2BDA1E8156D60090008C2C8 /* libCarePassFramework.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F2BDA1F7156D60090008C2C8 /* CarePassFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2BDA20F156D60090008C2C8 /* Build configuration list for PBXNativeTarget "CarePassFrameworkTests" */;
+			buildPhases = (
+				F2BDA1F3156D60090008C2C8 /* Sources */,
+				F2BDA1F4156D60090008C2C8 /* Frameworks */,
+				F2BDA1F5156D60090008C2C8 /* Resources */,
+				F2BDA1F6156D60090008C2C8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2BDA1FF156D60090008C2C8 /* PBXTargetDependency */,
+			);
+			name = CarePassFrameworkTests;
+			productName = CarePassFrameworkTests;
+			productReference = F2BDA1F8156D60090008C2C8 /* CarePassFrameworkTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2BDA1DF156D60080008C2C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F2BDA1E2156D60080008C2C8 /* Build configuration list for PBXProject "CarePassFramework" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F2BDA1DD156D60080008C2C8;
+			productRefGroup = F2BDA1E9156D60090008C2C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2BDA1E7156D60090008C2C8 /* CarePassFramework */,
+				F2BDA1F7156D60090008C2C8 /* CarePassFrameworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2BDA1F5156D60090008C2C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA206156D60090008C2C8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F224639615785D5F009323FE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Version 2.0 (updated for Xcode 4, with some fixes)\n# Changes:\n#    - Works with xcode 4, even when running xcode 3 projects (Workarounds for apple bugs)\n#    - Faster / better: only runs lipo once, instead of once per recursion\n#    - Added some debugging statemetns that can be switched on/off by changing the DEBUG_THIS_SCRIPT variable to \"true\"\n#    - Fixed some typos\n# \n# Purpose:\n#   Create a static library for iPhone from within XCode\n#   Because Apple staff DELIBERATELY broke Xcode to make this impossible from the GUI (Xcode 3.2.3 specifically states this in the Release notes!)\n#   ...no, I don't understand why they did this!\n#\n# Author: Adam Martin - http://twitter.com/redglassesapps\n# Based on: original script from Eonil (main changes: Eonil's script WILL NOT WORK in Xcode GUI - it WILL CRASH YOUR COMPUTER)\n#\n# More info: see this Stack Overflow question: http://stackoverflow.com/questions/3520977/build-fat-static-library-device-simulator-using-xcode-and-sdk-4\n\n#################[ Tests: helps workaround any future bugs in Xcode ]########\n#\nDEBUG_THIS_SCRIPT=\"false\"\n\nif [ $DEBUG_THIS_SCRIPT = \"true\" ]\nthen\necho \"########### TESTS #############\"\necho \"Use the following variables when debugging this script; note that they may change on recursions\"\necho \"BUILD_DIR = $BUILD_DIR\"\necho \"BUILD_ROOT = $BUILD_ROOT\"\necho \"CONFIGURATION_BUILD_DIR = $CONFIGURATION_BUILD_DIR\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"CONFIGURATION_TEMP_DIR = $CONFIGURATION_TEMP_DIR\"\necho \"TARGET_BUILD_DIR = $TARGET_BUILD_DIR\"\nfi\n\n#####################[ part 1 ]##################\n# First, work out the BASESDK version number (NB: Apple ought to report this, but they hide it)\n#    (incidental: searching for substrings in sh is a nightmare! Sob)\n\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\n# Next, work out if we're in SIM or DEVICE\n\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\nOTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\nOTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\necho \"XCode has selected SDK: ${PLATFORM_NAME} with version: ${SDK_VERSION} (although back-targetting: ${IPHONEOS_DEPLOYMENT_TARGET})\"\necho \"...therefore, OTHER_SDK_TO_BUILD = ${OTHER_SDK_TO_BUILD}\"\n#\n#####################[ end of part 1 ]##################\n\n#####################[ part 2 ]##################\n#\n# IF this is the original invocation, invoke WHATEVER other builds are required\n#\n# Xcode is already building ONE target...\n#\n# ...but this is a LIBRARY, so Apple is wrong to set it to build just one.\n# ...we need to build ALL targets\n# ...we MUST NOT re-build the target that is ALREADY being built: Xcode WILL CRASH YOUR COMPUTER if you try this (infinite recursion!)\n#\n#\n# So: build ONLY the missing platforms/configurations.\n\nif [ \"true\" == ${ALREADYINVOKED:-false} ]\nthen\necho \"RECURSION: I am NOT the root invocation, so I'm NOT going to recurse\"\nelse\n# CRITICAL:\n# Prevent infinite recursion (Xcode sucks)\nexport ALREADYINVOKED=\"true\"\n\necho \"RECURSION: I am the root ... recursing all missing build targets NOW...\"\necho \"RECURSION: ...about to invoke: xcodebuild -configuration \\\"${CONFIGURATION}\\\" -target \\\"${TARGET_NAME}\\\" -sdk \\\"${OTHER_SDK_TO_BUILD}\\\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO\"\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\nACTION=\"build\"\n\n#Merge all platform binaries as a fat binary for each configurations.\n\n# Calculate where the (multiple) built files are coming from:\nCURRENTCONFIG_DEVICE_DIR=${SYMROOT}/${CONFIGURATION}-iphoneos\nCURRENTCONFIG_SIMULATOR_DIR=${SYMROOT}/${CONFIGURATION}-iphonesimulator\n\necho \"Taking device build from: ${CURRENTCONFIG_DEVICE_DIR}\"\necho \"Taking simulator build from: ${CURRENTCONFIG_SIMULATOR_DIR}\"\n\nCREATING_UNIVERSAL_DIR=${SYMROOT}/${CONFIGURATION}-universal\necho \"...I will output a universal build to: ${CREATING_UNIVERSAL_DIR}\"\n\n# ... remove the products of previous runs of this script\n#      NB: this directory is ONLY created by this script - it should be safe to delete!\n\nrm -rf \"${CREATING_UNIVERSAL_DIR}\"\nmkdir \"${CREATING_UNIVERSAL_DIR}\"\n\n#\necho \"lipo: for current configuration (${CONFIGURATION}) creating output file: ${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\"\nlipo -create -output \"${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\n\n#########\n#\n# Added: StackOverflow suggestion to also copy \"include\" files\n#    (untested, but should work OK)\n#\nif [ -d \"${CURRENTCONFIG_DEVICE_DIR}/usr/local/include\" ]\nthen\nmkdir -p \"${CREATING_UNIVERSAL_DIR}/usr/local/include\"\n# * needs to be outside the double quotes?\ncp \"${CURRENTCONFIG_DEVICE_DIR}/usr/local/include/\"* \"${CREATING_UNIVERSAL_DIR}/usr/local/include\"\nfi\nfi";
+			showEnvVarsInLog = 0;
+		};
+		F2BDA1F6156D60090008C2C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2BDA1E4156D60090008C2C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA1F2156D60090008C2C8 /* CarePassFramework.m in Sources */,
+				F2BDA216156D611A0008C2C8 /* CarePassHHSClient.m in Sources */,
+				F2BDA21A156D618F0008C2C8 /* HHSRequest.m in Sources */,
+				F2BDA21E156D619D0008C2C8 /* HHSResponse.m in Sources */,
+				F2BDA223156D61E70008C2C8 /* HHSARTSearchRequest.m in Sources */,
+				F2BDA227156D61FF0008C2C8 /* HHSARTSearchResponse.m in Sources */,
+				F2BDA22B156D62FA0008C2C8 /* CarePassServiceRequest.m in Sources */,
+				F2BDA22F156D630C0008C2C8 /* CarePassServiceResponse.m in Sources */,
+				F2BDA233156D633F0008C2C8 /* CarePassServiceException.m in Sources */,
+				F2BDA237156D64B50008C2C8 /* CarePassURLRequest.m in Sources */,
+				F2BDA23B156D65390008C2C8 /* CarePassCredentials.m in Sources */,
+				F2BDA23F156D69700008C2C8 /* CarePassSDKUtil.m in Sources */,
+				F2BDA243156E8EC00008C2C8 /* CarePassClientException.m in Sources */,
+				F2BDA24B156E9E410008C2C8 /* CarePassServiceRequestConfig.m in Sources */,
+				F2BDA24F156EA2460008C2C8 /* CarePassWebServiceClient.m in Sources */,
+				F2BDA253156EA3EA0008C2C8 /* CarePassRequestDelegate.m in Sources */,
+				F270F323156EABE0008E8AEC /* HHSInternalErrorException.m in Sources */,
+				F270F325156EABE0008E8AEC /* HHSValidationErrorException.m in Sources */,
+				F270F32D156EC5F4008E8AEC /* HHSARTSearchYearResult.m in Sources */,
+				F270F331156EC609008E8AEC /* HHSARTSearchResult.m in Sources */,
+				F270F336156ED931008E8AEC /* JSONKit.m in Sources */,
+				F270F33D156FBD5E008E8AEC /* HHSARTSearchRequestMarshaller.m in Sources */,
+				F270F342156FBD78008E8AEC /* HHSARTSearchResponseUnmarshaller.m in Sources */,
+				F270F35A15701D52008E8AEC /* HHSFDARecallsSearchRequest.m in Sources */,
+				F270F35E15701D6A008E8AEC /* HHSFDARecallsSearchResponse.m in Sources */,
+				F270F36215701D8D008E8AEC /* HHSFDARecallsSearchRequestMarshaller.m in Sources */,
+				F270F36615701DAE008E8AEC /* HHSFDARecallsSearchResponseUnmarshaller.m in Sources */,
+				F270F36A15701DFF008E8AEC /* HHSFDARecallsSearchResult.m in Sources */,
+				F270F36E15702E61008E8AEC /* HHSFDADrugsRequest.m in Sources */,
+				F270F37215702EBF008E8AEC /* HHSFDADrugsResponse.m in Sources */,
+				F270F37615702F2A008E8AEC /* HHSFDADrugsRequestMarshaller.m in Sources */,
+				F270F37A15702FB7008E8AEC /* HHSFDADrugsResponseUnmarshaller.m in Sources */,
+				F270F37E15703013008E8AEC /* HHSFDADrugsResult.m in Sources */,
+				F270F38A1570317B008E8AEC /* HHSFDADrugsAlternativesDrugResult.m in Sources */,
+				F270F38C1570317B008E8AEC /* HHSFDADrugsAlternativesResult.m in Sources */,
+				F270F38E1570317B008E8AEC /* HHSFDADrugsDocumentResult.m in Sources */,
+				F270F39A15750AD3008E8AEC /* HHSFDADrugsAlternativesResponse.m in Sources */,
+				F270F39C15750AD3008E8AEC /* HHSFDADrugsDocumentsResponse.m in Sources */,
+				F270F39E15750AD3008E8AEC /* HHSFDADrugsResourcesResponse.m in Sources */,
+				F270F3A215753200008E8AEC /* HHSClinicalTrialsSearchRequest.m in Sources */,
+				F270F3A615753215008E8AEC /* HHSClinicalTrialsSearchResponse.m in Sources */,
+				F270F3AA15753232008E8AEC /* HHSClinicalTrialsSearchResult.m in Sources */,
+				F270F3AE1575324C008E8AEC /* HHSClinicalTrialsResult.m in Sources */,
+				F270F3B215753269008E8AEC /* HHSClinicalTrialsSearchRequestMarshaller.m in Sources */,
+				F270F3B61575327E008E8AEC /* HHSClinicalTrialsSearchResponseUnmarshaller.m in Sources */,
+				F270F3BA15754871008E8AEC /* HHSClinicalTrialsNCTRequest.m in Sources */,
+				F270F3BE157548D0008E8AEC /* HHSClinicalTrialsNCTResponse.m in Sources */,
+				F270F3C21575490B008E8AEC /* HHSClinicalTrialsNCTRequestMarshaller.m in Sources */,
+				F270F3C615754924008E8AEC /* HHSClinicalTrialsNCTResponseUnmarshaller.m in Sources */,
+				F270F3CA1575496C008E8AEC /* HHSClinicalTrialsNCTResult.m in Sources */,
+				F270F3CE15755514008E8AEC /* HHSClinicalTrialsNCTAgesEligibleResult.m in Sources */,
+				F2431F1615756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m in Sources */,
+				F2431F1B15756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.m in Sources */,
+				F2431F2615759E0E0055345F /* HHSDrugsSearchRequest.m in Sources */,
+				F2431F2A15759E1D0055345F /* HHSDrugsSearchResponse.m in Sources */,
+				F2431F2E15759E320055345F /* HHSDrugsSearchResult.m in Sources */,
+				F2431F3215759E410055345F /* HHSDrugsSearchRequestMarshaller.m in Sources */,
+				F2431F3615759E510055345F /* HHSDrugsSearchResponseUnmarshaller.m in Sources */,
+				F2431F3A1575A37D0055345F /* HHSDrugsNDCRequest.m in Sources */,
+				F2431F3E1575A39B0055345F /* HHSDrugsNDCResponse.m in Sources */,
+				F2431F421575A3B30055345F /* HHSDrugsNDCPackagesResponse.m in Sources */,
+				F2431F461575A3C50055345F /* HHSDrugsNDCImagesResponse.m in Sources */,
+				F2431F4A1575A3DF0055345F /* HHSDrugsNDCRequestMarshaller.m in Sources */,
+				F2431F4E1575A4300055345F /* HHSDrugsNDCResponseUnmarshaller.m in Sources */,
+				F2431F521575A4450055345F /* HHSDrugsNDCPackagesResponseUnmarshaller.m in Sources */,
+				F2431F561575A45C0055345F /* HHSDrugsNDCImagesResponseUnmarshaller.m in Sources */,
+				F2431F5A1575A4760055345F /* HHSDrugsNDCResult.m in Sources */,
+				F260945D157683360006F100 /* HHSDrugsNDCPackageResult.m in Sources */,
+				F2609462157685C90006F100 /* HHSDrugsNDCPackageImprintResult.m in Sources */,
+				F22463A715790B8B009323FE /* CarePassRRXClient.m in Sources */,
+				F22463AB15790BB9009323FE /* RRXSearchRequest.m in Sources */,
+				F22463AF15790C92009323FE /* RRXRequest.m in Sources */,
+				F22463B315790CA1009323FE /* RRXResponse.m in Sources */,
+				F22463BF15790CE3009323FE /* RRXSearchResponse.m in Sources */,
+				F22463C315790D95009323FE /* RRXSearchRequestMarshaller.m in Sources */,
+				F22463C715790DA7009323FE /* RRXSearchResponseUnmarshaller.m in Sources */,
+				F22463D315791410009323FE /* RRXSearchResult.m in Sources */,
+				F22463DF1579213E009323FE /* CarePassECCClient.m in Sources */,
+				F22463E315792151009323FE /* ECCRequest.m in Sources */,
+				F22463E71579215E009323FE /* ECCResponse.m in Sources */,
+				F22463EB15792BED009323FE /* ECCCostRequest.m in Sources */,
+				F22463F315792C18009323FE /* ECCCategoryRequest.m in Sources */,
+				F22463F715793007009323FE /* ECCCostRequestMarshaller.m in Sources */,
+				F22463FF1579325D009323FE /* ECCCategoryRequestMarshaller.m in Sources */,
+				F2246403157933B6009323FE /* ECCCostResponse.m in Sources */,
+				F2246407157933CA009323FE /* ECCCostResponseUnmarshaller.m in Sources */,
+				F224640B15793646009323FE /* ECCCostResult.m in Sources */,
+				F224641515793D47009323FE /* ECCCategoryResponse.m in Sources */,
+				F224641915793D62009323FE /* ECCCategoryResponseUnmarshaller.m in Sources */,
+				F290044815798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m in Sources */,
+				F290044D15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m in Sources */,
+				F290045115798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2BDA1F3156D60090008C2C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2BDA209156D60090008C2C8 /* CarePassFrameworkTests.m in Sources */,
+				F270F34A156FD2BE008E8AEC /* CarePassHHSClientTests.m in Sources */,
+				F22463D9157919A8009323FE /* CarePassRRXClientTests.m in Sources */,
+				F224641115793A78009323FE /* CarePassECCClientTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2BDA1FF156D60090008C2C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2BDA1E7156D60090008C2C8 /* CarePassFramework */;
+			targetProxy = F2BDA1FE156D60090008C2C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2BDA204156D60090008C2C8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2BDA205156D60090008C2C8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2BDA20A156D60090008C2C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2BDA20B156D60090008C2C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2BDA20D156D60090008C2C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CarePassFramework.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CarePassFramework/CarePassFramework-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F2BDA20E156D60090008C2C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CarePassFramework.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CarePassFramework/CarePassFramework-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		F2BDA210156D60090008C2C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CarePassFramework/CarePassFramework-Prefix.pch";
+				INFOPLIST_FILE = "CarePassFrameworkTests/CarePassFrameworkTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F2BDA211156D60090008C2C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CarePassFramework/CarePassFramework-Prefix.pch";
+				INFOPLIST_FILE = "CarePassFrameworkTests/CarePassFrameworkTests-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2BDA1E2156D60080008C2C8 /* Build configuration list for PBXProject "CarePassFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2BDA20A156D60090008C2C8 /* Debug */,
+				F2BDA20B156D60090008C2C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2BDA20C156D60090008C2C8 /* Build configuration list for PBXNativeTarget "CarePassFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2BDA20D156D60090008C2C8 /* Debug */,
+				F2BDA20E156D60090008C2C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2BDA20F156D60090008C2C8 /* Build configuration list for PBXNativeTarget "CarePassFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2BDA210156D60090008C2C8 /* Debug */,
+				F2BDA211156D60090008C2C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2BDA1DF156D60080008C2C8 /* Project object */;
+}

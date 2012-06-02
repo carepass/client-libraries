@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CarePassFramework' target in the 'CarePassFramework' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
