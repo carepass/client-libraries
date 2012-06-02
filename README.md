@@ -9,7 +9,7 @@ Read all about the available API's at http://developer.carepass.com
 
 Quick Start: Examples you can use
 =================================
-For the best example as to how to use the iOS library for the CarePass APIs, view the unit tests.
+For an example of how to use the API, including key configuration, see `/carepass-api/src/main/java/com/aetna/carepass/CarePassApplication.java` in the source
 
 Adding the CarePass Java Client Libraries to Your Project
 ========================================================
