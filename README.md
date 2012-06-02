@@ -6,7 +6,7 @@ Please view the branch for the technology you're looking for, either Java, JavaS
 
 Details of each library can be found in the README.md on each branch, or you can jump directly to:
 
-1. Javadoc <http://carepass.github.com/javadoc>
+1. Javadoc <http://carepass.github.com/client-libraries/javadoc/>
 
 _Coming soon_
 
