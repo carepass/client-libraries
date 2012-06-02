@@ -1,0 +1,9 @@
+com.aetna.api.carepass
+com.aetna.api.connector
+com.aetna.api.dataTypes.ecc
+com.aetna.api.dataTypes.goodrx
+com.aetna.api.dataTypes.hhs
+com.aetna.api.ecc
+com.aetna.api.goodrx
+com.aetna.api.hhs
+com.aetna.api.util
