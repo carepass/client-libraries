@@ -11,8 +11,6 @@ Quick Start: Examples you can use
 =================================
 For the best example as to how to use the iOS library for the CarePass APIs, view the unit tests.
 
-To use the library asynchronously (recommended for mobile applications), you would need to set the delegate on each request that will handle when the response returns. See the sample iOS app <https://github.com/carepass/code-samples> for an example of this implementation pattern.
-
 Adding the CarePass Java Client Libraries to Your Project
 ========================================================
 
