@@ -1,6 +1,5 @@
-package com.aetna.api.dataTypes;
+package com.aetna.api.dataTypes.hhs;
 
-import java.util.List;
 
 public class ARTYearHistory {
 	private String year;

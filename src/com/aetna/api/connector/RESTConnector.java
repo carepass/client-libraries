@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -20,9 +21,11 @@ public class RESTConnector extends Connector {
 	public RESTConnector(String url){
 		
 		try {
-			_url = new URL(url);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
+			
+			_url = new URL(URLEncoder.encode(url, "UTF8").
+					replace("%3A", ":").replace("%2F", "/").replace("%3F", "?").replace("%3D","=").replace("%26", "&").replace("%2C", ",")
+					);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

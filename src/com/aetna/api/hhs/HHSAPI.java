@@ -7,25 +7,33 @@ import java.util.List;
 import java.util.Map;
 
 import com.aetna.api.connector.RESTConnector;
-import com.aetna.api.dataTypes.ART;
-import com.aetna.api.dataTypes.Alternative;
-import com.aetna.api.dataTypes.ClinicalTrialsNCTID;
-import com.aetna.api.dataTypes.ClinicalTrialsSearch;
-import com.aetna.api.dataTypes.Document;
-import com.aetna.api.dataTypes.DrugImage;
-import com.aetna.api.dataTypes.DrugNDC;
-import com.aetna.api.dataTypes.DrugPackageInfo;
-import com.aetna.api.dataTypes.DrugResource;
-import com.aetna.api.dataTypes.DrugSearch;
-import com.aetna.api.dataTypes.FDARecallSearch;
-import com.aetna.api.dataTypes.Nda;
+import com.aetna.api.dataTypes.hhs.ART;
+import com.aetna.api.dataTypes.hhs.Alternative;
+import com.aetna.api.dataTypes.hhs.ClinicalTrialsNCTID;
+import com.aetna.api.dataTypes.hhs.ClinicalTrialsSearch;
+import com.aetna.api.dataTypes.hhs.Document;
+import com.aetna.api.dataTypes.hhs.DrugImage;
+import com.aetna.api.dataTypes.hhs.DrugNDC;
+import com.aetna.api.dataTypes.hhs.DrugPackageInfo;
+import com.aetna.api.dataTypes.hhs.DrugResource;
+import com.aetna.api.dataTypes.hhs.DrugSearch;
+import com.aetna.api.dataTypes.hhs.FDARecallSearch;
+import com.aetna.api.dataTypes.hhs.Nda;
+import com.aetna.api.util.InvalidCredentialException;
+import com.aetna.api.util.Messages;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
+/**
+ * 
+ * HHS application program interface java endpoitns.
+ * 
+ */
 public class HHSAPI {
 
-	String _apiKey;
+	private String apikeyParam = Messages.getString("API_KEY");
+	private String apiKey;
 	private static final String INVALID_APIs = Messages
 			.getString("HHS_Excep_InvalidCred"); //$NON-NLS-1$
 
@@ -35,7 +43,7 @@ public class HHSAPI {
 	 * @return apiKey
 	 */
 	public String getApiKey() {
-		return _apiKey;
+		return apiKey;
 	}
 
 	@SuppressWarnings("unused")
@@ -44,17 +52,21 @@ public class HHSAPI {
 
 	/***
 	 * @param apiKey
+	 *            the API key
 	 */
 	public HHSAPI(String apiKey) {
-		_apiKey = apiKey;
+		this.apiKey = apiKey;
 	}
 
-	/***
+	/**
 	 * Retrieves list of Drug Documents
 	 * 
 	 * @param nda
+	 *            The NDA code
 	 * @return List<Document>
 	 * @throws InvalidCredentialException
+	 * @throws IOException
+	 * @throws MalformedURLException
 	 */
 	public List<Document> getDocuments(String nda)
 			throws InvalidCredentialException, IOException,
@@ -63,7 +75,7 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Document_EndPoint")); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Document_EndPoint") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray documentArray = (JsonArray) restConnect.executeQuery();
 
 		List<Document> documentList = new ArrayList<Document>();
@@ -81,11 +93,13 @@ public class HHSAPI {
 	 * Retrieves a list of NDAs based on the NDA supplied
 	 * 
 	 * @param nda
+	 *            The NDA code
 	 * @return List<Nda>
 	 * @throws InvalidCredentialException
+	 * @throws IOException
+	 * @throws MalformedURLException
 	 */
 
-	// TODO: ZThis needs to be cleaned up
 	public List<Nda> getAllNDA(String nda) throws InvalidCredentialException,
 			IOException, MalformedURLException {
 
@@ -94,13 +108,12 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_URL_Prefix") + nda + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<Nda> ndaResourceList = new ArrayList<Nda>();
 
 		Gson gson = new Gson();
 		for (int i = 0; i < ndaResArray.size(); i++) {
-			// System.err.println(ndaResArray.get(i));
 			ndaResourceList.add(gson.fromJson(ndaResArray.get(i), Nda.class));
 		}
 
@@ -112,6 +125,7 @@ public class HHSAPI {
 	 * Retrieves alternative therapies for the provided
 	 * 
 	 * @param nda
+	 *            The NDA code
 	 * @return List<Alternatives>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
@@ -126,14 +140,13 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444/alternatives
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Drugs_Alternatives")); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Drugs_Alternatives") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<Alternative> ndaAlternativesList = new ArrayList<Alternative>();
 
 		Gson gson = new Gson();
 
 		for (int i = 0; i < ndaResArray.size(); i++) {
-
 			ndaAlternativesList.add(gson.fromJson(ndaResArray.get(i),
 					Alternative.class));
 		}
@@ -150,8 +163,11 @@ public class HHSAPI {
 	 * InvalidCredentialException
 	 * 
 	 * @param nda
+	 *            The NDA code
 	 * @return List<DrugResource>
-	 * 
+	 * @throws InvalidCredentialException
+	 * @throws IOException
+	 * @throws MalformedURLException
 	 */
 	public List<DrugResource> listDrugResources(String nda)
 			throws InvalidCredentialException, IOException,
@@ -160,7 +176,7 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_DrugsResources_EndPoint")); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_DrugsResources_EndPoint") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray drugResArray = (JsonArray) restConnect.executeQuery();
 
 		List<DrugResource> drugResourceList = new ArrayList<DrugResource>();
@@ -168,7 +184,6 @@ public class HHSAPI {
 		Gson gson = new Gson();
 
 		for (int i = 0; i < drugResArray.size(); i++) {
-			System.err.println(drugResArray.get(i));
 			drugResourceList.add(new DrugResource(gson.fromJson(
 					drugResArray.get(i), String.class)));
 		}
@@ -180,8 +195,11 @@ public class HHSAPI {
 	 * Finds a drug based on drug name
 	 * 
 	 * @param drugName
+	 *            The drug name
 	 * @return List<Drug>
 	 * @throws InvalidCredentialException
+	 * @throws IOException
+	 * @throws MalformedURLException
 	 */
 	public List<DrugSearch> listDrugs(String drugName)
 			throws InvalidCredentialException, IOException,
@@ -190,7 +208,7 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + "search?name=" + drugName); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Drugs_URL_Prefix") + "search?name=" + drugName + "&" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray drugsArray = (JsonArray) restConnect.executeQuery();
 
 		List<DrugSearch> drugsList = new ArrayList<DrugSearch>();
@@ -198,7 +216,6 @@ public class HHSAPI {
 		Gson gson = new Gson();
 
 		for (int i = 0; i < drugsArray.size(); i++) {
-			System.err.println(drugsArray.get(i));
 			drugsList.add(gson.fromJson(drugsArray.get(i), DrugSearch.class));
 		}
 
@@ -210,7 +227,7 @@ public class HHSAPI {
 	 * 
 	 * @param ndc2
 	 *            the given NDC2 segment
-	 * @return {@link List }
+	 * @return List<DrugImage>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
@@ -224,15 +241,16 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759/images
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Images")); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Images") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugImage> drugImagesList = new ArrayList<DrugImage>();
+
 		Gson gson = new Gson();
 
 		for (int i = 0; i < ndaResArray.size(); i++) {
-			// System.err.println(ndaResArray.get(i));
-			drugImagesList.add(gson.fromJson(ndaResArray.get(i),
-					DrugImage.class));
+			DrugImage di = new DrugImage();
+			di.setImgURL(gson.fromJson(ndaResArray.get(i), String.class));
+			drugImagesList.add(di);
 		}
 
 		return drugImagesList;
@@ -243,7 +261,8 @@ public class HHSAPI {
 	 * info and imprints
 	 * 
 	 * @param ndc2
-	 * @return {@link List}
+	 *            the NDC two segment
+	 * @return List<DrugNDC>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
@@ -257,11 +276,10 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugNDC> drugNDCList = new ArrayList<DrugNDC>();
 		Gson gson = new Gson();
-
 		for (int i = 0; i < ndaResArray.size(); i++) {
 			drugNDCList.add(gson.fromJson(ndaResArray.get(i), DrugNDC.class));
 		}
@@ -274,8 +292,10 @@ public class HHSAPI {
 	 * and the NDC3 segment
 	 * 
 	 * @param ndc2
+	 *            the NDC two segment
 	 * @param ndc3
-	 * @return {@link List}
+	 *            the NDC three segment
+	 * @return List<DrugPackageInfo>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
@@ -291,7 +311,7 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759/package/0002-4759-076
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Package") + ndc3); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Package") + ndc3 + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugPackageInfo> drugPackageInfo = new ArrayList<DrugPackageInfo>();
 		Gson gson = new Gson();
@@ -308,8 +328,11 @@ public class HHSAPI {
 	 * Finds a ART based on the given parameter and value
 	 * 
 	 * @param searchParameter
-	 *            the parameters for the ART search
+	 *            the parameters for the ART search. The values are represented
+	 *            in a map where the parameter is the key and parameter's value
+	 *            is the value
 	 * @param exactMatch
+	 *            true if and only if it requires exact match.
 	 * @return List<ART>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
@@ -323,18 +346,17 @@ public class HHSAPI {
 
 		String parameters = searchParsing(searchParameter);
 		if (exactMatch) {
-			parameters = parameters + "&exactMatch=true";
+			parameters = parameters + "exactMatch=true&";
 		}
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_ART_URL_Prefix") + parameters); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_ART_URL_Prefix") + parameters + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray artArray = (JsonArray) restConnect.executeQuery();
 		List<ART> artList = new ArrayList<ART>();
 
 		Gson gson = new Gson();
 
 		for (int i = 0; i < artArray.size(); i++) {
-			System.err.println(artArray.get(i));
 			artList.add(gson.fromJson(artArray.get(i), ART.class));
 		}
 
@@ -346,7 +368,7 @@ public class HHSAPI {
 	 * indicated
 	 * 
 	 * @param nctid
-	 *            the nct id
+	 *            The NCT id
 	 * @return List<ClinicalTrialsNCTID>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
@@ -359,7 +381,7 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + nctid); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + nctid + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray clinicalTrialsArray = (JsonArray) restConnect.executeQuery();
 
 		List<ClinicalTrialsNCTID> clinicalTrialsList = new ArrayList<ClinicalTrialsNCTID>();
@@ -367,7 +389,6 @@ public class HHSAPI {
 		Gson gson = new Gson();
 
 		for (int i = 0; i < clinicalTrialsArray.size(); i++) {
-			System.err.println(clinicalTrialsArray.get(i));
 			clinicalTrialsList.add(gson.fromJson(clinicalTrialsArray.get(i),
 					ClinicalTrialsNCTID.class));
 		}
@@ -379,8 +400,10 @@ public class HHSAPI {
 	 * Finds a Clinical Trial based on the given parameter and value
 	 * 
 	 * @param searchParameter
-	 *            the parameters for the clinical trials search
-	 * @return {@link ClinicalTrailsSearch}
+	 *            the parameters for the clinical trials search. The values are
+	 *            represented in a map where the parameter is the key and
+	 *            parameter's value is the value
+	 * @return ClinicalTrialsSearch
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
@@ -393,20 +416,21 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + searchParsing(searchParameter)); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + searchParsing(searchParameter) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$		
 		JsonElement clinicalTrialsElement = restConnect.executeQuery();
 
-		System.err.println(clinicalTrialsElement);
 		return new Gson().fromJson(clinicalTrialsElement,
 				ClinicalTrialsSearch.class);
 
 	}
 
 	/**
-	 * Finds a FDA Recall based on the given parameter and value
+	 * Finds a FDA Recall based on the given parameter and value.
 	 * 
 	 * @param searchParameter
-	 *            the parameters for the clinical trials search
+	 *            the parameters for the clinical trials search. The values are
+	 *            represented in a map where the parameter is the key and
+	 *            parameter's value is the value
 	 * @return List<FDARecallSearch>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
@@ -420,14 +444,13 @@ public class HHSAPI {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_FDA_Recalls_URL_Prefix") + searchParsing(searchParameter)); //$NON-NLS-1$ //$NON-NLS-2$
+				Messages.getString("HHS_FDA_Recalls_URL_Prefix") + searchParsing(searchParameter) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray fdaRecallArray = (JsonArray) restConnect.executeQuery();
 		List<FDARecallSearch> fdaRecallList = new ArrayList<FDARecallSearch>();
 
 		Gson gson = new Gson();
 
 		for (int i = 0; i < fdaRecallArray.size(); i++) {
-			System.err.println(fdaRecallArray.get(i));
 			fdaRecallList.add(gson.fromJson(fdaRecallArray.get(i),
 					FDARecallSearch.class));
 		}
@@ -437,10 +460,12 @@ public class HHSAPI {
 	}
 
 	/**
-	 * Common search url fragment builder
+	 * Common search URL fragment builder
 	 * 
 	 * @param searchParameter
-	 * @return the search url fragment
+	 *            . The values are represented in a map where the parameter is
+	 *            the key and parameter's value is the value
+	 * @return the search URL fragment
 	 */
 	private String searchParsing(Map<String, String> searchParameter) {
 		StringBuilder sb = new StringBuilder();
@@ -449,8 +474,7 @@ public class HHSAPI {
 			sb.append(entry.getKey()).append("=").append(entry.getValue())
 					.append("&");
 		}
-		String result = sb.toString();
-		return result.substring(0, result.length() - 1);
+		return sb.toString();
 	}
 
 	/***

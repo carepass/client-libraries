@@ -1,4 +1,4 @@
-package com.aetna.api.dataTypes;
+package com.aetna.api.dataTypes.hhs;
 
 public class ClinicalTrialsNCTID {
 	private String trialId;
