@@ -3,12 +3,20 @@
  */
 package com.aetna.carepass.connector;
 
-import java.net.URL;
+import java.io.IOException;
+
+import com.google.gson.JsonElement;
+
 
 /**
  * @author n309169
  *
  */
-public abstract class Connector {
-	URL url;	
+public interface Connector {
+	/**
+	 * 
+	 * @return
+	 * @throws RequestException
+	 */
+	public JsonElement executeQuery() throws RequestException, IOException;
 }

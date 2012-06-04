@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.aetna.carepass.connector.RESTConnector;
+import com.aetna.carepass.connector.RequestException;
 import com.aetna.carepass.goodrx.types.DrugPrices;
 import com.aetna.carepass.util.InvalidCredentialException;
 import com.aetna.carepass.util.Messages;
@@ -51,10 +52,11 @@ public class GoodRXAPI {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<DrugPrices> listDrugLowestPrices(Map<String,String> searchParameter)
 			throws InvalidCredentialException, IOException,
-			MalformedURLException {
+			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -85,11 +87,12 @@ public class GoodRXAPI {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<DrugPrices> listDrugComparePrices(
 			Map<String, String> searchParameters)
 			throws InvalidCredentialException, IOException,
-			MalformedURLException {
+			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 

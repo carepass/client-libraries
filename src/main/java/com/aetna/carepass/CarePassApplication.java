@@ -6,14 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.aetna.carepass.connector.RequestException;
 import com.aetna.carepass.ecc.ECCApi;
 import com.aetna.carepass.ecc.types.Categories;
 import com.aetna.carepass.ecc.types.CostCareInformation;
 import com.aetna.carepass.ecc.types.Cpt;
 import com.aetna.carepass.goodrx.GoodRXAPI;
 import com.aetna.carepass.goodrx.types.DrugPrices;
-import com.aetna.carepass.hhs.DrugFactory;
-import com.aetna.carepass.hhs.HHSAPI;
+import com.aetna.carepass.hhs.ARTSearchParameters;
+import com.aetna.carepass.hhs.AssistedReproductionApiImpl;
+import com.aetna.carepass.hhs.ClinicalTrialsApiImpl;
+import com.aetna.carepass.hhs.ClinicalTrialsSearchParameters;
+import com.aetna.carepass.hhs.DrugSearchParameters;
+import com.aetna.carepass.hhs.DrugsApiImpl;
+import com.aetna.carepass.hhs.FDADrugApiImpl;
+import com.aetna.carepass.hhs.FDARecallApiImpl;
 import com.aetna.carepass.hhs.types.ART;
 import com.aetna.carepass.hhs.types.Alternative;
 import com.aetna.carepass.hhs.types.ClinicalTrialsNCTID;
@@ -56,7 +63,9 @@ public class CarePassApplication {
 
 		String apiKey = "fd5jvtrrcb8287ym978w7hph"; //$NON-NLS-1$
 
-		HHSAPI theAPI = DrugFactory.getHHSApi(apiKey);
+		FDADrugApiImpl theAPI = new FDADrugApiImpl();
+		theAPI.setApiKey(apiKey);
+		
 		// FIXME: Set vs List
 		List<Document> theDocuments;
 
@@ -68,11 +77,13 @@ public class CarePassApplication {
 				System.err
 						.println("Document Type" + theDocuments.get(0).getType()); //$NON-NLS-1$
 			}
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -81,11 +92,13 @@ public class CarePassApplication {
 			theDrugResources = theAPI.listDrugResources(nda);
 			System.err
 					.println("Drug Resources " + theDrugResources.get(0).getValue()); //$NON-NLS-1$
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -93,11 +106,13 @@ public class CarePassApplication {
 		try {
 			theNDAs = theAPI.getAllNDA(nda);
 			System.err.println("NDA " + theNDAs.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -105,89 +120,110 @@ public class CarePassApplication {
 		try {
 			theNDAAlternatives = theAPI.getAllAlternatives(nda);
 			System.err.println("NDA " + theNDAAlternatives.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		DrugsApiImpl drugAPI = new DrugsApiImpl();
+		
 		List<DrugSearch> theDrugSearchList;
 		try {
-			theDrugSearchList = theAPI.listDrugs(drugName);
+			theDrugSearchList = drugAPI.listDrugs(new DrugSearchParameters());
 			System.err.println("Drugs " + theDrugSearchList.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		List<DrugImage> theDrugImg;
 		try {
-			theDrugImg = theAPI.getAllDrugImages(ndc2);
+			theDrugImg = drugAPI.getAllDrugImages(ndc2);
 			System.err.println(theDrugImg.isEmpty() ? "nothing" : theDrugImg
 					.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		List<DrugNDC> theDrugNDC2;
 
 		try {
-			theDrugNDC2 = theAPI.getAllDrugByNDC(ndc2);
+			theDrugNDC2 = drugAPI.getAllDrugByNDC(ndc2);
 			System.err.println("Drugs " + theDrugNDC2.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		List<DrugPackageInfo> theDrugPackageInfo;
 		try {
-			theDrugPackageInfo = theAPI.getAllDrugPackageInfo(ndc2, ndc3);
+			theDrugPackageInfo = drugAPI.getAllDrugPackageInfo(ndc2, ndc3);
 			System.err.println("Drugs " + theDrugPackageInfo.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		AssistedReproductionApiImpl artAPI = new AssistedReproductionApiImpl();
+		artAPI.setApiKey(apiKey);
 
 		List<ART> theARTList;
 		try {
 			Map<String, String> searchParameters = new HashMap<String, String>();
 			searchParameters.put(searchParameterART, valueART);
-			theARTList = theAPI.listARTs(searchParameters, true);
+			theARTList = artAPI.listARTs(new ARTSearchParameters());
 			System.err.println("ART " + theARTList.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+		ClinicalTrialsApiImpl ctAPI = new ClinicalTrialsApiImpl();
+		ctAPI.setApiKey(apiKey);
+		
 		List<ClinicalTrialsNCTID> theClinicalTrialsNCTIDList;
 		try {
 
-			theClinicalTrialsNCTIDList = theAPI.listClinicalTrialsNCTID(nctid);
+			theClinicalTrialsNCTIDList = ctAPI.listClinicalTrialsNCTID(nctid);
 			System.err.println("Clinical Trials "
 					+ theClinicalTrialsNCTIDList.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -196,27 +232,35 @@ public class CarePassApplication {
 			Map<String, String> searchParameters = new HashMap<String, String>();
 			searchParameters.put(searchParameterCT, valueCT);
 			searchParameters.put("page", "2");
-			theClinicalTrial = theAPI.listClinicalTrials(searchParameters);
+			theClinicalTrial = ctAPI.listClinicalTrials(new ClinicalTrialsSearchParameters());
 			System.err.println("Clinical Trials " + theClinicalTrial);
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+		
+		FDARecallApiImpl recallApi = new FDARecallApiImpl();
+		recallApi.setApiKey(apiKey);
+		
 		List<FDARecallSearch> theFDARecallSearchList;
 		try {
 			Map<String, String> searchParameters = new HashMap<String, String>();
 			searchParameters.put(searcParameterFDA, valueFDA);
-			theFDARecallSearchList = theAPI.listFDARecall(searchParameters);
+			theFDARecallSearchList = recallApi.listFDARecall(null);
 			System.err.println("FDA Recall " + theFDARecallSearchList.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
+
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -245,6 +289,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<DrugPrices> theDrugComparePricesList;
@@ -261,6 +308,9 @@ public class CarePassApplication {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -293,6 +343,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<CostCareInformation> theCostOfCareMedZip;
@@ -306,6 +359,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<Cpt> theCPTMed;
@@ -318,6 +374,9 @@ public class CarePassApplication {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -333,6 +392,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<CostCareInformation> theCostOfCareDentalZip;
@@ -347,6 +409,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<Cpt> theCPTDental;
@@ -359,6 +424,9 @@ public class CarePassApplication {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -373,6 +441,9 @@ public class CarePassApplication {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		List<Categories> theSubCategories;
@@ -385,6 +456,9 @@ public class CarePassApplication {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

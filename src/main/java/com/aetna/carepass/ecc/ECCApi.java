@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aetna.carepass.connector.RESTConnector;
+import com.aetna.carepass.connector.RequestException;
 import com.aetna.carepass.ecc.types.Categories;
 import com.aetna.carepass.ecc.types.CostCareInformation;
 import com.aetna.carepass.ecc.types.Cpt;
@@ -51,10 +52,11 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<CostCareInformation> listECCMedicalInformation(String cpt,
 			String lat, String lng) throws InvalidCredentialException,
-			IOException, MalformedURLException {
+			IOException, MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -87,10 +89,11 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<CostCareInformation> listECCMedicalInformation(String cpt,
 			String zip) throws InvalidCredentialException, IOException,
-			MalformedURLException {
+			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -119,9 +122,10 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<Cpt> listECCMedCPTCodes() throws InvalidCredentialException,
-			IOException, MalformedURLException {
+			IOException, MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -153,10 +157,11 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<CostCareInformation> listECCDentalInformation(String cdt,
 			String lat, String lng) throws InvalidCredentialException,
-			IOException, MalformedURLException {
+			IOException, MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -189,10 +194,11 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<CostCareInformation> listECCDentalInformation(String cdt,
 			String zip) throws InvalidCredentialException, IOException,
-			MalformedURLException {
+			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -221,9 +227,10 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<Cpt> listECCDentalCPTCodes() throws InvalidCredentialException,
-			IOException, MalformedURLException {
+			IOException, MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -248,9 +255,10 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<Categories> listCategories() throws InvalidCredentialException,
-			IOException, MalformedURLException {
+			IOException, MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
@@ -280,10 +288,11 @@ public class ECCApi {
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
+	 * @throws RequestException 
 	 */
 	public List<Categories> retrieveSubCategories(String category)
 			throws InvalidCredentialException, IOException,
-			MalformedURLException {
+			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 		

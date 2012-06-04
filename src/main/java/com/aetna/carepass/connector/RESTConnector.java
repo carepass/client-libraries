@@ -7,75 +7,84 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import com.aetna.carepass.JsonResponseParserTest;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 
-public class RESTConnector extends Connector {
-	private URL _url;	
-	
-	/***
-	 * Constructor that ensures the URL is well-formed
-	 * @param url
+public class RESTConnector implements Connector {
+
+	private ResponseParser responseParser;
+	private URL url;
+
+	/**
+	 * 
 	 */
-	public RESTConnector(String url){
-		
-		try {
-			
-			_url = new URL(URLEncoder.encode(url, "UTF8").
-					replace("%3A", ":").replace("%2F", "/").replace("%3F", "?").replace("%3D","=").replace("%26", "&").replace("%2C", ",")
-					);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public URL getUrl() {
+		return url;
 	}
 	
 	/**
-	 * Executes the request to the REST Service and converts data to JsonArray
-	 * @return JsonElement representing the json from the REST service
-	 * @throws IOException, MalformedURLExecption 
+	 * 
 	 */
-	public JsonElement executeQuery() throws IOException, MalformedURLException {
-				
-		JsonReader reader = null;
-		JsonParser parser = null;
-		JsonElement theJsonElement = null;
-		
-		try {
-			
-			HttpURLConnection httpUrlConnection = (HttpURLConnection) this.getUrl().openConnection();
-			this.getUrl().openConnection();
-			httpUrlConnection.connect();
-			
-			if (isSuccessfulResponse(httpUrlConnection.getResponseCode(), httpUrlConnection.getResponseMessage())){
-				reader = new JsonReader(new InputStreamReader(httpUrlConnection.getInputStream()));
-				parser = new JsonParser();		
-				theJsonElement = parser.parse(reader);				
-				reader.close();
-			}			
-		} catch (MalformedURLException malEx) {
-			throw malEx;
-		} catch (IOException ioEx) {
-			throw ioEx;
-		} 
-				
-		return theJsonElement;
+	public RESTConnector() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 * @param url
+	 */
+	public void setUrl(URL url) {
+		this.url = url;
 	}
 	
-	private boolean isSuccessfulResponse(int respCode, String responseMessage){
-		boolean retVal = false;
-
-		if (respCode != 200){
-			System.err.println ("Error Code " + respCode + " " + responseMessage);
-			retVal = false;
-		} else {
-			retVal = true;
-		}
-		
-		return retVal;
+	/**
+	 * 
+	 * @param url
+	 */
+	public RESTConnector(URL url) {
+		this.url = url;
+	}
+	
+	/**
+	 * 
+	 * @param url
+	 * @deprecated
+	 * @throws MalformedURLException
+	 */
+	public RESTConnector(String url) throws MalformedURLException {
+		this.url = new URL(url);
 	}
 
-	public URL getUrl() {
-		return _url;
+	/**
+	 * 
+	 * @return
+	 */
+	public ResponseParser getResponseParser() {
+		return responseParser;
+	}
+
+	/**
+	 * 
+	 * @param responseParser
+	 */
+	public void setResponseParser(ResponseParser responseParser) {
+		this.responseParser = responseParser;
+	}
+
+	/**
+	 * @return
+	 * @throws IOException
+	 * @throws RequestException
+	 */
+	public JsonElement executeQuery() throws RequestException, IOException {
+		HttpURLConnection urlConnection = (HttpURLConnection) url
+				.openConnection();
+		urlConnection.connect();
+
+		JsonElement responseElement = responseParser
+				.parseResponse(urlConnection);
+		return responseElement;
 	}
 }
