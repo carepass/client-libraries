@@ -46,7 +46,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + url + nctId,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -521,7 +521,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -546,7 +546,7 @@ var HTSObject = function() {
 				 */
 				getDrugsByNDCPackages : function(ndc2Segment, ndc3Segment,	options) {
 
-					var theURL = baseURL + subWeb + applicationsUrl + drugsUrl	+ ndc2Segment + '/packages/' + ndc3Segment;
+					var theURL = baseURL + subWeb +  drugsUrl	+ ndc2Segment + '/packages/' + ndc3Segment;
 					// searchParams || (searchParams = {});
 					var searchParams = {};
 					options || (options = {});
@@ -783,7 +783,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -829,7 +829,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -866,7 +866,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -916,7 +916,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -953,7 +953,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -991,7 +991,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -1029,7 +1029,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -1062,7 +1062,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -1096,7 +1096,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {

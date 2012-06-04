@@ -30,24 +30,35 @@
     	  var options = {};
     	  options.onSuccess = clearAndAppendResultsfunction;
     	  options.onFailure = showAlert;
-
-    	  drugsObject.searchForART('Alabama Fertility Specia', 'Birmingham', 'Alabama', 'Steinkampf', '', false , options);
-    	  drugsObject.getDrugsByName('Cymbalta');
-    	  drugsObject.getDrugsByNDCPackages("a", "b");
-    	  drugsObject.fdaRecallSearch("Yaz");
+    	  
+       	  drugsObject.searchForART('Alabama Fertility Specia', 'Birmingham', 'Alabama', 'Steinkampf', '', false , options);
+    	  drugsObject.getDrugsByName('Cymbalta',options);
+    	  drugsObject.getDrugsByNDCPackages("0002-4760", "0002-4760-76", options);
+    	  drugsObject.fdaRecallSearch("Tylenol",options);
     	  clinicalTrialsObject.getTrialsByNCTId('NCT00835224', options);
-    	  deIdentClaims.search('0004-0098','F',1980,'2010Q1','2011Q3',1);
+    	  deIdentClaims.search('0004-0098','F',1980,'2010Q1','2011Q3',1, options);
     	  
     	  goodRxObject.lowPrice("Lipitor", options);
     	  goodRxObject.compare("Lipitor", options);
     	  
-    	  medicalCostOfMethods.CostOfCareLatLngByCPT('99025', '38.898717', '-77.035974');
-    	  medicalCostOfMethods.CostOfCareByZip('99025', '90210');
- 
+    	  medicalCostOfMethods.CostOfCareLatLngByCPT('99205', '38.898717', '-77.035974');
+    	  medicalCostOfMethods.CostOfCareByZip('99205', '90210');
+
        	  medicalCostOfMethods.getCategories();
-    	  medicalCostOfMethods.getCategories('Dental');
+    	  var dentals = medicalCostOfMethods.getCategories('Dental');    	  
      	  
       }
+      
+     function showAll(){
+    	 
+   	  var options = {};
+	  options.onSuccess = clearAndAppendResultsfunction;
+	  options.onFailure = showAlert;
+	  
+
+	  
+     }
+      
       
       var clearAndAppendResultsfunction = function(data, textStatus){ 
 		   var trialsHolder = $('#clinicalTrialsHolder'); 
