@@ -414,11 +414,8 @@ var HTSObject = function() {
 					searchParams || (searchParams = {});
 					options || (options = {});
 
-					var statePrefix = 'NA:US:';
-					var stateOption = searchParams['state'];
-
-					if (stateOption) {
-						searchParams['state'] = statePrefix + searchParams['state'];
+					if (state != '') {
+						searchParams['state'] = state;
 					}
 
 					if (clinicname != '') {
@@ -436,7 +433,6 @@ var HTSObject = function() {
 
 					if (year != '') {
 						searchParams['year'] = year;
-
 					}
 
 					if (exactmatch == true) {
@@ -446,7 +442,7 @@ var HTSObject = function() {
 
 					searchParams['apiKey'] = apiKey;
 
-					var theURL = baseURL + subWeb + applicationsUrl + artUrl +	'search/';
+					var theURL = baseURL + subWeb + '/' + artUrl +	'search';
 
 					$.ajax({
 						type : "GET",
