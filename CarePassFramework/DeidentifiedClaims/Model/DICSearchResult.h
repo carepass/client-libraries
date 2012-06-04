@@ -13,18 +13,25 @@
  * permissions and limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "CarePassHHSClient.h"
-#import "CarePassCredentials.h"
-#import "HHSARTSearchRequest.h"
-#import "HHSARTSearchResponse.h"
-#import "HHSFDARecallsSearchRequest.h"
-#import "HHSFDARecallsSearchResponse.h"
+#import "DICResult.h"
+#import <Foundation/Foundation.h>
 
-#define API_KEY_ID                @"CHANGE_ME"
-
-@interface CarePassHHSClientTests : SenTestCase {
-    CarePassHHSClient *client;
+@interface DICSearchResult : NSObject {
+    NSString *page;
+    NSString *totalResults;
+    NSString *totalPages;
+    NSMutableArray *claims;
 }
+
+/** Gets and sets the lastModified property */
+@property (nonatomic, retain) NSString *page;
+@property (nonatomic, retain) NSString *totalResults;
+@property (nonatomic, retain) NSString *totalPages;
+@property (nonatomic, retain) NSMutableArray *claims;
+
+/**
+ * Returns a value from the claims array for the specified index
+ */
+-(DICResult *)claimObjectAtIndex:(int)index;
 
 @end

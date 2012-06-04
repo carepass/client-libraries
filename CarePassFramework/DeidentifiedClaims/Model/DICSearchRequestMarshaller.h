@@ -13,18 +13,13 @@
  * permissions and limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "CarePassHHSClient.h"
-#import "CarePassCredentials.h"
-#import "HHSARTSearchRequest.h"
-#import "HHSARTSearchResponse.h"
-#import "HHSFDARecallsSearchRequest.h"
-#import "HHSFDARecallsSearchResponse.h"
+#import <Foundation/Foundation.h>
+#import "../../CarePassServiceRequest.h"
+#import "DICSearchRequest.h"
+#import "../DICRequest.h"
 
-#define API_KEY_ID                @"CHANGE_ME"
+@interface DICSearchRequestMarshaller : NSObject
 
-@interface CarePassHHSClientTests : SenTestCase {
-    CarePassHHSClient *client;
-}
++(CarePassServiceRequest *)createRequest:(DICSearchRequest *)searchRequest;
 
 @end

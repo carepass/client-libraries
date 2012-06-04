@@ -13,18 +13,32 @@
  * permissions and limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "CarePassHHSClient.h"
-#import "CarePassCredentials.h"
-#import "HHSARTSearchRequest.h"
-#import "HHSARTSearchResponse.h"
-#import "HHSFDARecallsSearchRequest.h"
-#import "HHSFDARecallsSearchResponse.h"
+#import "DICSearchResult.h"
 
-#define API_KEY_ID                @"CHANGE_ME"
+@implementation DICSearchResult
 
-@interface CarePassHHSClientTests : SenTestCase {
-    CarePassHHSClient *client;
+@synthesize page;
+@synthesize totalResults;
+@synthesize totalPages;
+@synthesize claims;
+
+-(id)init {
+    if (self = [super init]) {
+        claims = [[NSMutableArray alloc] initWithCapacity:1];
+    }
+    
+    return self;
+}
+
+-(DICResult *)claimObjectAtIndex:(int)index {
+    return (DICResult *)[claims objectAtIndex:index];    
+}
+
+-(void)dealloc {
+    [page release];
+    [totalResults release];
+    [totalPages release];
+    [claims release];
 }
 
 @end

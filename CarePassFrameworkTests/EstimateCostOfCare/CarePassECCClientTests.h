@@ -17,7 +17,7 @@
 #import "CarePassECCClient.h"
 #import "CarePassCredentials.h"
 
-#define API_KEY_ID                @"ncpcndr97saz95xpwzpvvb9u"
+#define API_KEY_ID                @"CHANGE_ME"
 
 @interface CarePassECCClientTests : SenTestCase {
     CarePassECCClient *client;

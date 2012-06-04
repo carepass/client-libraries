@@ -13,18 +13,16 @@
  * permissions and limitations under the License.
  */
 
-#import <SenTestingKit/SenTestingKit.h>
-#import "CarePassHHSClient.h"
-#import "CarePassCredentials.h"
-#import "HHSARTSearchRequest.h"
-#import "HHSARTSearchResponse.h"
-#import "HHSFDARecallsSearchRequest.h"
-#import "HHSFDARecallsSearchResponse.h"
+#import "DICSearchResponse.h"
+#import "DICSearchResult.h"
+#import "../../JSONKit.h"
 
-#define API_KEY_ID                @"CHANGE_ME"
-
-@interface CarePassHHSClientTests : SenTestCase {
-    CarePassHHSClient *client;
+@interface DICSearchResponseUnmarshaller : NSObject {
+    DICSearchResponse *response;
 }
+
+@property (nonatomic, readonly) DICSearchResponse *response;
+
++(DICSearchResponse *)unmarshall:(NSDictionary *)jsonObject;
 
 @end

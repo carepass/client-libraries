@@ -17,7 +17,7 @@
 #import "CarePassRRXClient.h"
 #import "CarePassCredentials.h"
 
-#define API_KEY_ID                @"bfq7g72rzbemfp7h9h98xm9m"
+#define API_KEY_ID                @"CHANGE_ME"
 
 @interface CarePassRRXClientTests : SenTestCase {
     CarePassRRXClient *client;

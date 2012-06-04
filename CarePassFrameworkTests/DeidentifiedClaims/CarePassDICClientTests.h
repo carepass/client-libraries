@@ -14,17 +14,13 @@
  */
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "CarePassHHSClient.h"
+#import "CarePassDICClient.h"
 #import "CarePassCredentials.h"
-#import "HHSARTSearchRequest.h"
-#import "HHSARTSearchResponse.h"
-#import "HHSFDARecallsSearchRequest.h"
-#import "HHSFDARecallsSearchResponse.h"
 
 #define API_KEY_ID                @"CHANGE_ME"
 
-@interface CarePassHHSClientTests : SenTestCase {
-    CarePassHHSClient *client;
+@interface CarePassDICClientTests : SenTestCase {
+    CarePassDICClient *client;
 }
 
 @end
