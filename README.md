@@ -34,7 +34,8 @@ There is no requirement to close any connections or any other interaction.
 
 Thereafter access is allowed to to multiple APIs once the developer apiKey is specified. The apis available are:
 
-	* ClinicalTrials API
+	* ClinicalTrialsAPI
 	* DrugsAPI
 	* deIdentifiedClaimsAPI
 	* goodRxAPI
+	* MedCostOfCareAPI
