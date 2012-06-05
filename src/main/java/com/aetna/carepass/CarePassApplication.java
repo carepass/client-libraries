@@ -2,17 +2,16 @@ package com.aetna.carepass;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import com.aetna.carepass.claims.DeIdentificatedClaimsAPI;
+import com.aetna.carepass.claims.types.DeIdentificatedClaimsSearch;
 import com.aetna.carepass.ecc.ECCApi;
 import com.aetna.carepass.ecc.types.Categories;
 import com.aetna.carepass.ecc.types.CostCareInformation;
 import com.aetna.carepass.ecc.types.Cpt;
 import com.aetna.carepass.goodrx.GoodRXAPI;
 import com.aetna.carepass.goodrx.types.DrugPrices;
-import com.aetna.carepass.hhs.DrugFactory;
 import com.aetna.carepass.hhs.HHSAPI;
 import com.aetna.carepass.hhs.types.ART;
 import com.aetna.carepass.hhs.types.Alternative;
@@ -23,10 +22,11 @@ import com.aetna.carepass.hhs.types.DrugImage;
 import com.aetna.carepass.hhs.types.DrugNDC;
 import com.aetna.carepass.hhs.types.DrugPackageInfo;
 import com.aetna.carepass.hhs.types.DrugResource;
-import com.aetna.carepass.hhs.types.DrugSearch;
 import com.aetna.carepass.hhs.types.FDARecallSearch;
 import com.aetna.carepass.hhs.types.Nda;
 import com.aetna.carepass.util.InvalidCredentialException;
+
+
 
 public class CarePassApplication {
 	// TODO: Messages
@@ -38,25 +38,19 @@ public class CarePassApplication {
 		cpApp.hhsApiTry();
 		cpApp.goodRxApiTry();
 		cpApp.eccApiTry();
-
+		cpApp.diClaimsApiTry();
 	}
 
 	private void hhsApiTry() {
 		String nda = "NDA003444";
 		String ndc2 = "0002-4760";
 		String ndc3 = "0002-4760-76";
-		String drugName = "Cymbalta";
-		String searchParameterART = "clinicname";
-		String valueART = "Alabama";
-		String searchParameterCT = "drugname";
-		String valueCT = "DRISDOL";
-		String searcParameterFDA = "product";
-		String valueFDA = "Dietary Supplements";
+	
 		String nctid = "NCT01312441";
 
-		String apiKey = "fd5jvtrrcb8287ym978w7hph"; //$NON-NLS-1$
+		String apiKey = "mwxkzzv6586h4dzpbztgcrw4"; //$NON-NLS-1$
 
-		HHSAPI theAPI = DrugFactory.getHHSApi(apiKey);
+		HHSAPI theAPI = new HHSAPI(apiKey);
 		// FIXME: Set vs List
 		List<Document> theDocuments;
 
@@ -113,17 +107,17 @@ public class CarePassApplication {
 			e.printStackTrace();
 		}
 
-		List<DrugSearch> theDrugSearchList;
-		try {
-			theDrugSearchList = theAPI.listDrugs(drugName);
-			System.err.println("Drugs " + theDrugSearchList.get(0));
-		} catch (InvalidCredentialException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		List<DrugSearch> theDrugSearchList;
+//		try {
+//			theDrugSearchList = theAPI.listDrugs(drugName);
+//			System.err.println("Drugs " + theDrugSearchList.get(0));
+//		} catch (InvalidCredentialException e) {
+//			e.printStackTrace();
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 		List<DrugImage> theDrugImg;
 		try {
@@ -165,9 +159,8 @@ public class CarePassApplication {
 
 		List<ART> theARTList;
 		try {
-			Map<String, String> searchParameters = new HashMap<String, String>();
-			searchParameters.put(searchParameterART, valueART);
-			theARTList = theAPI.listARTs(searchParameters, true);
+
+			theARTList = theAPI.listARTs("Alabama Fertility Specialists", "Birmingham", "Alabama", "Steinkampf", null, false);
 			System.err.println("ART " + theARTList.get(0));
 		} catch (InvalidCredentialException e) {
 			e.printStackTrace();
@@ -193,10 +186,8 @@ public class CarePassApplication {
 
 		ClinicalTrialsSearch theClinicalTrial;
 		try {
-			Map<String, String> searchParameters = new HashMap<String, String>();
-			searchParameters.put(searchParameterCT, valueCT);
-			searchParameters.put("page", "2");
-			theClinicalTrial = theAPI.listClinicalTrials(searchParameters);
+
+			theClinicalTrial = theAPI.listClinicalTrials(null, "open", "1", "Depression", "NA:US:AL", null, null, "NA:US", null, null, null, null, "1/1/2006", "1/1/2010");
 			System.err.println("Clinical Trials " + theClinicalTrial);
 		} catch (InvalidCredentialException e) {
 			e.printStackTrace();
@@ -208,9 +199,8 @@ public class CarePassApplication {
 
 		List<FDARecallSearch> theFDARecallSearchList;
 		try {
-			Map<String, String> searchParameters = new HashMap<String, String>();
-			searchParameters.put(searcParameterFDA, valueFDA);
-			theFDARecallSearchList = theAPI.listFDARecall(searchParameters);
+
+			theFDARecallSearchList = theAPI.listFDARecall("Tylenol", "2012-02-17", null);
 			System.err.println("FDA Recall " + theFDARecallSearchList.get(0));
 		} catch (InvalidCredentialException e) {
 			e.printStackTrace();
@@ -224,19 +214,15 @@ public class CarePassApplication {
 
 	private void goodRxApiTry() {
 
-		String searcParameterDrugLowerPrices = "name";
-		String valueDrugLowerPrices = "aspirin";
-		String apiKey = "5bjgdjfu4tv2kgu7hyt5tmqe"; //$NON-NLS-1$
+
+		String apiKey = "7mqgq94zjsbex9zgzs9n92yf"; //$NON-NLS-1$
 
 		GoodRXAPI theAPI = new GoodRXAPI(apiKey);
 
 		List<DrugPrices> theDrugLowerPricesList;
 		try {
-			Map<String, String> searchParameters = new HashMap<String, String>();
-			searchParameters.put(searcParameterDrugLowerPrices,
-					valueDrugLowerPrices);
-			theDrugLowerPricesList = theAPI
-					.listDrugLowestPrices(searchParameters);
+		
+			theDrugLowerPricesList = theAPI.listDrugLowestPrices("lipitor", "tablet", "10mg", "30", "brand", "0004-0098-01");			
 			System.err.println("Drug Lower Prices "
 					+ theDrugLowerPricesList.get(0));
 		} catch (InvalidCredentialException e) {
@@ -249,11 +235,8 @@ public class CarePassApplication {
 
 		List<DrugPrices> theDrugComparePricesList;
 		try {
-			Map<String, String> searchParameters = new HashMap<String, String>();
-			searchParameters.put(searcParameterDrugLowerPrices,
-					valueDrugLowerPrices);
 			theDrugComparePricesList = theAPI
-					.listDrugComparePrices(searchParameters);
+					.listDrugComparePrices("lipitor", "tablet", "10mg", "30", "brand", "0004-0098-01");
 			System.err
 					.println("Drug Prices " + theDrugComparePricesList.get(0));
 		} catch (InvalidCredentialException e) {
@@ -387,6 +370,29 @@ public class CarePassApplication {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	private void diClaimsApiTry() {
+
+
+		String apiKey = "nj5utnwq99rfqggzmce83mnk"; //$NON-NLS-1$
+		
+		DeIdentificatedClaimsAPI theAPI = new DeIdentificatedClaimsAPI(apiKey);
+		
+		DeIdentificatedClaimsSearch theDIClaims;
+		try {
+
+			theDIClaims = theAPI.searchDeIdentificatedClaims("0004-0098","F",1950,1990,"2011Q3","2011Q3",1);
+			System.err.println("De Identificated Claims " + theDIClaims);
+		} catch (InvalidCredentialException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 
 	}
 }

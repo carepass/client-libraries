@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.aetna.carepass.connector.RESTConnector;
 import com.aetna.carepass.hhs.types.ART;
@@ -16,11 +15,9 @@ import com.aetna.carepass.hhs.types.DrugImage;
 import com.aetna.carepass.hhs.types.DrugNDC;
 import com.aetna.carepass.hhs.types.DrugPackageInfo;
 import com.aetna.carepass.hhs.types.DrugResource;
-import com.aetna.carepass.hhs.types.DrugSearch;
 import com.aetna.carepass.hhs.types.FDARecallSearch;
 import com.aetna.carepass.hhs.types.Nda;
 import com.aetna.carepass.util.InvalidCredentialException;
-import com.aetna.carepass.util.Messages;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -32,10 +29,22 @@ import com.google.gson.JsonElement;
  */
 public class HHSAPI {
 
-	private String apikeyParam = Messages.getString("API_KEY");
 	private String apiKey;
-	private static final String INVALID_APIs = Messages
-			.getString("HHS_Excep_InvalidCred"); //$NON-NLS-1$
+	private final String API_KEY_PARAMETER = "apikey";
+	private final String HHS_URL_PREFIX = "https://api.carepass.com/hhs-directory-api/";
+	private final String HHS_APPLICATION_API = "applications/";
+	private final String HHS_DRUGS_API = "drugs/";
+	private final String HHS_ART_API = "art/";
+	private final String HHS_CLINICAL_TRIALS_API = "clinicaltrials/";
+	private final String HHS_FDA_RECALLS_API = "fdarecalls/";
+
+	private final String HHS_DOCUMENT_ENDPOINT = "/documents";
+	private final String HHS_DRUGS_ALTERNATIVES_ENDPOINT = "/alternatives";
+	private final String HHS_DRUGS_RESOURCES_ENDPOINT = "/drugsresources";
+	private final String HHS_DRUGS_IMAGES_ENDPOINT = "/images";
+	private final String HHS_DRUGS_PACKAGE_ENDPOINT = "/packages/";
+
+	private final String INVALID_APIs = "Invalid Credential Specified"; //$NON-NLS-1$
 
 	/***
 	 * Retrieve current api key that was specified
@@ -74,8 +83,9 @@ public class HHSAPI {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Document_EndPoint") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_APPLICATION_API + nda + HHS_DOCUMENT_ENDPOINT
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray documentArray = (JsonArray) restConnect.executeQuery();
 
 		List<Document> documentList = new ArrayList<Document>();
@@ -107,8 +117,9 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_APPLICATION_API + nda
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<Nda> ndaResourceList = new ArrayList<Nda>();
 
@@ -139,8 +150,9 @@ public class HHSAPI {
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444/alternatives
 		// https://qaapi.aetna.com/hhs-directory-api/applications/NDA003444/alternatives
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_Drugs_Alternatives") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_APPLICATION_API + nda + HHS_DRUGS_ALTERNATIVES_ENDPOINT
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<Alternative> ndaAlternativesList = new ArrayList<Alternative>();
 
@@ -175,8 +187,9 @@ public class HHSAPI {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_URL_Prefix") + nda + Messages.getString("HHS_DrugsResources_EndPoint") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_APPLICATION_API + nda + HHS_DRUGS_RESOURCES_ENDPOINT
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray drugResArray = (JsonArray) restConnect.executeQuery();
 
 		List<DrugResource> drugResourceList = new ArrayList<DrugResource>();
@@ -201,26 +214,28 @@ public class HHSAPI {
 	 * @throws IOException
 	 * @throws MalformedURLException
 	 */
-	public List<DrugSearch> listDrugs(String drugName)
-			throws InvalidCredentialException, IOException,
-			MalformedURLException {
-
-		apiKeyAuthorized();
-
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + "search?name=" + drugName + "&" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
-		JsonArray drugsArray = (JsonArray) restConnect.executeQuery();
-
-		List<DrugSearch> drugsList = new ArrayList<DrugSearch>();
-
-		Gson gson = new Gson();
-
-		for (int i = 0; i < drugsArray.size(); i++) {
-			drugsList.add(gson.fromJson(drugsArray.get(i), DrugSearch.class));
-		}
-
-		return drugsList;
-	}
+//	public List<DrugSearch> listDrugs(String drugName)
+//			throws InvalidCredentialException, IOException,
+//			MalformedURLException {
+//
+//		apiKeyAuthorized();
+//
+//		RESTConnector restConnect = new RESTConnector(
+//				HHS_URL_PREFIX
+//						+ HHS_APPLICATION_API
+//						+ "search?name=" + drugName + "&" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+//		JsonArray drugsArray = (JsonArray) restConnect.executeQuery();
+//
+//		List<DrugSearch> drugsList = new ArrayList<DrugSearch>();
+//
+//		Gson gson = new Gson();
+//
+//		for (int i = 0; i < drugsArray.size(); i++) {
+//			drugsList.add(gson.fromJson(drugsArray.get(i), DrugSearch.class));
+//		}
+//
+//		return drugsList;
+//	}
 
 	/**
 	 * Retrieves a list of images of the drugs for the given NDC2 segment
@@ -240,8 +255,9 @@ public class HHSAPI {
 		ndcValidation(ndc2);
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759/images
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Images") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_DRUGS_API + ndc2 + HHS_DRUGS_IMAGES_ENDPOINT
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugImage> drugImagesList = new ArrayList<DrugImage>();
 
@@ -275,8 +291,8 @@ public class HHSAPI {
 		ndcValidation(ndc2);
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_DRUGS_API + ndc2 + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugNDC> drugNDCList = new ArrayList<DrugNDC>();
 		Gson gson = new Gson();
@@ -310,8 +326,9 @@ public class HHSAPI {
 
 		// https://qaapi.aetna.com/hhs-directory-api/drugs/0002-4759/package/0002-4759-076
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Drugs_URL_Prefix") + ndc2 + Messages.getString("HHS_Drugs_Package") + ndc3 + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_DRUGS_API + ndc2 + HHS_DRUGS_PACKAGE_ENDPOINT + ndc3
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray ndaResArray = (JsonArray) restConnect.executeQuery();
 		List<DrugPackageInfo> drugPackageInfo = new ArrayList<DrugPackageInfo>();
 		Gson gson = new Gson();
@@ -327,10 +344,16 @@ public class HHSAPI {
 	/**
 	 * Finds a ART based on the given parameter and value
 	 * 
-	 * @param searchParameter
-	 *            the parameters for the ART search. The values are represented
-	 *            in a map where the parameter is the key and parameter's value
-	 *            is the value
+	 * @param clinicName
+	 *            Name of clinic
+	 * @param city
+	 *            Name of a City
+	 * @param state
+	 *            Name of a state
+	 * @param medicaldirector
+	 *            Medical director
+	 * @param year
+	 *            year
 	 * @param exactMatch
 	 *            true if and only if it requires exact match.
 	 * @return List<ART>
@@ -338,19 +361,41 @@ public class HHSAPI {
 	 * @throws IOException
 	 * @throws MalformedURLException
 	 */
-	public List<ART> listARTs(Map<String, String> searchParameter,
-			boolean exactMatch) throws InvalidCredentialException, IOException,
+	public List<ART> listARTs(String clinicName, String city, String state,
+			String medicaldirector, String year, boolean exactMatch)
+			throws InvalidCredentialException, IOException,
 			MalformedURLException {
 
 		apiKeyAuthorized();
 
-		String parameters = searchParsing(searchParameter);
+		StringBuilder sb = new StringBuilder();
+
+		if (clinicName != null && !clinicName.trim().isEmpty()) {
+			sb.append("clinicname=").append(clinicName).append("&");
+		}
+		if (city != null && !city.trim().isEmpty()) {
+			sb.append("city=").append(city).append("&");
+		}
+		if (state != null && !state.trim().isEmpty()) {
+			sb.append("state=").append(state).append("&");
+		}
+		if (medicaldirector != null && !medicaldirector.trim().isEmpty()) {
+			sb.append("medicaldirector=").append(medicaldirector).append("&");
+		}
+		if (year != null && !year.trim().isEmpty()) {
+			sb.append("year=").append(year).append("&");
+		}
+		if (sb.toString().isEmpty()) {
+			throw new IllegalArgumentException(
+					"At least one parameter is required");
+		}
 		if (exactMatch) {
-			parameters = parameters + "exactMatch=true&";
+			sb.append("exactMatch=true&");
 		}
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_ART_URL_Prefix") + parameters + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_ART_API
+				+ "search?" + sb.toString() + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray artArray = (JsonArray) restConnect.executeQuery();
 		List<ART> artList = new ArrayList<ART>();
 
@@ -380,8 +425,9 @@ public class HHSAPI {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + nctid + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_CLINICAL_TRIALS_API + nctid
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray clinicalTrialsArray = (JsonArray) restConnect.executeQuery();
 
 		List<ClinicalTrialsNCTID> clinicalTrialsList = new ArrayList<ClinicalTrialsNCTID>();
@@ -399,24 +445,106 @@ public class HHSAPI {
 	/**
 	 * Finds a Clinical Trial based on the given parameter and value
 	 * 
-	 * @param searchParameter
-	 *            the parameters for the clinical trials search. The values are
-	 *            represented in a map where the parameter is the key and
-	 *            parameter's value is the value
+	 * @param drugname
+	 *            Name of drug
+	 * @param status
+	 *            Status of clinical trials / open or closed
+	 * @param page
+	 *            Page number. Each page has until 500 results. (e.g. page=1
+	 *            return the last 500 clinical trials).
+	 * @param condition
+	 *            conditioning summary
+	 * @param state1
+	 *            Locations to find trials state 1.
+	 * @param state2
+	 *            Locations to find trials state 2.
+	 * @param state3
+	 *            Locations to find trials state 3.
+	 * @param country1
+	 *            Locations to find trials country 1.
+	 * @param country2
+	 *            Locations to find trials country 2.
+	 * @param country3
+	 *            Locations to find trials country 3.
+	 * @param firstreceivedfrom
+	 *            The first received date is the date when the clinical trial
+	 *            was first submitted to ClinicalTrials.gov
+	 * @param firstreceivedto
+	 *            First Received To: The first received date is the date when
+	 *            the clinical trial was first submitted to ClinicalTrials.gov
+	 * @param lastupdatedfrom
+	 *            The last updated date is the most recent date when changes to
+	 *            a clinical trial were submitted to ClinicalTrials.gov
+	 * @param lastupdatedto
+	 *            The last updated date is the most recent date when changes to
+	 *            a clinical trial were submitted to ClinicalTrials.gov
 	 * @return ClinicalTrialsSearch
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
 	 */
-	public ClinicalTrialsSearch listClinicalTrials(
-			Map<String, String> searchParameter)
+	public ClinicalTrialsSearch listClinicalTrials(String drugname,
+			String status, String page, String condition, String state1,
+			String state2, String state3, String country1, String country2,
+			String country3, String firstreceivedfrom, String firstreceivedto,
+			String lastupdatedfrom, String lastupdatedto)
 			throws InvalidCredentialException, IOException,
 			MalformedURLException {
 
 		apiKeyAuthorized();
+		StringBuilder sb = new StringBuilder();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_Clinical_Trials_URL_Prefix") + searchParsing(searchParameter) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$		
+		if (drugname != null && !drugname.trim().isEmpty()) {
+			sb.append("drugname=").append(drugname).append("&");
+		}
+		if (status != null && !status.trim().isEmpty()) {
+			sb.append("status=").append(status).append("&");
+		}
+		if (page != null && !page.trim().isEmpty()) {
+			sb.append("page=").append(page).append("&");
+		}
+		if (condition != null && !condition.trim().isEmpty()) {
+			sb.append("condition=").append(condition).append("&");
+		}
+		if (state1 != null && !state1.trim().isEmpty()) {
+			sb.append("state1=").append(state1).append("&");
+		}
+		if (state2 != null && !state2.trim().isEmpty()) {
+			sb.append("state2=").append(state2).append("&");
+		}
+		if (state3 != null && !state3.trim().isEmpty()) {
+			sb.append("state3=").append(state3).append("&");
+		}
+		if (country1 != null && !country1.trim().isEmpty()) {
+			sb.append("country1=").append(country1).append("&");
+		}
+		if (country2 != null && !country2.trim().isEmpty()) {
+			sb.append("country2=").append(country2).append("&");
+		}
+		if (country3 != null && !country3.trim().isEmpty()) {
+			sb.append("country3=").append(country3).append("&");
+		}
+		if (firstreceivedfrom != null && !firstreceivedfrom.trim().isEmpty()) {
+			sb.append("firstreceivedfrom=").append(firstreceivedfrom)
+					.append("&");
+		}
+		if (firstreceivedto != null && !firstreceivedto.trim().isEmpty()) {
+			sb.append("firstreceivedto=").append(firstreceivedto).append("&");
+		}
+		if (lastupdatedfrom != null && !lastupdatedfrom.trim().isEmpty()) {
+			sb.append("lastupdatedfrom=").append(lastupdatedfrom).append("&");
+		}
+		if (lastupdatedto != null && !lastupdatedto.trim().isEmpty()) {
+			sb.append("lastupdatedto=").append(lastupdatedto).append("&");
+		}
+		if (sb.toString().isEmpty()) {
+			throw new IllegalArgumentException(
+					"At least one parameter is required");
+		}
+
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_CLINICAL_TRIALS_API + "search?" + sb.toString()
+				+ API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$		
 		JsonElement clinicalTrialsElement = restConnect.executeQuery();
 
 		return new Gson().fromJson(clinicalTrialsElement,
@@ -427,24 +555,38 @@ public class HHSAPI {
 	/**
 	 * Finds a FDA Recall based on the given parameter and value.
 	 * 
-	 * @param searchParameter
-	 *            the parameters for the clinical trials search. The values are
-	 *            represented in a map where the parameter is the key and
-	 *            parameter's value is the value
+	 * @param product Product of recall
+	 * @param date Date of recall (pattern: yyyy-mm-dd)
+	 * @param pastdays Search all recalls from today until today-pastdays
 	 * @return List<FDARecallSearch>
 	 * @throws InvalidCredentialException
 	 * @throws IOException
 	 * @throws MalformedURLException
 	 */
-	public List<FDARecallSearch> listFDARecall(
-			Map<String, String> searchParameter)
-			throws InvalidCredentialException, IOException,
+	public List<FDARecallSearch> listFDARecall(String product, String date,
+			Integer pastdays) throws InvalidCredentialException, IOException,
 			MalformedURLException {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("HHS_FDA_Recalls_URL_Prefix") + searchParsing(searchParameter) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		StringBuilder sb = new StringBuilder();
+		if (product != null && !product.trim().isEmpty()) {
+			sb.append("product=").append(product).append("&");
+		}
+		if (date != null && !date.trim().isEmpty()) {
+			sb.append("date=").append(date).append("&");
+		}
+		if (pastdays != null) {
+			sb.append("pastdays=").append(product).append("&");
+		}
+		if (sb.toString().isEmpty()) {
+			throw new IllegalArgumentException(
+					"At least one parameter is required");
+		}
+
+		RESTConnector restConnect = new RESTConnector(HHS_URL_PREFIX
+				+ HHS_FDA_RECALLS_API + "search?" + sb.toString()
+				+ API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray fdaRecallArray = (JsonArray) restConnect.executeQuery();
 		List<FDARecallSearch> fdaRecallList = new ArrayList<FDARecallSearch>();
 
@@ -457,24 +599,6 @@ public class HHSAPI {
 
 		return fdaRecallList;
 
-	}
-
-	/**
-	 * Common search URL fragment builder
-	 * 
-	 * @param searchParameter
-	 *            . The values are represented in a map where the parameter is
-	 *            the key and parameter's value is the value
-	 * @return the search URL fragment
-	 */
-	private String searchParsing(Map<String, String> searchParameter) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("search?");
-		for (Map.Entry<String, String> entry : searchParameter.entrySet()) {
-			sb.append(entry.getKey()).append("=").append(entry.getValue())
-					.append("&");
-		}
-		return sb.toString();
 	}
 
 	/***
@@ -507,5 +631,4 @@ public class HHSAPI {
 		}
 
 	}
-
 }
