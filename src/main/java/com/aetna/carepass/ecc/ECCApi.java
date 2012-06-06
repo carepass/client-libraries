@@ -11,15 +11,19 @@ import com.aetna.carepass.ecc.types.Categories;
 import com.aetna.carepass.ecc.types.CostCareInformation;
 import com.aetna.carepass.ecc.types.Cpt;
 import com.aetna.carepass.util.InvalidCredentialException;
-import com.aetna.carepass.util.Messages;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
 public class ECCApi {
-	private String apikeyParam = Messages.getString("API_KEY");
+	private final String API_KEY_PARAMETER = "apikey";
+	private static final String INVALID_APIs = "Invalid Credential Specified"; //$NON-NLS-1$
+
+	private final String ECC_URL_PREFIX = "https://api.carepass.com/ecc-directory-api/";
+	private final String ECC_MEDICAL_ENDPOINT = "med/";
+	private final String ECC_DENTAL_ENDPOINT = "dental/";
+	private final String ECC_CATGORIES_ENDPOINT = "categories";
+
 	private String apiKey;
-	private static final String INVALID_APIs = Messages
-			.getString("HHS_Excep_InvalidCred"); //$NON-NLS-1$
 
 	/***
 	 * Retrieve current api key that was specified
@@ -61,7 +65,10 @@ public class ECCApi {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Medical") + cpt + "/" + lat + "," + lng + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+				ECC_URL_PREFIX
+						+ ECC_MEDICAL_ENDPOINT
+						+ cpt
+						+ "/" + lat + "," + lng + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray eccMedicalInformationArry = (JsonArray) restConnect
 				.executeQuery();
 
@@ -97,8 +104,9 @@ public class ECCApi {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Medical") + cpt + "/zip/" + zip + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_MEDICAL_ENDPOINT + cpt
+				+ "/zip/" + zip + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray eccMedicalInformationArry = (JsonArray) restConnect
 				.executeQuery();
 
@@ -129,8 +137,9 @@ public class ECCApi {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Medical") + "cpt" + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_MEDICAL_ENDPOINT
+				+ "cpt" + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray cptCodeArray = (JsonArray) restConnect.executeQuery();
 
 		List<Cpt> cptCodeList = new ArrayList<Cpt>();
@@ -166,7 +175,10 @@ public class ECCApi {
 		apiKeyAuthorized();
 
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Dental") + cdt + "/" + lat + "," + lng + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+				ECC_URL_PREFIX
+						+ ECC_DENTAL_ENDPOINT
+						+ cdt
+						+ "/" + lat + "," + lng + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray eccDentalInformationArry = (JsonArray) restConnect
 				.executeQuery();
 
@@ -202,8 +214,9 @@ public class ECCApi {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Dental") + cdt + "/zip/" + zip + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_DENTAL_ENDPOINT + cdt
+				+ "/zip/" + zip + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray eccDentalInformationArry = (JsonArray) restConnect
 				.executeQuery();
 
@@ -234,8 +247,9 @@ public class ECCApi {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Dental") + "cdt" + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_DENTAL_ENDPOINT
+				+ "cdt" + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray cptCodeArray = (JsonArray) restConnect.executeQuery();
 
 		List<Cpt> cptCodeList = new ArrayList<Cpt>();
@@ -262,8 +276,9 @@ public class ECCApi {
 
 		apiKeyAuthorized();
 
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Categories") + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_CATGORIES_ENDPOINT
+				+ "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray categoriesArray = (JsonArray) restConnect.executeQuery();
 
 		List<Categories> categoriesList = new ArrayList<Categories>();
@@ -295,12 +310,13 @@ public class ECCApi {
 			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
-		
+
 		if (category == null || category.isEmpty()) {
 			category = "";
 		}
-		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("ECC_URL_Prefix") + Messages.getString("ECC_Categories") + "/" + category + "?" + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+		RESTConnector restConnect = new RESTConnector(ECC_URL_PREFIX
+				+ ECC_CATGORIES_ENDPOINT
+				+ "/" + category + "?" + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray categoriesArray = (JsonArray) restConnect.executeQuery();
 
 		List<Categories> categoriesList = new ArrayList<Categories>();

@@ -5,13 +5,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.aetna.carepass.connector.RESTConnector;
 import com.aetna.carepass.connector.RequestException;
 import com.aetna.carepass.goodrx.types.DrugPrices;
 import com.aetna.carepass.util.InvalidCredentialException;
-import com.aetna.carepass.util.Messages;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
@@ -21,10 +19,14 @@ import com.google.gson.JsonArray;
  * 
  */
 public class GoodRXAPI {
-	private String apikeyParam = Messages.getString("API_KEY");
+	private final String API_KEY_PARAMETER = "apikey";
+	private static final String INVALID_APIs = "Invalid Credential Specified"; //$NON-NLS-1$
+
+	private final String GOOD_RX_DRUG_PRICES_URL_PREFIX = "https://api.carepass.com/good-rx-api/drugprices/";
+	private final String GOOD_RX_DRUG_PRICES_COMPARE_ENDPOINT = "compare";
+	private final String GOOD_RX_DRUG_PRICES_LOW_ENDPOINT = "low";
+
 	private String apiKey;
-	private static final String INVALID_APIs = Messages
-			.getString("HHS_Excep_InvalidCred"); //$NON-NLS-1$
 
 	/***
 	 * Retrieve current api key that was specified
@@ -54,21 +56,53 @@ public class GoodRXAPI {
 	 * @throws MalformedURLException
 	 * @throws RequestException 
 	 */
-	public List<DrugPrices> listDrugLowestPrices(Map<String,String> searchParameter)
+	public List<DrugPrices> listDrugLowestPrices(String name, String form,
+			String dosage, String quantity, String manufacturer, String ndc)
 			throws InvalidCredentialException, IOException,
 			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
+		StringBuilder sb = new StringBuilder();
+		if (name != null && !name.trim().isEmpty()) {
+			sb.append("name=").append(name).append("&");
+		}
+		if (form != null && !form.trim().isEmpty()) {
+			sb.append("form=").append(form).append("&");
+		}
+		if (dosage != null && !dosage.trim().isEmpty()) {
+			sb.append("dosage=").append(dosage).append("&");
+		}
+		if (quantity != null && !quantity.trim().isEmpty()) {
+			sb.append("quantity=").append(quantity).append("&");
+		}
+
+		if (manufacturer != null && !manufacturer.trim().isEmpty()) {
+			sb.append("manufacturer=").append(manufacturer).append("&");
+		}
+		if (ndc != null && !ndc.trim().isEmpty()) {
+			sb.append("ndc=").append(ndc).append("&");
+		}
+
+		String parameters = sb.toString();
+		if (parameters.isEmpty()) {
+			throw new IllegalArgumentException(
+					"At least one parameter is required");
+		}
+		if (!parameters.contains("name=") && !parameters.contains("ndc=")) {
+			throw new IllegalArgumentException("Name or NDC is required");
+		}
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("GoodRX_Drug_Prices_Low_URL_Prefix") + searchParsing(searchParameter) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+				GOOD_RX_DRUG_PRICES_URL_PREFIX
+						+ GOOD_RX_DRUG_PRICES_COMPARE_ENDPOINT
+						+ "?" + parameters + API_KEY_PARAMETER + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray drugLowestPricesArray = (JsonArray) restConnect
 				.executeQuery();
-		
+
 		List<DrugPrices> drugLowerPricesList = new ArrayList<DrugPrices>();
 
 		Gson gson = new Gson();
-        System.err.println(drugLowestPricesArray);
+
 		for (int i = 0; i < drugLowestPricesArray.size(); i++) {
 			drugLowerPricesList.add(gson.fromJson(drugLowestPricesArray.get(i),
 					DrugPrices.class));
@@ -89,15 +123,48 @@ public class GoodRXAPI {
 	 * @throws MalformedURLException
 	 * @throws RequestException 
 	 */
-	public List<DrugPrices> listDrugComparePrices(
-			Map<String, String> searchParameters)
+	public List<DrugPrices> listDrugComparePrices(String name, String form,
+			String dosage, String quantity, String manufacturer, String ndc)
 			throws InvalidCredentialException, IOException,
 			MalformedURLException, RequestException {
 
 		apiKeyAuthorized();
 
+		StringBuilder sb = new StringBuilder();
+		if (name != null && !name.trim().isEmpty()) {
+			sb.append("name=").append(name).append("&");
+		}
+		if (form != null && !form.trim().isEmpty()) {
+			sb.append("form=").append(form).append("&");
+		}
+		if (dosage != null && !dosage.trim().isEmpty()) {
+			sb.append("dosage=").append(dosage).append("&");
+		}
+		if (quantity != null && !quantity.trim().isEmpty()) {
+			sb.append("quantity=").append(quantity).append("&");
+		}
+
+		if (manufacturer != null && !manufacturer.trim().isEmpty()) {
+			sb.append("manufacturer=").append(manufacturer).append("&");
+		}
+		if (ndc != null && !ndc.trim().isEmpty()) {
+			sb.append("ndc=").append(ndc).append("&");
+		}
+
+		String parameters = sb.toString();
+		if (parameters.isEmpty()) {
+			throw new IllegalArgumentException(
+					"At least one parameter is required");
+		}
+		if (!parameters.contains("name=") && !parameters.contains("ndc=")) {
+			throw new IllegalArgumentException("Name or NDC is required");
+		}
+		
 		RESTConnector restConnect = new RESTConnector(
-				Messages.getString("GoodRX_Drug_Prices_Compare_URL_Prefix") +  searchParsing(searchParameters) + apikeyParam + "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
+				GOOD_RX_DRUG_PRICES_URL_PREFIX
+						+ GOOD_RX_DRUG_PRICES_LOW_ENDPOINT +"?"
+						+ parameters + API_KEY_PARAMETER
+						+ "=" + apiKey); //$NON-NLS-1$ //$NON-NLS-2$
 		JsonArray drugLowestPricesArray = (JsonArray) restConnect
 				.executeQuery();
 		List<DrugPrices> drugLowerPricesList = new ArrayList<DrugPrices>();
@@ -111,32 +178,6 @@ public class GoodRXAPI {
 
 		return drugLowerPricesList;
 
-	}
-
-	/**
-	 * Common search URL fragment builder
-	 * 
-	 * @param searchParameter
-	 *            . The values are represented in a map where the parameter is
-	 *            the key and parameter's value is the value
-	 * @return the search URL fragment
-	 */
-	private String searchParsing(Map<String, String> searchParameter) {
-		if (searchParameter == null || searchParameter.isEmpty()) {
-			throw new IllegalArgumentException("The are no parameters");
-		}
-		if (!searchParameter.containsKey("name")
-				&& !searchParameter.containsKey("ndc")) {
-			throw new IllegalArgumentException(
-					"The parameters should include name or ndc");
-		}
-		StringBuilder sb = new StringBuilder();
-		sb.append("?");
-		for (Map.Entry<String, String> entry : searchParameter.entrySet()) {
-			sb.append(entry.getKey()).append("=").append(entry.getValue())
-					.append("&");
-		}
-		return sb.toString();
 	}
 
 	/***

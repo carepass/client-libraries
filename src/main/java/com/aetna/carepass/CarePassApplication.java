@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.aetna.carepass.claims.DeIdentificatedClaimsAPI;
+import com.aetna.carepass.claims.types.DeIdentificatedClaimsSearch;
 import com.aetna.carepass.connector.RequestException;
 import com.aetna.carepass.ecc.ECCApi;
 import com.aetna.carepass.ecc.types.Categories;
@@ -45,6 +47,7 @@ public class CarePassApplication {
 		cpApp.hhsApiTry();
 		cpApp.goodRxApiTry();
 		cpApp.eccApiTry();
+		cpApp.diClaimsApiTry();
 
 	}
 
@@ -463,4 +466,30 @@ public class CarePassApplication {
 		}
 
 	}
+	
+	private void diClaimsApiTry() {
+
+
+		String apiKey = "nj5utnwq99rfqggzmce83mnk"; //$NON-NLS-1$
+		
+		DeIdentificatedClaimsAPI theAPI = new DeIdentificatedClaimsAPI(apiKey);
+		
+		DeIdentificatedClaimsSearch theDIClaims;
+		try {
+
+			theDIClaims = theAPI.searchDeIdentificatedClaims("0004-0098","F",1950,1990,"2011Q3","2011Q3",1);
+			System.err.println("De Identificated Claims " + theDIClaims);
+		} catch (InvalidCredentialException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (RequestException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 }
