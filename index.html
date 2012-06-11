@@ -34,7 +34,12 @@
        	  drugsObject.searchForART('Alabama Fertility Specialists', 'Birmingham', 'Alabama', 'Steinkampf', '', false , options);
     	  drugsObject.getDrugsByName('Cymbalta',options);
     	  drugsObject.getDrugsByNDCPackages("0002-4760", "0002-4760-76", options);
-    	  drugsObject.fdaRecallSearch("Tylenol",options);
+    	  var searchParams = {};
+    	  searchParams['product'] = 'Tylenol';
+    	  searchParams['date'] = '2012-02-17';
+    	  searchParams['pastdays'] = '10';
+    	  
+    	  drugsObject.fdaRecallSearch(searchParams,options);
     	  clinicalTrialsObject.getTrialsByNCTId('NCT00835224', options);
     	  deIdentClaims.search('0004-0098','F',1980,'2010Q1','2011Q3',1, options);
     	  

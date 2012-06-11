@@ -41,7 +41,7 @@ var HTSObject = function() {
 						return false;
 					}
 					
-					searchParams['apiKey'] = apiKey;
+					searchParams['apikey'] = apiKey;
 					
 					$.ajax({
 						type : "GET",
@@ -547,7 +547,7 @@ var HTSObject = function() {
 					var searchParams = {};
 					options || (options = {});
 
-					searchParams['apiKey'] = apiKey;
+					searchParams['apikey'] = apiKey;
 
 					$.ajax({
 						type : "GET",
@@ -569,154 +569,12 @@ var HTSObject = function() {
 					});
 
 				},
-				/***
-				 * Search recalls information. At least one parameter is required and date and pastdays are mutually exclusive.
-				 * https://api.carepass.com/hhs-directory-api/fdarecalls/search?product=Tylenol&date=2012-02-17&pastdays=10
-				 * @product 
-				 */
-				fdaRecallSearch : function(product, options) {
+				fdaRecallSearch : function(searchParams, options) {
 
 					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
 					options || (options = {});
 
 					searchParams['apiKey'] = apiKey;
-					searchParams['product'] = product;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-
-				/***
-				 * Search recalls information. At least one parameter is required pastdays are mutually exclusive.
-				 * https://api.carepass.com/hhs-directory-api/fdarecalls/search?product=Tylenol&date=2012-02-17&pastdays=10
-				 * @pastDays 
-				 */
-				fdaRecallSearch : function(pastDays, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['pastdays'] = pastDays;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-
-				/***
-				 * Search recalls information. At least one parameter is required and date.
-				 * https://api.carepass.com/hhs-directory-api/fdarecalls/search?product=Tylenol&date=2012-02-17&pastdays=10
-				 * @product 
-				 */
-				fdaRecallSearch : function(date, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['date'] = date;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-				fdaRecallSearch : function(product, date, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['date'] = date;
-					searchParams['product'] = product;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-				fdaRecallSearch : function(product, pastDays, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['pastDays'] = pastDays;
-					searchParams['product'] = product;
 
 					$.ajax({
 						type : "GET",
@@ -738,7 +596,6 @@ var HTSObject = function() {
 					});
 
 				}
-
 			}
 		},// end of drugs object
 		deIdentifiedClaimsAPI : function(theApiKey) {
