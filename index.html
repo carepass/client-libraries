@@ -11,13 +11,9 @@
 
     options = {
         enablePrivilege: true,
-  //      consumerKey: 'vktndkd4pf69ejj6xafhebnm',
-    //    consumerSecret: 'utzcmn7HQJmFpEY8pupepXxz',
-     //   accessTokenKey: '43ytcawcksn7f9y9nyd39xfk',
-     //   accessTokenSecret: 'j6gFM9fymPk8m8AAAXGmgu4y',
-      //  appendQueryString: true
-        consumerKey: '43ytcawcksn7f9y9nyd39xfk',
-        consumerSecret: 'j6gFM9fymPk8m8AAAXGmgu4y',
+
+        consumerKey: '',
+        consumerSecret: '',
         requestTokenUrl: "https://www.carepass.com/carepass/oauth/token",
         authorizationUrl: "https://www.carepass.com/carepass/oauth/authorize",
         accessTokenUrl: "https://www.carepass.com/carepass/oauth/token"   
@@ -32,8 +28,6 @@
         {
             if (wnd.closed)
             {
- /*               var pin = prompt("Please enter your PIN", "");
-                oauth.setVerifier(pin);*/
                 oauth.fetchAccessToken(getSomeData, failureHandler);
             }
             else
@@ -109,17 +103,17 @@
 	  
 	  function  saveLifeStyle(){
 		  
+		  //Create instances of Apis interested in using
 		  var theNewApi = new cpObj.lifeStyleApi('Bearer 8014e5711b461848748fe001d7d3553992dedecf7da27da681cdd155ec0a6209');
 		  var theBioApi = new cpObj.biographyApi('Bearer 8014e5711b461848748fe001d7d3553992dedecf7da27da681cdd155ec0a6209');
 		  var theActivitiesApi = new cpObj.activitiesApi('Bearer 8014e5711b461848748fe001d7d3553992dedecf7da27da681cdd155ec0a6209');
 		  var theInsuranceApi = new cpObj.insuranceApi('Bearer 8014e5711b461848748fe001d7d3553992dedecf7da27da681cdd155ec0a6209');
     	  var options = {};
+   
     	  options.onSuccess = clearAndAppendFromPageFunction;
     	  options.onFailure = showAlert;
     	  
-		  var lo = {};
-		  var customers = new Object ({id: 1, firstName:'Delton'});
-
+    	  //Test run of the Parameters
 		  theNewApi.getLifestyleData("blah", options);
 		  theBioApi.getUserIdentity(options);
 		  theBioApi.getUserBiography(options);
@@ -185,10 +179,7 @@
 	  options.onSuccess = clearAndAppendResultsfunction;
 	  options.onFailure = showAlert;
 	  
-
-	  
      }
-      
       
       var clearAndAppendResultsfunction = function(data, textStatus){ 
 		   var trialsHolder = $('#clinicalTrialsHolder'); 
@@ -224,26 +215,16 @@
 <input type="button" value = "Get trial For NCT00835224" onclick="getTrialById();"/>
 <div>
  <h3>Search for clinical trials</h3>
- <label for = "drugname" >drug name:</label><input id = "drugname" type="text" placeholder = 
-
-"Drisdol">
+ <label for = "drugname" >drug name:</label><input id = "drugname" type="text" placeholder = "Drisdol">
  <label for = "status" >status:</label><input id = "status" type="text" placeholder = "open">
  <label for = "page" >page:</label><input id = "page" type="text" placeholder = "1">
- <label for = "condition" >condition:</label><input id = "condition" type="text" placeholder = 
-
-"Depression">
+ <label for = "condition" >condition:</label><input id = "condition" type="text" placeholder ="Depression">
  <label for = "state1" >state1:</label><input id = "state1" type="text" placeholder = "NY">
  <label for = "state2" >state2:</label><input id = "state2" type="text" placeholder = "AK">
  <label for = "state3" >state2:</label><input id = "state3" type="text" placeholder = "GA">
- <label for = "country1" >country1:</label><input id = "country1" type="text" placeholder = 
-
-"NA:US">
- <label for = "country2" >country2:</label><input id = "country2" type="text" placeholder = 
-
-"SS:AF">
- <label for = "country3" >country2:</label><input id = "country3" type="text" placeholder = 
-
-"EU:AL">
+ <label for = "country1" >country1:</label><input id = "country1" type="text" placeholder = "NA:US">
+ <label for = "country2" >country2:</label><input id = "country2" type="text" placeholder = "SS:AF">
+ <label for = "country3" >country2:</label><input id = "country3" type="text" placeholder = "EU:AL">
  
 <input type="button" value = "Search clinic trials" onclick="getClinicalTrials();"/>
 <input type="button" value = "Search for Art" onclick="searchForArt();"/>
