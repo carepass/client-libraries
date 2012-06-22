@@ -12,8 +12,8 @@ There is nothing to install. This library is simply a wrapper around existing RE
 
 In order to use the CarePass Sync library the client application needs to start the OAuth 2 authentication work flow. The OAuth work flow has 2 main steps
 we should be interested in :
--Step 1 - the first is the call to the *authorize* endpoint to retrieve the grant code which is seen in the section *Retrieving Grant Code* below. 
--Step 2 - after receiving the access code is to retrieve the access token by calling the *token* endpoint as seen in *Exchanging Grant Code for Access Token*.
+- Step 1 - the first is the call to the *authorize* endpoint to retrieve the grant code which is seen in the section *Retrieving Grant Code* below. 
+- Step 2 - after receiving the access code is to retrieve the access token by calling the *token* endpoint as seen in *Exchanging Grant Code for Access Token*.
 
 ### Retrieving Grant Code
 
