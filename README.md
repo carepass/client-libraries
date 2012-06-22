@@ -106,15 +106,15 @@ There is no requirement to close any connections or any other interaction.
 
 Thereafter access is allowed to to multiple APIs once the developer apiKey (access token) or is specified. The apis available are:
 
-HTS Object
-	* ClinicalTrialsAPI
-	* DrugsAPI
-	* deIdentifiedClaimsAPI
-	* goodRxAPI
-	* MedCostOfCareAPI
+>HTS Object
+>	* ClinicalTrialsAPI
+>	* DrugsAPI
+>	* deIdentifiedClaimsAPI
+>	* goodRxAPI
+>	* MedCostOfCareAPI
 
-CPSync Object
-	* biographyApi
-	* insuranceApi
-	* lifeStyleApi
-	* activitiesApi
+>CPSync Object
+>	* biographyApi
+>	* insuranceApi
+>	* lifeStyleApi
+>	* activitiesApi
