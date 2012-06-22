@@ -1,16 +1,15 @@
 var HTSObject = function() {
 
-	var baseURL = 'https://qaapi.carepass.com';
-	var apiKey;
+	var baseURL = 'https://api.carepass.com';	
 
 	return {
 		setBaseURL : function(newBaseUrl) {
 			baseURL = newBaseUrl;
 		},
 
-		clinicalTrialsAPI : function(theApiKey) {
+		clinicalTrialsApi : function(theApiKey) {
 			var trialContext = this;
-			apiKey = theApiKey;
+			var apiKey = theApiKey;
 			var subWeb = '/hhs-directory-api';
 
 			var url = '/clinicaltrials/';
@@ -22,12 +21,9 @@ var HTSObject = function() {
 				 * @param {string}  nctId: Registry number (example:NCT00835224)   (required)
 				 * 
 				 * @param {Object}   options: options for the method call
-				 * @param {string}
-				 *            options.performDataValidation: option which
-				 *            determines
-				 * 
-				 * if the object should perform validation on the parameters
-				 * before making the api call.
+				 * @param {string}   options.performDataValidation: option which determines
+				 * 					 if the object should perform validation on the parameters
+				 * 					 before making the api call.
 				 * @param {function}
 				 *            [options.onSuccess] a callback function called on
 				 * 
@@ -39,14 +35,19 @@ var HTSObject = function() {
 				 * 
 				 */
 				getTrialsByNCTId : function(nctId, options) {
+					var searchParams = {};
+					
 					if (!nctId) {
 						return false;
 					}
+					
+					searchParams['apikey'] = apiKey;
+					
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + url + nctId,
 						dataType : "jsonp",
-						data : {},
+						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -72,22 +73,10 @@ var HTSObject = function() {
 				 * 
 				 * the searchParams parameter is required
 				 * 
-				 * @param {Object}
-				 *            searchParams: search parameters for the method
-				 *            call
-				 * @param {string}
-				 *            searchParams.drugname: Name of drug (not required)
-				 * @param {string}
-				 *            searchParams.status: Status of clinical trials /
-				 *            "open"
-				 * 
-				 * or "closed" (not required)
-				 * @param (integer)
-				 *            searchParams.page: Page number. Each page has
-				 *            until 500
-				 * 
-				 * results. (e.g. page=1 return the last 500 clinical trials).
-				 * (not required)
+				 * @param {Object}   searchParams: search parameters for the method    call
+				 * @param {string}   searchParams.drugname: Name of drug (not required)
+				 * @param {string}   searchParams.status: Status of clinical trials /   "open" or "closed" (not required)
+				 * @param (integer)  searchParams.page: Page number. Each page has  until 500 results. (e.g. page=1 return the last 500 clinical trials). (not required)
 				 * @param {string}
 				 *            searchParams.condition: condition summary
 				 *            (example:
@@ -150,9 +139,7 @@ var HTSObject = function() {
 				 * (not required)
 				 * @param {string}
 				 *            searchParams.lastupdatedfrom: "mm/dd/yyyy" - The
-				 *            last
-				 * 
-				 * updated date is the most recent date when changes to a
+				 *            last updated date is the most recent date when changes to a
 				 * clinical trial were submitted to
 				 * 
 				 * ClinicalTrials.gov. There is often a delay of a few days
@@ -197,23 +184,26 @@ var HTSObject = function() {
 				search : function(searchParams, options) {
 					searchParams || (searchParams = {});
 					options || (options = {});
-					var statePrefix = 'NA:US:'
+					var statePrefix = 'NA:US:';
 					var stateOption = searchParams['state1']
 					if (stateOption) {
-						searchParams['state1'] = statePrefix +	searchParams['state1']
+						searchParams['state1'] = statePrefix +	searchParams['state1'];
 					}
 					stateOption = searchParams['state2']
 					if (stateOption) {
-						searchParams['state2'] = statePrefix + searchParams['state2']
+						searchParams['state2'] = statePrefix + searchParams['state2'];
 					}
 					stateOption = searchParams['state3']
 					if (stateOption) {
-						searchParams['state3'] = statePrefix +	searchParams['state3']
+						searchParams['state3'] = statePrefix +	searchParams['state3'];
 					}
+					
+					searchParams['apiKey'] = apiKey;
+					
 
 					$.ajax({
 						type : "GET",
-						url : baseURL + subWeb + url + 'search?',
+						url : baseURL + url + 'search?',
 						data : searchParams,
 						dataType : "jsonp",
 						async : false,
@@ -236,16 +226,18 @@ var HTSObject = function() {
 
 		drugsAPI : function(theApiKey) {
 			var drugsContext = this;
-			var drugsUrl = 'drugs/';
+			var drugsUrl = '/drugs/';
 			var applicationsUrl = '/applications/';
 			var artUrl = 'art/';
 			var drugpricesUrl = '/drugprices/';
 			var recallsUrl = '/fdarecalls/';
 			var apiKey = theApiKey;
-			var drugResources = '/drugsresources'
-			var drugsAlternatives = '/drugsalternatives'
+			var drugResources = '/drugsresources';
+			var drugDocuments = '/documents';				
+			var drugsAlternatives = '/drugsalternatives';
 			var subWeb = '/hhs-directory-api';
-
+			var apiKey = theApiKey;
+			
 			return {
 				/**
 				 * A method used to search the drug database by new drug
@@ -258,8 +250,7 @@ var HTSObject = function() {
 				 * (example:NDA022307) (required)
 				 * 
 				 */
-				getDrugByApplicationCode : function(drugApplicationCode,
-						options) {
+				getDrugByApplicationCode : function(drugApplicationCode, options) {
 
 					if (!drugApplicationCode) {
 						return false;
@@ -294,10 +285,7 @@ var HTSObject = function() {
 				 * 
 				 * (example:NDA022307) (required)
 				 */
-				getDrugResourcesByApplicationCode : function(
-						drugApplicationCode,
-
-						options) {
+				getDrugResourcesByApplicationCode : function(drugApplicationCode, options) {
 					if (!drugApplicationCode) {
 						return false;
 					}
@@ -331,12 +319,11 @@ var HTSObject = function() {
 				 * 
 				 * (example:NDA022307) (required)
 				 */
-				getDrugAlternativesByApplicationCode : function
-
-				(drugApplicationCode, options) {
+				getDrugAlternativesByApplicationCode : function	(drugApplicationCode, options) {
 					if (!drugApplicationCode) {
 						return false;
 					}
+					
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode + drugsAlternatives,
@@ -357,6 +344,43 @@ var HTSObject = function() {
 					});
 				},
 
+				/**
+				 * A method used to search for drug documents nby drug code
+				 * 
+				 * Drug Application Code.
+				 * 
+				 * @param {string}
+				 *            drugApplicationCode: New Drug Application Code
+				 * 
+				 * (example:NDA022307) (required)
+				 */
+				getDrugDocumentsByApplicationCode : function	(drugApplicationCode, options) {
+					if (!drugApplicationCode) {
+						return false;
+					}
+					
+					$.ajax({
+						type : "GET",
+						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode + drugDocuments,
+						dataType : "jsonp",
+						data : {},
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(drugsContext, data,	textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(drugsContext, data,	textStatus);
+							}
+						}
+
+					});
+				},
+				
+				
+				
 				/**
 				 * A method used to search for Assisted Reproductive Technology
 				 * 
@@ -390,11 +414,8 @@ var HTSObject = function() {
 					searchParams || (searchParams = {});
 					options || (options = {});
 
-					var statePrefix = 'NA:US:';
-					var stateOption = searchParams['state'];
-
-					if (stateOption) {
-						searchParams['state'] = statePrefix + searchParams['state'];
+					if (state != '') {
+						searchParams['state'] = state;
 					}
 
 					if (clinicname != '') {
@@ -412,17 +433,16 @@ var HTSObject = function() {
 
 					if (year != '') {
 						searchParams['year'] = year;
-
 					}
 
 					if (exactmatch == true) {
-						searchParams['exactmatch'] = '&exactMatch';
+						searchParams['exactmatch'] = true;
 
 					}
 
 					searchParams['apiKey'] = apiKey;
 
-					var theURL = baseURL + subWeb + applicationsUrl + artUrl +	'search/';
+					var theURL = baseURL + subWeb + '/' + artUrl +	'search';
 
 					$.ajax({
 						type : "GET",
@@ -443,9 +463,14 @@ var HTSObject = function() {
 
 					});
 				},
+				/**
+				 * Maps to the URL drugs/search. Example where the name is Cymbalta
+				 * https://api.carepass.com/hhs-directory-api/drugs/search?name=Cymbalta&
+				 * @drugName 
+				 */
 				getDrugsByName : function(drugName, options) {
 
-					var theURL = baseURL + subWeb + applicationsUrl + drugsUrl	+ 'search';
+					var theURL = baseURL + subWeb  + drugsUrl	+ 'search';
 					// searchParams || (searchParams = {});
 					var searchParams = {};
 					options || (options = {});
@@ -474,6 +499,11 @@ var HTSObject = function() {
 
 				},
 
+				/**
+				 * Returns all image information about the requested NDC 
+				 * https://api.carepass.com/hhs-directory-api/drugs/0002-4760/images?
+				 * @ndc2segment
+				 */
 				getDrugImagesByURL : function(ndc2segment, options) {
 
 					var theURL = baseURL + subWeb + applicationsUrl + drugsUrl	+ ndc2segment + '/images';
@@ -504,14 +534,20 @@ var HTSObject = function() {
 					});
 
 				},
+				/**
+				 * Returns all information about the requested NDC
+				 * https://api.carepass.com/hhs-directory-api/drugs/0002-4760/packages/0002-4760-76 
+				 * @ndc2segment
+				 * @ndc3Segment
+				 */
 				getDrugsByNDCPackages : function(ndc2Segment, ndc3Segment,	options) {
 
-					var theURL = baseURL + subWeb + applicationsUrl + drugsUrl	+ ndc2Segment + '/packages/' + ndc3Segment;
+					var theURL = baseURL + subWeb +  drugsUrl	+ ndc2Segment + '/packages/' + ndc3Segment;
 					// searchParams || (searchParams = {});
 					var searchParams = {};
 					options || (options = {});
 
-					searchParams['apiKey'] = apiKey;
+					searchParams['apikey'] = apiKey;
 
 					$.ajax({
 						type : "GET",
@@ -533,139 +569,12 @@ var HTSObject = function() {
 					});
 
 				},
-				fdaRecallSearch : function(product, options) {
+				fdaRecallSearch : function(searchParams, options) {
 
 					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
 					options || (options = {});
 
 					searchParams['apiKey'] = apiKey;
-					searchParams['product'] = product;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-
-				fdaRecallSearch : function(pastDays, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['pastdays'] = pastDays;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-
-				fdaRecallSearch : function(date, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['date'] = date;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-				fdaRecallSearch : function(product, date, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['date'] = date;
-					searchParams['product'] = product;
-
-					$.ajax({
-						type : "GET",
-						url : theURL,
-						dataType : "jsonp",
-						data : searchParams,
-						async : false,
-						success : function(data, textStatus) {
-							if (options.onSuccess) {
-								options.onSuccess.call(drugsContext, data,	textStatus);
-							}
-						},
-						error : function(data, textStatus, other) {
-							if (options.onFailure) {
-								options.onFailure.call(drugsContext, data,	textStatus);
-							}
-						}
-
-					});
-
-				},
-				fdaRecallSearch : function(product, pastDays, options) {
-
-					var theURL = baseURL + subWeb + recallsUrl + 'search';
-					// searchParams || (searchParams = {});
-					var searchParams = {};
-					options || (options = {});
-
-					searchParams['apiKey'] = apiKey;
-					searchParams['pastDays'] = pastDays;
-					searchParams['product'] = product;
 
 					$.ajax({
 						type : "GET",
@@ -687,7 +596,6 @@ var HTSObject = function() {
 					});
 
 				}
-
 			}
 		},// end of drugs object
 		deIdentifiedClaimsAPI : function(theApiKey) {
@@ -698,9 +606,20 @@ var HTSObject = function() {
 
 			return {
 
+				/***
+				 * https://developer.carepass.com/io-docs
+				 * https://api.carepass.com/claims-directory-api/claims/search?ndc=0004-0098&gender=F&birthyear=1980&from=2010Q1&to=2011Q3&page=1
+				 * Search data of claims. At least one parameter is required. 
+				 * @ndc
+				 * @gender
+				 * @birthyear
+				 * @from
+				 * @to
+				 * @page
+				 */
 				search : function(ndc, gender, birthyear, from, to, page, options) {
 
-					var theURL = baseURL + claimsUrl + 'search';
+					var theURL = baseURL + claimsUrl + 'claims/search';
 
 					// searchParams || (searchParams = {});
 					var searchParams = {};
@@ -717,7 +636,7 @@ var HTSObject = function() {
 					$.ajax({
 						type : "GET",
 						url : theURL,
-						dataType : "json",
+						dataType : "jsonp",
 						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
@@ -738,13 +657,18 @@ var HTSObject = function() {
 		},
 		goodRxAPI : function(theApiKey) {
 			var apiKey = theApiKey;
-			var drugPricesUrl = '/drugsprices';
+			var drugPricesUrl = '/drugprices';
 			var deIdentContext = this;
-			var subWeb = '/hhs-directory-api';
+			var subWeb = '/good-rx-api';
 
 			return {
 
-				search : function(ndc, manufacturer, quantity, dosage, form, name,	options) {
+				/***
+				 * https://api.carepass.com/good-rx-api/drugprices/low?name=lipitor
+				 * Search low drug price  
+				 * @name 
+				 */
+				lowPrice : function(name,	options) {
 
 					var theURL = baseURL + subWeb + drugPricesUrl + '/low';
 
@@ -752,13 +676,8 @@ var HTSObject = function() {
 					var searchParams = {};
 					options || (options = {});
 
-					searchParams['apiKey'] = apiKey;
-					searchParams['ndc'] = ndc;
-					searchParams['manufacturer'] = manufacturer;
-					searchParams['quantity'] = quantity;
-					searchParams['dosage'] = dosage;
-					searchParams['form'] = form;
 					searchParams['name'] = name;
+					searchParams['apiKey'] = apiKey;
 
 					$.ajax({
 						type : "GET",
@@ -779,8 +698,274 @@ var HTSObject = function() {
 
 					});
 
-				}
+				},
+				
+				/***
+				 * https://api.carepass.com/good-rx-api/drugprices/compare?name=lipitor&apikey=g2m4m43z7bzhebxv73ehswt8
+				 * Compare drug prices 
+				 * @name 
+				 */
+				compare : function(name,	options) {
+
+					var theURL = baseURL + subWeb + drugPricesUrl + '/compare';
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['name'] = name;
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(deIdentContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(deIdentContext, data, textStatus);
+							}
+						}
+
+					});
+
+				}				
+				
 			}
-		}
+		},
+		
+		MedCostOfCareAPI : function(theApiKey) {
+			var apiKey = theApiKey;
+			var medCostCareUrl = '/med/';
+			var dentalCostCareUrl = '/dental/';
+			var medCostContext = this;
+			var subWeb = '/ecc-directory-api';
+
+			return {
+				
+				/***
+				 * Get Cost of Care for lat, lng 
+				 * https://api.carepass.com/ecc-directory-api/med/99205/38.898717,-77.035974
+				 * @cpt - Current medical procedural terminology code
+				 * @lat - lat eg. (38.898717) 
+				 * @lng - lng eg. (-77.035974) 
+				 */
+				CostOfCareLatLngByCPT : function(cpt, lat, lng,	options) {
+
+					var theURL = baseURL + subWeb + medCostCareUrl + cpt + '/' + lat + ',' + lng;
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+
+				},
+				/***
+				 * Get Cost of Zip for lat, lng 
+				 * https://api.carepass.com/ecc-directory-api/med/99205/38.898717,-77.035974
+				 * @cpt - Current medical procedural terminology code
+				 * @lat - lat eg. (38.898717) 
+				 * @lng - lng eg. (-77.035974) 
+				 */				
+				CostOfCareByZip : function(cpt, zip, options) {
+
+					var theURL = baseURL + subWeb + medCostCareUrl + cpt + '/zip/' + zip;
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+
+				},
+
+				/***
+				 * Get Cost of Care for lat, lng 
+				 * https://api.carepass.com/ecc-directory-api/med/99205/38.898717,-77.035974
+				 * @cpt - Current medical procedural terminology code
+				 * @lat - lat eg. (38.898717) 
+				 * @lng - lng eg. (-77.035974) 
+				 */
+				DentalCostOfCareLatLngByCPT : function(cpt, lat, lng,	options) {
+
+					var theURL = baseURL + subWeb + dentalCostCareUrl + cpt + '/' + lat + ',' + lng;
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+
+				},
+				/***
+				 * Get Cost of Zip for lat, lng 
+				 * https://api.carepass.com/ecc-directory-api/med/99205/38.898717,-77.035974
+				 * @cpt - Current medical procedural terminology code
+				 * @lat - lat eg. (38.898717) 
+				 * @lng - lng eg. (-77.035974) 
+				 */				
+				
+				DentalCostOfCareLatLngByZip : function(cpt, zip, options) {
+
+					var theURL = baseURL + subWeb + dentalCostCareUrl + cpt + '/zip/' + zip;
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+				},
+				
+				/**
+				 * Get all categories
+				 * https://api.carepass.com/ecc-directory-api/categories?
+				 */
+				
+				getCategories : function() {
+
+					var theURL = baseURL + subWeb + '/categories?apiKey=' + apiKey;
+					alert(theURL);
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+				},
+				
+				/**
+				 * Get category
+				 * https://api.carepass.com/ecc-directory-api/categories?
+				 */
+				
+				getCategories : function(category,options) {
+
+					var theURL = baseURL + subWeb + '/categories/' + category;
+
+					// searchParams || (searchParams = {});
+					var searchParams = {};
+					options || (options = {});
+
+					searchParams['apiKey'] = apiKey;
+
+					$.ajax({
+						type : "GET",
+						url : theURL,
+						dataType : "jsonp",
+						data : searchParams,
+						async : false,
+						success : function(data, textStatus) {
+							if (options.onSuccess) {
+								options.onSuccess.call(medCostContext, data, textStatus);
+							}
+						},
+						error : function(data, textStatus, other) {
+							if (options.onFailure) {
+								options.onFailure.call(medCostContext, data, textStatus);
+							}
+						}
+
+					});
+				}					
+			}
+		}		
 	}
 };

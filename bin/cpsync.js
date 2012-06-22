@@ -1,6 +1,7 @@
 var CPSyncObject = function() {
 
-	var baseURL = 'https://api.carepass.com';	
+	var baseURL = 'https://qaapi.aetna.com';	
+//	var baseURL = 'https://api.carepass.com';	
 
 	return {
 		setBaseURL : function(newBaseUrl) {
