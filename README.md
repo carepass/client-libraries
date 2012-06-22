@@ -10,7 +10,11 @@ Installation
 
 There is nothing to install. This library is simply a wrapper around existing REST services offered up by CarePass.
 
-In order to use the CarePass Sync library the client application needs to start the OAuth 2 authentication work flow.
+In order to use the CarePass Sync library the client application needs to start the OAuth 2 authentication work flow. The OAuth work flow has 2 main steps
+we should be interested in, the first is the call to the *authorize* endpoint to retrieve the grant code which is seen in the section *Retrieving Grant Code* below. Step 2
+after receiving the access code is to retrieve the access token by calling the *token* endpoint as seen in *Exchanging Grant Code for Access Token*.
+
+### Retrieving Grant Code
 
     <script type="text/javascript" charset="utf-8">
       $(function () {
@@ -19,16 +23,18 @@ In order to use the CarePass Sync library the client application needs to start 
           {
             'host':     "api.aetna.com/carepass/oauth"
           , 'clientId': "12dh79324jia9008z"
-          , 'scope': : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE"
+          , 'scope': : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT"
           , 'redirectUrl': "http://localhost:8080/MyApplicationOauth/auth"
           };
 
         var authHost     = "https://"     + setting.host;
         var endUserAuthorizationEndpoint = authHost + "/authorize";
         
-        var authUrl = endUserAuthorizationEndpoint + "?response_type=code" +
-            "&client_id="    + setting.clientId + "&scope="     + setting.scope +
-            "&redirect_uri=" + setting.redirectUrl;
+        var authUrl = endUserAuthorizationEndpoint + 
+                      "?response_type=code" +
+                      "&client_id=" + setting.clientId + 
+                      "&scope="     + setting.scope +
+                      "&redirect_uri=" + setting.redirectUrl;
 
           $("a.connect").attr("href", authUrl);
       });
@@ -44,6 +50,8 @@ authenticated the user is redirected back to their application based on the redi
 	http://localhost:8080/MyApplicationOauth/auth?code=7aDghI
 	
 Using the received grant code, call is made to /token endpoint with additional parameters as seen below
+
+### Exchanging Grant Code for Access Token
 	
         var endUserAuthorizationEndpoint = authHost + "/token";
 
@@ -55,7 +63,7 @@ Using the received grant code, call is made to /token endpoint with additional p
             "&grant_type=authorization_code" + 
             "&code=" + document.getElementById('myAuthToken').value +
             "&client_secret=" + setting.client_secret +
-            "&redirect_uri=http://localhost:8080/DeltonPhilipsOauth/auth",
+            "&redirect_uri=http://localhost:8080/MyApplicationOauth/auth",
 			success : function(data) {
 				$("#tokenURL").val(JSON.stringify(data));
 				$("#bearerToken").val(data.access_token);
