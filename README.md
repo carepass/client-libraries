@@ -22,10 +22,10 @@ we should be interested in :
 
         var setting =
           {
-            'host':     "api.aetna.com/carepass/oauth"
-          , 'clientId': "12dh79324jia9008z"
+            'host':     "https://www.carepass.com/carepass/oauth"
+          , 'clientId': YOUR_CLIENT_ID
           , 'scope': : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT"
-          , 'redirectUrl': "http://localhost:8080/MyApplicationOauth/auth"
+          , 'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
           };
 
         var authHost     = "https://"     + setting.host;
@@ -48,7 +48,7 @@ we should be interested in :
 The application will redirect to Carepass for the user to enter their username/password. Once they are successfully 
 authenticated the user is redirected back to their application based on the redirect url setup with a grant code.
   	  	  	
-	http://localhost:8080/MyApplicationOauth/auth?code=7aDghI
+	http://{YOUR_APPLICATION_CAREPASS_REDIRECT_URL}?code={ACCESS_CODE}
 	
 Using the received grant code, call is made to /token endpoint with additional parameters as seen below
 
@@ -62,14 +62,14 @@ Using the received grant code, call is made to /token endpoint with additional p
 			data : "response_type=code" +
             "&client_id="    + setting.clientId +
             "&grant_type=authorization_code" + 
-            "&code=" + document.getElementById('myAuthToken').value +
+            "&code=" + {ACCESS_CODE_FROM_SUCCESS_AUTH} +
             "&client_secret=" + setting.client_secret +
-            "&redirect_uri=http://localhost:8080/MyApplicationOauth/auth",
+            "&redirect_uri=YOUR_APPLICATION_CAREPASS_REDIRECT_URL,
 			success : function(data) {
-				$("#tokenURL").val(JSON.stringify(data));
-				$("#bearerToken").val(data.access_token);
+				//data.access_token;
 			},
 			error : function(data) {
+				//Something went wrong
 				console.log(data);
 			}
 		});  
@@ -95,7 +95,7 @@ The first step is to make a reference to the object you're interested in Carepas
 	
 FOr the HTSObject you can get an instance of the API you're interested in, in this case its the clinicalTrialsAPI. The developer API is a requirement for the constructor.
 
-	var theUserApi = 'zasasfa75sdwyv2589asdf';
+	var theUserApi = 'your_user_api';
 	var clinicalTrialsObject = new htsObj.clinicalTrialsAPI(theUserApi);
 	var trialsData = clinicalTrialsObject.getTrialsByNCTId('myNCTID');
 	
@@ -106,7 +106,7 @@ This retrieves a JSON object which can be accessed using DOT notation
 The same obtains for the CPSyncObject except the constructor parameter is the access token for the user
 
 	var cpSyncObj = new CPSyncObject();
-	var theBioApi = new cpObj.biographyApi('Bearer 8834901dac4568a27da681cdd155ec0a6209');
+	var theBioApi = new cpObj.biographyApi('Bearer {token_retrieved_from carepass}');
 	var bioData = theBioApi.getUserIdentity();
 	
 	bioData.firstName; 
