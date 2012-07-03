@@ -30,7 +30,6 @@ public class FitnessServiceImpl implements FitnessService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Fitness findFitnessById(int id) throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
@@ -54,8 +53,7 @@ public class FitnessServiceImpl implements FitnessService {
 			Gson gson = new Gson();
 			return gson.fromJson(element, Fitness.class);
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}
@@ -63,7 +61,6 @@ public class FitnessServiceImpl implements FitnessService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public List<Fitness> findFitnessByDate(String dateFrom, String dateTo)
 			throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
@@ -96,15 +93,13 @@ public class FitnessServiceImpl implements FitnessService {
 
 			return fitnessList;
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public List<Fitness> saveFitness(List<Fitness> fitness, RequestMethod method)
 			throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {

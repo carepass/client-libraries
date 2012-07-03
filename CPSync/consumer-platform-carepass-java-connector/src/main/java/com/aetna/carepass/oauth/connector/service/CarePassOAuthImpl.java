@@ -58,8 +58,7 @@ public class CarePassOAuthImpl implements CarePassOAuth {
 
 	/**
 	 * {@inheritDoc}
-	 */
-	@Override
+	 */	
 	public Token retrieveOauthToken() {
 		return accessToken;
 	}

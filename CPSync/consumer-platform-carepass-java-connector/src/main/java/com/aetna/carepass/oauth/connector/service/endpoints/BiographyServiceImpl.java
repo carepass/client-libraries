@@ -45,8 +45,7 @@ public class BiographyServiceImpl implements BiographyService {
 			Gson gson = new Gson();
 			return gson.fromJson(element, Biography.class);
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}

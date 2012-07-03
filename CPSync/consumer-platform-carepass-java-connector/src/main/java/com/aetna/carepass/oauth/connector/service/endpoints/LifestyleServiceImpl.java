@@ -26,7 +26,6 @@ public class LifestyleServiceImpl implements LifestyleService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Lifestyle findLifeStyle() throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
@@ -34,7 +33,7 @@ public class LifestyleServiceImpl implements LifestyleService {
 		OAuthService service = carePassOAuth.getService();
 		Token accessToken = carePassOAuth.retrieveOauthToken();
 		OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, BASE_URL
-				+ USER_DIR_API+"/users/currentUser/lifestyle");
+				+ USER_DIR_API + "/users/currentUser/lifestyle");
 
 		oauthRequest.addHeader("Accept", "application/json");
 		service.signRequest(accessToken, oauthRequest);
@@ -47,8 +46,7 @@ public class LifestyleServiceImpl implements LifestyleService {
 
 			return gson.fromJson(jsonElement, Lifestyle.class);
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}
@@ -56,7 +54,6 @@ public class LifestyleServiceImpl implements LifestyleService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Lifestyle saveLifestyle(Lifestyle lifeStyle)
 			throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
@@ -79,12 +76,11 @@ public class LifestyleServiceImpl implements LifestyleService {
 
 		if (oauthResponse.getCode() == HttpURLConnection.HTTP_OK) {
 			JsonParser parser = new JsonParser();
-			JsonElement jsonElement = parser.parse(oauthResponse.getBody());			
+			JsonElement jsonElement = parser.parse(oauthResponse.getBody());
 
 			return gson.fromJson(jsonElement, Lifestyle.class);
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 	}
 }

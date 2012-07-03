@@ -30,7 +30,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public List<Appointment> findAppointmentById(int id)
 			throws EndpointException {
 
@@ -38,7 +37,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 	}
 
-	@Override
 	public List<Appointment> findAppointment(String afterDate,
 			String carepassProviderId, String npiProviderId)
 			throws EndpointException {
@@ -47,8 +45,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 		if (afterDate != null && !afterDate.isEmpty()) {
 			sb.append("afterDate=").append(afterDate).append("&");
 		}
-		if (carepassProviderId != null&& !carepassProviderId.isEmpty()) {
-			sb.append("carepassProviderId=").append(carepassProviderId).append("&");
+		if (carepassProviderId != null && !carepassProviderId.isEmpty()) {
+			sb.append("carepassProviderId=").append(carepassProviderId)
+					.append("&");
 		}
 		if (npiProviderId != null && !npiProviderId.isEmpty()) {
 			sb.append("npiProviderId=").append(npiProviderId).append("&");
@@ -57,16 +56,15 @@ public class AppointmentServiceImpl implements AppointmentService {
 			throw new EndpointException("No search parameters given");
 		}
 		String something = sb.toString();
-		something = something.substring(0,something.length()-1);
-		
-		return scribeOAuthHandle(Verb.GET, APPOINTMENT_URI+"?"+something);
+		something = something.substring(0, something.length() - 1);
+
+		return scribeOAuthHandle(Verb.GET, APPOINTMENT_URI + "?" + something);
 
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Appointment saveAppointment(Appointment appointment,
 			RequestMethod method) throws EndpointException {
 
@@ -75,9 +73,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 		Verb verb = null;
 		if (RequestMethod.POST == method) {
 			verb = Verb.POST;
-
-			// removing id
-			// jSon = "[{" + jSon.substring(jSon.indexOf(",") + 1);
 		} else {
 			verb = Verb.PUT;
 		}
@@ -125,7 +120,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 		Token accessToken = carePassOAuth.retrieveOauthToken();
 		OAuthRequest oauthRequest = new OAuthRequest(verb, BASE_URL
 				+ USER_DIR_API + uri);
-		
+
 		oauthRequest.addHeader("Accept", "application/json");
 		oauthRequest.addHeader("Content-Type",
 				"application/json; charset=utf-8");
@@ -183,8 +178,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 			return appointmentList;
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 	}
 }

@@ -28,7 +28,6 @@ public class InsuranceServiceImpl implements InsuranceService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public Insurance findInsurancePlanById(int insurancePlansId)
 			throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
@@ -53,8 +52,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 			return gson.fromJson(jsonElement, Insurance.class);
 
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}
@@ -62,7 +60,6 @@ public class InsuranceServiceImpl implements InsuranceService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
 	public List<Insurance> findInsurancePlan() throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
@@ -90,8 +87,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 
 			return insuranceList;
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}

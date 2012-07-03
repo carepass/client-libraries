@@ -45,8 +45,7 @@ public class IdentityServiceImpl implements IdentityService {
 			Gson gson = new Gson();
 			return gson.fromJson(element, Identity.class);
 		} else {
-			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+			throw new EndpointException(oauthResponse.getBody());
 		}
 
 	}
