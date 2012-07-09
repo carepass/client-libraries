@@ -1,5 +1,6 @@
 var CPSyncObject = function() {
 
+//	var baseURL = 'https://qaapi.aetna.com';	
 	var baseURL = 'https://api.carepass.com';	
 
 	return {
@@ -268,7 +269,7 @@ var CPSyncObject = function() {
 					var searchParams = {};
 					
 					if (attribute){
-					//	searchParams['attribute'] = attribute;
+						searchParams['type'] = attribute;
 					}
 					
 					$.ajax({
