@@ -5,7 +5,7 @@ The CarePass API library offers unique and powerful APIs from Aetna, HHS, and ot
 
 Please view the branch for the technology you're looking for, either Java, JavaScript or iOS.
 
-Details of each library can be found in the README.md on each branch, or you can jump directly to:
+Details of each  library can be found in the README.md on each branch, or you can jump directly to:
 
 1. Javadoc <http://carepass.github.com/client-libraries/javadoc/>
 
