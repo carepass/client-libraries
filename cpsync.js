@@ -268,7 +268,7 @@ var CPSyncObject = function() {
 					var searchParams = {};
 					
 					if (attribute){
-					//	searchParams['attribute'] = attribute;
+						searchParams['type'] = attribute;
 					}
 					
 					$.ajax({

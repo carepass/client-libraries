@@ -234,7 +234,7 @@ var HTSObject = function() {
 			var apiKey = theApiKey;
 			var drugResources = '/drugsresources';
 			var drugDocuments = '/documents';				
-			var drugsAlternatives = '/drugsalternatives';
+			var drugsAlternatives = '/alternatives';
 			var subWeb = '/hhs-directory-api';
 			var apiKey = theApiKey;
 			
@@ -255,11 +255,15 @@ var HTSObject = function() {
 					if (!drugApplicationCode) {
 						return false;
 					}
+					
+					var searchParams = {};
+					searchParams['apikey'] = apiKey;
+
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode,
 						dataType : "jsonp",
-						data : {},
+						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -289,11 +293,15 @@ var HTSObject = function() {
 					if (!drugApplicationCode) {
 						return false;
 					}
+					
+					var searchParams = {};
+					searchParams['apikey'] = apiKey;
+
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode + drugResources,
 						dataType : "jsonp",
-						data : {},
+						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -323,12 +331,15 @@ var HTSObject = function() {
 					if (!drugApplicationCode) {
 						return false;
 					}
-					
+										
+					var searchParams = {};
+					searchParams['apikey'] = apiKey;
+
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode + drugsAlternatives,
 						dataType : "jsonp",
-						data : {},
+						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -358,12 +369,15 @@ var HTSObject = function() {
 					if (!drugApplicationCode) {
 						return false;
 					}
+										
+					var searchParams = {};
+					searchParams['apikey'] = apiKey;
 					
 					$.ajax({
 						type : "GET",
 						url : baseURL + subWeb + applicationsUrl +	drugApplicationCode + drugDocuments,
 						dataType : "jsonp",
-						data : {},
+						data : searchParams,
 						async : false,
 						success : function(data, textStatus) {
 							if (options.onSuccess) {
@@ -506,7 +520,7 @@ var HTSObject = function() {
 				 */
 				getDrugImagesByURL : function(ndc2segment, options) {
 
-					var theURL = baseURL + subWeb + applicationsUrl + drugsUrl	+ ndc2segment + '/images';
+					var theURL = baseURL + subWeb +  drugsUrl	+ ndc2segment + '/images';
 					// searchParams || (searchParams = {});
 					var searchParams = {};
 					options || (options = {});
