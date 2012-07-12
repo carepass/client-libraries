@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-CarePass API Client Libraries
-=============================
-The CarePass API library offers unique and powerful APIs from Aetna, HHS, and other innovators in the health and wellness community. For more details, please visit <https://developer.carepass.com/>
-
-Please view the branch for the technology you're looking for, either Java, JavaScript or iOS.
-
-Details of each  library can be found in the README.md on each branch, or you can jump directly to:
-
-1. Javadoc <http://carepass.github.com/client-libraries/javadoc/>
-
-_Coming soon_
-
-2. JSdoc
-3. iOS documentation
 =======
 CarePass Java Client Libraries
 =============================
@@ -44,4 +29,4 @@ You can then add the built project to your own maven project with the below depe
 	</dependency>
 	
 For an example of how to use the API, including key configuration, see `/carepass-api/src/main/java/com/aetna/carepass/CarePassApplication.java` in the source
->>>>>>> javiervegah/Java
+
