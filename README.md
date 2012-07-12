@@ -5,7 +5,7 @@ The goal of these libraries is to remove the need for a CarePass developer to ma
 
 About CarePass APIs
 ===================
-Read all about the available API's at http://developer.carepass.com
+Read all about the available API's at https://developer.carepass.com
 
 Quick Start: Examples you can use
 =================================
