@@ -21,16 +21,39 @@
     HHSDrugsSearchResponse *results = [[[HHSDrugsSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        
-        // loop through the list values
-        for (id drug in jsonObject) {
-            HHSDrugsSearchResult *drugResult = [[HHSDrugsSearchResult alloc] init];
-            drugResult.proprietaryName = [drug objectForKey:@"proprietaryName"];
-            drugResult.nonProprietaryName = [drug objectForKey:@"nonProprietaryName"];
-            drugResult.ndc = [drug objectForKey:@"ndc"];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            [[results searchResults] addObject:drugResult];        
-            [drugResult release];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS Drugs data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else { 
+            // loop through the list values
+            for (id drug in jsonObject) {
+                HHSDrugsSearchResult *drugResult = [[HHSDrugsSearchResult alloc] init];
+                drugResult.proprietaryName = [drug objectForKey:@"proprietaryName"];
+                drugResult.nonProprietaryName = [drug objectForKey:@"nonProprietaryName"];
+                drugResult.ndc = [drug objectForKey:@"ndc"];
+                
+                [[results searchResults] addObject:drugResult];        
+                [drugResult release];
+            }
         }
     }
     

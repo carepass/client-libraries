@@ -21,27 +21,50 @@
     HHSDrugsNDCPackagesResponse *results = [[[HHSDrugsNDCPackagesResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        
-        HHSDrugsNDCPackageResult *drugResult = [results searchResult];
-        
-        for (id result in jsonObject) {
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            drugResult.ndc3Segment = [result objectForKey:@"ndc3Segment"];
-            drugResult.packageDescription = [result objectForKey:@"packageDescription"];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
             
-            NSMutableDictionary *imprintDetails = [result objectForKey:@"imprint"];
-            for (id imprintResult in imprintDetails) {
-                drugResult.imprint.size = [imprintResult objectForKey:@"size"];
-                drugResult.imprint.symbol = [imprintResult objectForKey:@"symbol"];
-                drugResult.imprint.score = [imprintResult objectForKey:@"score"];
-                drugResult.imprint.pillColor = [imprintResult objectForKey:@"pillColor"];
-                drugResult.imprint.shape = [imprintResult objectForKey:@"shape"];
-                drugResult.imprint.coating = [imprintResult objectForKey:@"coating"];
-                drugResult.imprint.textColor = [imprintResult objectForKey:@"textColor"];
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS NDC Package data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else {        // loop through the list values
+            
+            HHSDrugsNDCPackageResult *drugResult = [results searchResult];
+            
+            for (id result in jsonObject) {
+                
+                drugResult.ndc3Segment = [result objectForKey:@"ndc3Segment"];
+                drugResult.packageDescription = [result objectForKey:@"packageDescription"];
+                
+                NSMutableDictionary *imprintDetails = [result objectForKey:@"imprint"];
+                for (id imprintResult in imprintDetails) {
+                    drugResult.imprint.size = [imprintResult objectForKey:@"size"];
+                    drugResult.imprint.symbol = [imprintResult objectForKey:@"symbol"];
+                    drugResult.imprint.score = [imprintResult objectForKey:@"score"];
+                    drugResult.imprint.pillColor = [imprintResult objectForKey:@"pillColor"];
+                    drugResult.imprint.shape = [imprintResult objectForKey:@"shape"];
+                    drugResult.imprint.coating = [imprintResult objectForKey:@"coating"];
+                    drugResult.imprint.textColor = [imprintResult objectForKey:@"textColor"];
+                }
+                
             }
-            
         }
-        
     }
     
     return results;

@@ -17,10 +17,14 @@
 
 @implementation CarePassWebServiceClient
 
-@synthesize endpoint, maxRetries, timeout, userAgent, delay;
+@synthesize endpoint;
+@synthesize maxRetries;
+@synthesize timeout;
+@synthesize userAgent;
+@synthesize delay;
 
--(id)initWithCredentials:(CarePassCredentials *)theCredentials
-{
+-(id)initWithCredentials:(CarePassCredentials *)theCredentials {
+    
     if (self = [self init]) {
         credentials = [theCredentials retain];
         maxRetries  = 5;
@@ -31,12 +35,12 @@
     return self;
 }
 
-+(id)constructResponseFromRequest:(CarePassServiceRequest *)request
-{
++(id)constructResponseFromRequest:(CarePassServiceRequest *)request {
+    
     NSString *requestClassName  = NSStringFromClass([request class]);
     NSString *responseClassName = [[requestClassName substringToIndex:[requestClassName length] - 7] stringByAppendingFormat:@"Response"];
     
-    id       response = [[NSClassFromString(responseClassName) alloc] init];
+    id response = [[NSClassFromString(responseClassName) alloc] init];
     
     if (nil == response) {
         response = [CarePassServiceResponse new];
@@ -45,8 +49,8 @@
     return [response autorelease];
 }
 
--(CarePassServiceResponse *)invoke:(CarePassServiceRequest *)generatedRequest rawRequest:(CarePassServiceRequestConfig *)originalRequest unmarshallerDelegate:(Class)unmarshallerDelegate
-{
+-(CarePassServiceResponse *)invoke:(CarePassServiceRequest *)generatedRequest rawRequest:(CarePassServiceRequestConfig *)originalRequest unmarshallerDelegate:(Class)unmarshallerDelegate {
+    
     if (nil == generatedRequest) {
         @throw [CarePassClientException exceptionWithMessage : @"Request cannot be nil."];
     }
@@ -69,6 +73,7 @@
     
     [generatedRequest sign];
     NSMutableURLRequest *urlRequest = [generatedRequest configureURLRequest];
+    [urlRequest setHTTPBody:[[generatedRequest jsonString] dataUsingEncoding:NSUTF8StringEncoding]];
     
     CarePassServiceResponse *response = nil;
     int                   retries   = 0;
@@ -79,10 +84,10 @@
         response.unmarshallerDelegate = unmarshallerDelegate;
         
         [urlRequest setTimeoutInterval:self.timeout];
-
+        
         // TODO: move this?
         // Setting this here and not the CarePassServiceRequest because S3 extends that class and sets its own Content-Type Header.
-        [urlRequest addValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+        [urlRequest addValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
         
         NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:urlRequest delegate:response];
         originalRequest.urlConnection = urlConnection;
@@ -133,8 +138,8 @@
     }
 }
 
--(bool)shouldRetry:(CarePassServiceResponse *)response
-{
+-(bool)shouldRetry:(CarePassServiceResponse *)response {
+    
     if (response.didTimeout ||
         response.httpStatusCode == 500 ||
         response.httpStatusCode == 503 ||
@@ -147,8 +152,8 @@
     return NO;
 }
 
--(bool)shouldRetry:(CarePassServiceResponse *)response exception:(NSException *)theException
-{
+-(bool)shouldRetry:(CarePassServiceResponse *)response exception:(NSException *)theException {
+    
     CarePassServiceException *exception = (CarePassServiceException *)theException;
     
     if (response.didTimeout || response.httpStatusCode == 500 || response.httpStatusCode == 503) {
@@ -167,20 +172,20 @@
     return NO;
 }
 
--(void)pauseExponentially:(int)tryCount
-{
+-(void)pauseExponentially:(int)tryCount {
+    
     NSTimeInterval pause = self.delay * (pow(2, tryCount));
     
     [NSThread sleepForTimeInterval:pause];
 }
 
--(void)setUserAgent:(NSString *)newUserAgent
-{
+-(void)setUserAgent:(NSString *)newUserAgent {
+    
     userAgent = [[NSString stringWithFormat:@"%@, %@", newUserAgent, [CarePassSDKUtil userAgentString]] retain];
 }
 
--(void)dealloc
-{
+-(void)dealloc {
+    
     [credentials release];
     [endpoint release];
     [userAgent release];

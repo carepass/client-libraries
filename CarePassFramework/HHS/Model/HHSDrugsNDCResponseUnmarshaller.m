@@ -21,32 +21,56 @@
     HHSDrugsNDCResponse *results = [[[HHSDrugsNDCResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        
-        for (id result in jsonObject) {
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            // loop through the packages values
-            NSMutableDictionary *packages = [result objectForKey:@"packageInfo"];
-            for (id package in packages) {
-                HHSDrugsNDCPackageResult *packageResult = [[HHSDrugsNDCPackageResult alloc] init];
-                packageResult.ndc3Segment = [package objectForKey:@"ndc3Segment"];
-                packageResult.packageDescription = [package objectForKey:@"packageDescription"];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS NDC data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else { 
+            
+            for (id result in jsonObject) {
                 
-                [[results.searchResult packages] addObject:packageResult];        
-                [packageResult release];
+                // loop through the packages values
+                NSMutableDictionary *packages = [result objectForKey:@"packageInfo"];
+                for (id package in packages) {
+                    HHSDrugsNDCPackageResult *packageResult = [[HHSDrugsNDCPackageResult alloc] init];
+                    packageResult.ndc3Segment = [package objectForKey:@"ndc3Segment"];
+                    packageResult.packageDescription = [package objectForKey:@"packageDescription"];
+                    
+                    [[results.searchResult packages] addObject:packageResult];        
+                    [packageResult release];
+                }
+                
+                results.searchResult.nda = [result objectForKey:@"nda"];
+                results.searchResult.ndc2segment = [result objectForKey:@"ndc2Segment"];
+                results.searchResult.strength = [result objectForKey:@"strength"];
+                results.searchResult.labelerName = [result objectForKey:@"labelerName"];
+                results.searchResult.proprietaryName = [result objectForKey:@"proprietaryName"];
+                results.searchResult.unit = [result objectForKey:@"unit"];
+                results.searchResult.nonProprietaryName = [result objectForKey:@"nonProprietaryName"];
+                results.searchResult.substanceName = [result objectForKey:@"substanceName"];
+                results.searchResult.dosageFormname = [result objectForKey:@"dosageFormname"];
+                results.searchResult.routeName = [result objectForKey:@"routeName"];
+                results.searchResult.startMarketing_date = [result objectForKey:@"startMarketing_date"];
+                results.searchResult.endMarketing_date = [result objectForKey:@"endMarketing_date"];
             }
-            
-            results.searchResult.nda = [result objectForKey:@"nda"];
-            results.searchResult.ndc2segment = [result objectForKey:@"ndc2Segment"];
-            results.searchResult.strength = [result objectForKey:@"strength"];
-            results.searchResult.labelerName = [result objectForKey:@"labelerName"];
-            results.searchResult.proprietaryName = [result objectForKey:@"proprietaryName"];
-            results.searchResult.unit = [result objectForKey:@"unit"];
-            results.searchResult.nonProprietaryName = [result objectForKey:@"nonProprietaryName"];
-            results.searchResult.substanceName = [result objectForKey:@"substanceName"];
-            results.searchResult.dosageFormname = [result objectForKey:@"dosageFormname"];
-            results.searchResult.routeName = [result objectForKey:@"routeName"];
-            results.searchResult.startMarketing_date = [result objectForKey:@"startMarketing_date"];
-            results.searchResult.endMarketing_date = [result objectForKey:@"endMarketing_date"];
         }
     }
     

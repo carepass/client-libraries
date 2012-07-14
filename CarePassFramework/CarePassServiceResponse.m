@@ -106,43 +106,48 @@
     isFinishedLoading = YES;
     
     NSString *jsonString = [[[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding] autorelease];
-
-    if (self.httpStatusCode == 400) {
-        @throw [CarePassServiceException exceptionWithMessage : @"Validation error" withErrorCode : @"ValidationError" withStatusCode : 400 withRequestId : self.requestId];
-    } 
-    else {
-        NSLog(@"jsonString: %@", jsonString);
-        
-        NSMutableDictionary   *jsonObject;
-        if ([jsonString length] == 0) {
-            jsonObject = nil;
-        } else {
-            jsonObject = [jsonString objectFromJSONString];
-        }
-        CarePassServiceResponse *response = [[unmarshallerDelegate performSelector:@selector(unmarshall:) withObject:jsonObject] retain];
-        
-        if (response.exception) {
-            NSException *exceptionFound = [[response.exception copy] autorelease];
-            [response release];
-            if ([(NSObject *)request.delegate respondsToSelector:@selector(request:didFailWithServiceException:)]) {
-                [request.delegate request:request didFailWithServiceException:(CarePassServiceException *)exceptionFound];
-                return;
-            }
-            else {
-                @throw exceptionFound;
-            }
-        }
-        
-        [response postProcess];
-        processingTime          = fabs([startDate timeIntervalSinceNow]);
-        response.processingTime = processingTime;    
-        
-        if ([(NSObject *)request.delegate respondsToSelector:@selector(request:didCompleteWithResponse:)]) {
-            [request.delegate request:request didCompleteWithResponse:response];
-        }
-        
-        [response release];
+    
+    //    if (self.httpStatusCode == 400) {
+    //        NSMutableDictionary   *jsonObject;
+    //        if ([jsonString length] != 0) {
+    //            jsonObject = [jsonString objectFromJSONString];
+    //        }
+    //
+    //        @throw [CarePassServiceException exceptionWithMessage:[NSString stringWithFormat:@"Validation error: %@", [jsonObject objectForKey:@"message"]] withErrorCode : @"ValidationError" withStatusCode : 400 withRequestId : self.requestId];
+    //    } 
+    //    else {
+    NSLog(@"jsonString: %@", jsonString);
+    
+    NSMutableDictionary   *jsonObject;
+    if ([jsonString length] == 0) {
+        jsonObject = nil;
+    } else {
+        jsonObject = [jsonString objectFromJSONString];
     }
+    CarePassServiceResponse *response = [[unmarshallerDelegate performSelector:@selector(unmarshall:) withObject:jsonObject] retain];
+    
+    if (response.exception) {
+        NSException *exceptionFound = [[response.exception copy] autorelease];
+        [response release];
+        if ([(NSObject *)request.delegate respondsToSelector:@selector(request:didFailWithServiceException:)]) {
+            [request.delegate request:request didFailWithServiceException:(CarePassServiceException *)exceptionFound];
+            return;
+        }
+        else {
+            @throw exceptionFound;
+        }
+    }
+    
+    [response postProcess];
+    processingTime          = fabs([startDate timeIntervalSinceNow]);
+    response.processingTime = processingTime;    
+    
+    if ([(NSObject *)request.delegate respondsToSelector:@selector(request:didCompleteWithResponse:)]) {
+        [request.delegate request:request didCompleteWithResponse:response];
+    }
+    
+    [response release];
+    //    }
     
 }
 

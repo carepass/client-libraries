@@ -22,31 +22,56 @@
     RRXSearchResponse *results = [[[RRXSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        RRXSearchResult *drugResult = [results searchResult];
-        
-        // loop through the list values
-        for (id result in jsonObject) {
-            drugResult.url = [result objectForKey:@"url"];
-            drugResult.display = [result objectForKey:@"display"];
-            drugResult.form = [result objectForKey:@"form"];
-            drugResult.mobileUrl = [result objectForKey:@"mobileUrl"];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            for (id brandName in [result objectForKey:@"brand"]) {
-                [drugResult.brand addObject:brandName];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving RRX data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
             }
+        } else {
             
-            for (id genericName in [result objectForKey:@"generic"]) {
-                [drugResult.generic addObject:genericName];
+            RRXSearchResult *drugResult = [results searchResult];
+            
+            // loop through the list values
+            for (id result in jsonObject) {
+                drugResult.url = [result objectForKey:@"url"];
+                drugResult.display = [result objectForKey:@"display"];
+                drugResult.form = [result objectForKey:@"form"];
+                drugResult.mobileUrl = [result objectForKey:@"mobileUrl"];
+                
+                for (id brandName in [result objectForKey:@"brand"]) {
+                    [drugResult.brand addObject:brandName];
+                }
+                
+                for (id genericName in [result objectForKey:@"generic"]) {
+                    [drugResult.generic addObject:genericName];
+                }
+                
+                drugResult.dosage = [result objectForKey:@"dosage"];
+                drugResult.quantity = [result objectForKey:@"quantity"];
+                
+                for (id price in [result objectForKey:@"price"]) {
+                    [drugResult.price addObject:price];
+                }
+                
+                drugResult.manufacturer = [result objectForKey:@"manufacturer"];
             }
-            
-            drugResult.dosage = [result objectForKey:@"dosage"];
-            drugResult.quantity = [result objectForKey:@"quantity"];
-            
-            for (id price in [result objectForKey:@"price"]) {
-                [drugResult.price addObject:price];
-            }
-            
-            drugResult.manufacturer = [result objectForKey:@"manufacturer"];
         }
     }
     

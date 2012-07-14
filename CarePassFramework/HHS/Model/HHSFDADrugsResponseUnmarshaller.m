@@ -22,13 +22,37 @@
     HHSFDADrugsResponse *drug = [[[HHSFDADrugsResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        for (id result in jsonObject) {
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            // drugs!
-            drug.result.nda = [result objectForKey:@"nda"];
-            drug.result.resources = [HHSFDADrugsResponseUnmarshaller createResourcesResult:[result objectForKey:@"drugsResources"]];
-            drug.result.alternatives = [HHSFDADrugsResponseUnmarshaller createAlternativesResult:[result objectForKey:@"alternatives"]];
-            drug.result.documents = [HHSFDADrugsResponseUnmarshaller createDocumentsResult:[result objectForKey:@"documents"]];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return drug;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS FDA drug data: %@ - %@", error, message];
+                    [drug setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else {        // loop through the list values
+            for (id result in jsonObject) {
+                
+                // drugs!
+                drug.result.nda = [result objectForKey:@"nda"];
+                drug.result.resources = [HHSFDADrugsResponseUnmarshaller createResourcesResult:[result objectForKey:@"drugsResources"]];
+                drug.result.alternatives = [HHSFDADrugsResponseUnmarshaller createAlternativesResult:[result objectForKey:@"alternatives"]];
+                drug.result.documents = [HHSFDADrugsResponseUnmarshaller createDocumentsResult:[result objectForKey:@"documents"]];
+            }
         }
     }
     

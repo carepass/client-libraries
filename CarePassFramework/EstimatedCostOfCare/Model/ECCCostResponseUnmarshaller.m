@@ -22,20 +22,37 @@
     ECCCostResponse *results = [[[ECCCostResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        ECCCostResult *codeResult = [results searchResult];
-        
-        // loop through the list values (there should only be one)
-        for (id result in jsonObject) {
-            codeResult.identifier = [result objectForKey:@"id"];
-            codeResult.type = [result objectForKey:@"type"];
-            codeResult.description = [result objectForKey:@"description"];
-            codeResult.category = [result objectForKey:@"category"];
-            codeResult.subcategory = [result objectForKey:@"subcategory"];
-            codeResult.costInMarket = [result objectForKey:@"in"];
-            codeResult.costOutMarket = [result objectForKey:@"out"];
-            codeResult.code = [result objectForKey:@"code"];
-            codeResult.zip = [result objectForKey:@"zip"];
-            codeResult.lastUpdated = [result objectForKey:@"lastUpdated"];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *error = [jsonObject objectForKey:@"error"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving lifestyle data: %@%@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            }
+        } else {
+            ECCCostResult *codeResult = [results searchResult];
+            
+            // loop through the list values (there should only be one)
+            for (id result in jsonObject) {
+                codeResult.identifier = [result objectForKey:@"id"];
+                codeResult.type = [result objectForKey:@"type"];
+                codeResult.description = [result objectForKey:@"description"];
+                codeResult.category = [result objectForKey:@"category"];
+                codeResult.subcategory = [result objectForKey:@"subcategory"];
+                codeResult.costInMarket = [result objectForKey:@"in"];
+                codeResult.costOutMarket = [result objectForKey:@"out"];
+                codeResult.code = [result objectForKey:@"code"];
+                codeResult.zip = [result objectForKey:@"zip"];
+                codeResult.lastUpdated = [result objectForKey:@"lastUpdated"];
+            }
         }
     }
     

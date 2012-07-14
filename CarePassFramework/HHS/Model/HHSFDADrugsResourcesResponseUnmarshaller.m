@@ -21,7 +21,31 @@
     HHSFDADrugsResourcesResponse *resources = [[[HHSFDADrugsResourcesResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        resources.resources = [HHSFDADrugsResponseUnmarshaller createResourcesResult:jsonObject];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
+            
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no resources for this drug - return empty response
+                    return resources;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS FDA drug resources data: %@ - %@", error, message];
+                    [resources setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else {        // loop through the list values
+            resources.resources = [HHSFDADrugsResponseUnmarshaller createResourcesResult:jsonObject];
+        }
     }
     
     return (HHSResponse *)resources;

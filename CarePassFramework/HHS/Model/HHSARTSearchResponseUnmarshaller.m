@@ -22,31 +22,55 @@
     HHSARTSearchResponse *results = [[[HHSARTSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        // loop through the list values
-        for (id clinic in jsonObject) {
-            HHSARTSearchResult *clinicResult = [[HHSARTSearchResult alloc] init];
-            clinicResult.currClinNameAll = [clinic objectForKey:@"currClinNameAll"];
-            clinicResult.clinCityCode = [clinic objectForKey:@"clinCityCode"];
-            clinicResult.clinStateCode = [clinic objectForKey:@"clinStateCode"];
-            clinicResult.stateCode = [clinic objectForKey:@"stateCode"];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            // each clinic needs to pull out the year data
-            NSMutableDictionary *yearHistory = [clinic objectForKey:@"yearHistory"];
-            for (id year in yearHistory) {
-                HHSARTSearchYearResult *yearResult = [[HHSARTSearchYearResult alloc] init];
-                yearResult.year = [year objectForKey:@"year"];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS ART data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else {        
+            // loop through the list values
+            for (id clinic in jsonObject) {
+                HHSARTSearchResult *clinicResult = [[HHSARTSearchResult alloc] init];
+                clinicResult.currClinNameAll = [clinic objectForKey:@"currClinNameAll"];
+                clinicResult.clinCityCode = [clinic objectForKey:@"clinCityCode"];
+                clinicResult.clinStateCode = [clinic objectForKey:@"clinStateCode"];
+                clinicResult.stateCode = [clinic objectForKey:@"stateCode"];
                 
-                NSMutableDictionary *yearData = [year objectForKey:@"data"];
-                for( NSString *key in yearData ) {
-                    [yearResult.data setValue:[yearData objectForKey:key] forKey:key];
+                // each clinic needs to pull out the year data
+                NSMutableDictionary *yearHistory = [clinic objectForKey:@"yearHistory"];
+                for (id year in yearHistory) {
+                    HHSARTSearchYearResult *yearResult = [[HHSARTSearchYearResult alloc] init];
+                    yearResult.year = [year objectForKey:@"year"];
+                    
+                    NSMutableDictionary *yearData = [year objectForKey:@"data"];
+                    for( NSString *key in yearData ) {
+                        [yearResult.data setValue:[yearData objectForKey:key] forKey:key];
+                    }
+                    
+                    [[clinicResult yearHistory] addObject:yearResult];            
+                    [yearResult release];
                 }
                 
-                [[clinicResult yearHistory] addObject:yearResult];            
-                [yearResult release];
+                [[results searchResults] addObject:clinicResult];        
+                [clinicResult release];
             }
-            
-            [[results searchResults] addObject:clinicResult];        
-            [clinicResult release];
         }
     }
     

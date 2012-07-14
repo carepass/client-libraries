@@ -18,9 +18,8 @@
 @implementation CarePassCredentials
 
 @synthesize apiKey;
-@synthesize accessKey;
-@synthesize secretKey;
-@synthesize securityToken;
+@synthesize clientId;
+@synthesize accessToken;
 
 -(id)initWithAPIKey:(NSString *)theAPIKey {
     if (self = [self init]) {
@@ -29,28 +28,20 @@
     return self;
 }
 
--(id)initWithAccessKey:(NSString *)theAccessKey withSecretKey:(NSString *)theSecretKey {
+-(id)initWithAPIKey:(NSString *)theAPIKey withClientId:(NSString *)theClientId withAccessToken:(NSString *)theAccessToken {
+    
     if (self = [self init]) {
-        self.accessKey = theAccessKey;
-        self.secretKey = theSecretKey;
-    }
-    return self;
-}
-
--(id)initWithAccessKey:(NSString *)theAccessKey withSecretKey:(NSString *)theSecretKey withSecurityToken:(NSString *)theSecurityToken {
-    if (self = [self init]) {
-        self.accessKey     = theAccessKey;
-        self.secretKey     = theSecretKey;
-        self.securityToken = theSecurityToken;
+        self.apiKey = theAPIKey;
+        self.clientId = theClientId;
+        self.accessToken = theAccessToken;
     }
     return self;
 }
 
 -(void)dealloc {
     [apiKey release];
-    [accessKey release];
-    [secretKey release];
-    [securityToken release];
+    [clientId release];
+    [accessToken release];
     [super dealloc];
 }
 

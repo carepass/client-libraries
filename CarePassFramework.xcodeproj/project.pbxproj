@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2192EC51594EDCE00CE3B19 /* CarePassSyncClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192EBF1594EDCE00CE3B19 /* CarePassSyncClient.h */; };
+		F2192EC61594EDCE00CE3B19 /* CarePassSyncClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192EC01594EDCE00CE3B19 /* CarePassSyncClient.m */; };
+		F2192EC71594EDCE00CE3B19 /* CPSyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192EC11594EDCE00CE3B19 /* CPSyncRequest.h */; };
+		F2192EC81594EDCE00CE3B19 /* CPSyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192EC21594EDCE00CE3B19 /* CPSyncRequest.m */; };
+		F2192EC91594EDCE00CE3B19 /* CPSyncResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192EC31594EDCE00CE3B19 /* CPSyncResponse.h */; };
+		F2192ECA1594EDCE00CE3B19 /* CPSyncResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192EC41594EDCE00CE3B19 /* CPSyncResponse.m */; };
+		F2192ECD1594F98500CE3B19 /* CPSyncIdentityResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192ECB1594F98500CE3B19 /* CPSyncIdentityResponse.h */; };
+		F2192ECE1594F98500CE3B19 /* CPSyncIdentityResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192ECC1594F98500CE3B19 /* CPSyncIdentityResponse.m */; };
+		F2192ED11594F99800CE3B19 /* CPSyncIdentityRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192ECF1594F99800CE3B19 /* CPSyncIdentityRequest.h */; };
+		F2192ED21594F99800CE3B19 /* CPSyncIdentityRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192ED01594F99800CE3B19 /* CPSyncIdentityRequest.m */; };
+		F2192ED51594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192ED31594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.h */; };
+		F2192ED61594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192ED41594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.m */; };
+		F2192ED91594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192ED71594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.h */; };
+		F2192EDA1594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192ED81594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.m */; };
+		F2192EDD1594FBF300CE3B19 /* CPSyncIdentityResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2192EDB1594FBF200CE3B19 /* CPSyncIdentityResult.h */; };
+		F2192EDE1594FBF300CE3B19 /* CPSyncIdentityResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2192EDC1594FBF200CE3B19 /* CPSyncIdentityResult.m */; };
 		F22463A615790B8B009323FE /* CarePassRRXClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463A415790B8B009323FE /* CarePassRRXClient.h */; };
 		F22463A715790B8B009323FE /* CarePassRRXClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F22463A515790B8B009323FE /* CarePassRRXClient.m */; };
 		F22463AA15790BB9009323FE /* RRXSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22463A815790BB9009323FE /* RRXSearchRequest.h */; };
@@ -49,6 +65,62 @@
 		F224641515793D47009323FE /* ECCCategoryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F224641315793D45009323FE /* ECCCategoryResponse.m */; };
 		F224641815793D62009323FE /* ECCCategoryResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F224641615793D5E009323FE /* ECCCategoryResponseUnmarshaller.h */; };
 		F224641915793D62009323FE /* ECCCategoryResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F224641715793D5F009323FE /* ECCCategoryResponseUnmarshaller.m */; };
+		F2246B4815A619C4003B7479 /* CPSyncInsurancePlanResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246B4615A619C4003B7479 /* CPSyncInsurancePlanResult.h */; };
+		F2246B4915A619C4003B7479 /* CPSyncInsurancePlanResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246B4715A619C4003B7479 /* CPSyncInsurancePlanResult.m */; };
+		F2246B4D15A61AD9003B7479 /* CPSyncInsurancePlanRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246B4B15A61AD9003B7479 /* CPSyncInsurancePlanRequest.h */; };
+		F2246B4E15A61AD9003B7479 /* CPSyncInsurancePlanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246B4C15A61AD9003B7479 /* CPSyncInsurancePlanRequest.m */; };
+		F2246B5115A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246B4F15A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.h */; };
+		F2246B5215A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246B5015A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.m */; };
+		F2246B5515A61AF2003B7479 /* CPSyncInsurancePlanResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246B5315A61AF2003B7479 /* CPSyncInsurancePlanResponse.h */; };
+		F2246B5615A61AF2003B7479 /* CPSyncInsurancePlanResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246B5415A61AF2003B7479 /* CPSyncInsurancePlanResponse.m */; };
+		F2246B5915A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2246B5715A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.h */; };
+		F2246B5A15A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2246B5815A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.m */; };
+		F22CD51315A8937B007762DB /* CPSyncFitActivitiesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50115A8937B007762DB /* CPSyncFitActivitiesRequest.h */; };
+		F22CD51415A8937B007762DB /* CPSyncFitActivitiesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50215A8937B007762DB /* CPSyncFitActivitiesRequest.m */; };
+		F22CD51515A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50315A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.h */; };
+		F22CD51615A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50415A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.m */; };
+		F22CD51715A8937B007762DB /* CPSyncFitActivitiesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50515A8937B007762DB /* CPSyncFitActivitiesResponse.h */; };
+		F22CD51815A8937B007762DB /* CPSyncFitActivitiesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50615A8937B007762DB /* CPSyncFitActivitiesResponse.m */; };
+		F22CD51915A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50715A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.h */; };
+		F22CD51A15A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50815A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.m */; };
+		F22CD51B15A8937B007762DB /* CPSyncFitActivitiesResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50915A8937B007762DB /* CPSyncFitActivitiesResult.h */; };
+		F22CD51C15A8937B007762DB /* CPSyncFitActivitiesResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50A15A8937B007762DB /* CPSyncFitActivitiesResult.m */; };
+		F22CD51D15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50B15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.h */; };
+		F22CD51E15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50C15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.m */; };
+		F22CD51F15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50D15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.h */; };
+		F22CD52015A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD50E15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.m */; };
+		F22CD52115A8937B007762DB /* CPSyncFitLookupActivitiesResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD50F15A8937B007762DB /* CPSyncFitLookupActivitiesResponse.h */; };
+		F22CD52215A8937B007762DB /* CPSyncFitLookupActivitiesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD51015A8937B007762DB /* CPSyncFitLookupActivitiesResponse.m */; };
+		F22CD52315A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD51115A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.h */; };
+		F22CD52415A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD51215A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.m */; };
+		F22CD52F15A8BDA6007762DB /* CPSyncLifestyleRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD52515A8BDA6007762DB /* CPSyncLifestyleRequest.h */; };
+		F22CD53015A8BDA6007762DB /* CPSyncLifestyleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD52615A8BDA6007762DB /* CPSyncLifestyleRequest.m */; };
+		F22CD53115A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD52715A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.h */; };
+		F22CD53215A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD52815A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.m */; };
+		F22CD53315A8BDA6007762DB /* CPSyncLifestyleResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD52915A8BDA6007762DB /* CPSyncLifestyleResponse.h */; };
+		F22CD53415A8BDA6007762DB /* CPSyncLifestyleResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD52A15A8BDA6007762DB /* CPSyncLifestyleResponse.m */; };
+		F22CD53515A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD52B15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.h */; };
+		F22CD53615A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD52C15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.m */; };
+		F22CD53715A8BDA6007762DB /* CPSyncLifestyleResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F22CD52D15A8BDA6007762DB /* CPSyncLifestyleResult.h */; };
+		F22CD53815A8BDA6007762DB /* CPSyncLifestyleResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F22CD52E15A8BDA6007762DB /* CPSyncLifestyleResult.m */; };
+		F230A54115A6019000F5FF59 /* CPSyncBiographyRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A53F15A6019000F5FF59 /* CPSyncBiographyRequest.h */; };
+		F230A54215A6019000F5FF59 /* CPSyncBiographyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A54015A6019000F5FF59 /* CPSyncBiographyRequest.m */; };
+		F230A54615A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A54415A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.h */; };
+		F230A54715A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A54515A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.m */; };
+		F230A54C15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A54A15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.h */; };
+		F230A54D15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A54B15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.m */; };
+		F230A55015A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A54E15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.h */; };
+		F230A55115A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A54F15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.m */; };
+		F230A55415A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A55215A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.h */; };
+		F230A55515A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A55315A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.m */; };
+		F230A55815A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A55615A60DF600F5FF59 /* CPSyncInsLookupPlanResponse.h */; };
+		F230A55915A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A55715A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.m */; };
+		F230A55C15A60E0B00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A55A15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.h */; };
+		F230A55D15A60E0B00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A55B15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.m */; };
+		F230A56015A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A55E15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.h */; };
+		F230A56115A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A55F15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.m */; };
+		F230A56415A60FA800F5FF59 /* CPSyncInsLookupPlanResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F230A56215A60FA700F5FF59 /* CPSyncInsLookupPlanResult.h */; };
+		F230A56515A60FA800F5FF59 /* CPSyncInsLookupPlanResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F230A56315A60FA800F5FF59 /* CPSyncInsLookupPlanResult.m */; };
 		F2431F1515756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F1315756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2431F1615756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m in Sources */ = {isa = PBXBuildFile; fileRef = F2431F1415756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m */; };
 		F2431F1A15756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F2431F1815756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -162,6 +234,19 @@
 		F290044D15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F290044B15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m */; };
 		F290045015798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F290044E15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h */; };
 		F290045115798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F290044F15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m */; };
+		F2B0447915A2476900B1ECC9 /* CarePassSyncClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0447615A2475200B1ECC9 /* CarePassSyncClientTests.m */; };
+		F2B0448015A33C3500B1ECC9 /* CPSyncBiographyResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0447E15A33C3300B1ECC9 /* CPSyncBiographyResponse.h */; };
+		F2B0448115A33C3500B1ECC9 /* CPSyncBiographyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0447F15A33C3400B1ECC9 /* CPSyncBiographyResponse.m */; };
+		F2B0448415A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0448215A33C4700B1ECC9 /* CPSyncBiographyResponseUnmarshaller.h */; };
+		F2B0448515A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0448315A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.m */; };
+		F2B0448815A33CBC00B1ECC9 /* CPSyncBiographyResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0448615A33CBB00B1ECC9 /* CPSyncBiographyResult.h */; };
+		F2B0448915A33CBC00B1ECC9 /* CPSyncBiographyResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0448715A33CBC00B1ECC9 /* CPSyncBiographyResult.m */; };
+		F2B0448C15A33E3900B1ECC9 /* CPSyncBioPhoneResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0448A15A33E3700B1ECC9 /* CPSyncBioPhoneResult.h */; };
+		F2B0448D15A33E3900B1ECC9 /* CPSyncBioPhoneResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0448B15A33E3800B1ECC9 /* CPSyncBioPhoneResult.m */; };
+		F2B0449015A33E4A00B1ECC9 /* CPSyncBioEmailResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0448E15A33E4900B1ECC9 /* CPSyncBioEmailResult.h */; };
+		F2B0449115A33E4A00B1ECC9 /* CPSyncBioEmailResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0448F15A33E4A00B1ECC9 /* CPSyncBioEmailResult.m */; };
+		F2B0449415A33E5C00B1ECC9 /* CPSyncBioAddressResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2B0449215A33E5B00B1ECC9 /* CPSyncBioAddressResult.h */; };
+		F2B0449515A33E5C00B1ECC9 /* CPSyncBioAddressResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B0449315A33E5B00B1ECC9 /* CPSyncBioAddressResult.m */; };
 		F2BDA1EC156D60090008C2C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1EB156D60090008C2C8 /* Foundation.framework */; };
 		F2BDA1F2156D60090008C2C8 /* CarePassFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA1F1156D60090008C2C8 /* CarePassFramework.m */; };
 		F2BDA1FA156D60090008C2C8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDA1F9156D60090008C2C8 /* SenTestingKit.framework */; };
@@ -200,6 +285,25 @@
 		F2BDA24F156EA2460008C2C8 /* CarePassWebServiceClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA24D156EA2450008C2C8 /* CarePassWebServiceClient.m */; };
 		F2BDA252156EA3EA0008C2C8 /* CarePassRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BDA250156EA3E90008C2C8 /* CarePassRequestDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2BDA253156EA3EA0008C2C8 /* CarePassRequestDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDA251156EA3E90008C2C8 /* CarePassRequestDelegate.m */; };
+		F2FD2457157D47D900E5FF25 /* CarePassDICClient.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2455157D47D900E5FF25 /* CarePassDICClient.h */; };
+		F2FD2458157D47D900E5FF25 /* CarePassDICClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD2456157D47D900E5FF25 /* CarePassDICClient.m */; };
+		F2FD245B157D482100E5FF25 /* DICRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2459157D482100E5FF25 /* DICRequest.h */; };
+		F2FD245C157D482100E5FF25 /* DICRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD245A157D482100E5FF25 /* DICRequest.m */; };
+		F2FD245F157D482F00E5FF25 /* DICResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD245D157D482F00E5FF25 /* DICResponse.h */; };
+		F2FD2460157D482F00E5FF25 /* DICResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD245E157D482F00E5FF25 /* DICResponse.m */; };
+		F2FD2463157D489600E5FF25 /* DICSearchRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2461157D489600E5FF25 /* DICSearchRequest.h */; };
+		F2FD2464157D489600E5FF25 /* DICSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD2462157D489600E5FF25 /* DICSearchRequest.m */; };
+		F2FD2467157D4CDF00E5FF25 /* DICSearchRequestMarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2465157D4CDF00E5FF25 /* DICSearchRequestMarshaller.h */; };
+		F2FD2468157D4CDF00E5FF25 /* DICSearchRequestMarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD2466157D4CDF00E5FF25 /* DICSearchRequestMarshaller.m */; };
+		F2FD246B157D4CF000E5FF25 /* DICSearchResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2469157D4CF000E5FF25 /* DICSearchResponse.h */; };
+		F2FD246C157D4CF000E5FF25 /* DICSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD246A157D4CF000E5FF25 /* DICSearchResponse.m */; };
+		F2FD246F157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD246D157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.h */; };
+		F2FD2470157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD246E157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.m */; };
+		F2FD2473157D4D1700E5FF25 /* DICSearchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2471157D4D1600E5FF25 /* DICSearchResult.h */; };
+		F2FD2474157D4D1700E5FF25 /* DICSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD2472157D4D1600E5FF25 /* DICSearchResult.m */; };
+		F2FD2477157D522A00E5FF25 /* DICResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F2FD2475157D522A00E5FF25 /* DICResult.h */; };
+		F2FD2478157D522A00E5FF25 /* DICResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD2476157D522A00E5FF25 /* DICResult.m */; };
+		F2FD247E157D58A500E5FF25 /* CarePassDICClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FD247B157D569B00E5FF25 /* CarePassDICClientTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +317,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F2192EBF1594EDCE00CE3B19 /* CarePassSyncClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassSyncClient.h; path = CarePassSync/CarePassSyncClient.h; sourceTree = "<group>"; };
+		F2192EC01594EDCE00CE3B19 /* CarePassSyncClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassSyncClient.m; path = CarePassSync/CarePassSyncClient.m; sourceTree = "<group>"; };
+		F2192EC11594EDCE00CE3B19 /* CPSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncRequest.h; path = CarePassSync/CPSyncRequest.h; sourceTree = "<group>"; };
+		F2192EC21594EDCE00CE3B19 /* CPSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncRequest.m; path = CarePassSync/CPSyncRequest.m; sourceTree = "<group>"; };
+		F2192EC31594EDCE00CE3B19 /* CPSyncResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncResponse.h; path = CarePassSync/CPSyncResponse.h; sourceTree = "<group>"; };
+		F2192EC41594EDCE00CE3B19 /* CPSyncResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncResponse.m; path = CarePassSync/CPSyncResponse.m; sourceTree = "<group>"; };
+		F2192ECB1594F98500CE3B19 /* CPSyncIdentityResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncIdentityResponse.h; path = CarePassSync/Model/CPSyncIdentityResponse.h; sourceTree = "<group>"; };
+		F2192ECC1594F98500CE3B19 /* CPSyncIdentityResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncIdentityResponse.m; path = CarePassSync/Model/CPSyncIdentityResponse.m; sourceTree = "<group>"; };
+		F2192ECF1594F99800CE3B19 /* CPSyncIdentityRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncIdentityRequest.h; path = CarePassSync/Model/CPSyncIdentityRequest.h; sourceTree = "<group>"; };
+		F2192ED01594F99800CE3B19 /* CPSyncIdentityRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncIdentityRequest.m; path = CarePassSync/Model/CPSyncIdentityRequest.m; sourceTree = "<group>"; };
+		F2192ED31594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncIdentityRequestMarshaller.h; path = CarePassSync/Model/CPSyncIdentityRequestMarshaller.h; sourceTree = "<group>"; };
+		F2192ED41594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncIdentityRequestMarshaller.m; path = CarePassSync/Model/CPSyncIdentityRequestMarshaller.m; sourceTree = "<group>"; };
+		F2192ED71594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncIdentityResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncIdentityResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2192ED81594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncIdentityResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncIdentityResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2192EDB1594FBF200CE3B19 /* CPSyncIdentityResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncIdentityResult.h; path = CarePassSync/Model/CPSyncIdentityResult.h; sourceTree = "<group>"; };
+		F2192EDC1594FBF200CE3B19 /* CPSyncIdentityResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncIdentityResult.m; path = CarePassSync/Model/CPSyncIdentityResult.m; sourceTree = "<group>"; };
 		F22463A415790B8B009323FE /* CarePassRRXClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassRRXClient.h; path = RetailRx/CarePassRRXClient.h; sourceTree = "<group>"; };
 		F22463A515790B8B009323FE /* CarePassRRXClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassRRXClient.m; path = RetailRx/CarePassRRXClient.m; sourceTree = "<group>"; };
 		F22463A815790BB9009323FE /* RRXSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RRXSearchRequest.h; path = RetailRx/Model/RRXSearchRequest.h; sourceTree = "<group>"; };
@@ -257,6 +377,62 @@
 		F224641315793D45009323FE /* ECCCategoryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryResponse.m; path = EstimatedCostOfCare/Model/ECCCategoryResponse.m; sourceTree = "<group>"; };
 		F224641615793D5E009323FE /* ECCCategoryResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECCCategoryResponseUnmarshaller.h; path = EstimatedCostOfCare/Model/ECCCategoryResponseUnmarshaller.h; sourceTree = "<group>"; };
 		F224641715793D5F009323FE /* ECCCategoryResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECCCategoryResponseUnmarshaller.m; path = EstimatedCostOfCare/Model/ECCCategoryResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2246B4615A619C4003B7479 /* CPSyncInsurancePlanResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsurancePlanResult.h; path = CarePassSync/Model/CPSyncInsurancePlanResult.h; sourceTree = "<group>"; };
+		F2246B4715A619C4003B7479 /* CPSyncInsurancePlanResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsurancePlanResult.m; path = CarePassSync/Model/CPSyncInsurancePlanResult.m; sourceTree = "<group>"; };
+		F2246B4B15A61AD9003B7479 /* CPSyncInsurancePlanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsurancePlanRequest.h; path = CarePassSync/Model/CPSyncInsurancePlanRequest.h; sourceTree = "<group>"; };
+		F2246B4C15A61AD9003B7479 /* CPSyncInsurancePlanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsurancePlanRequest.m; path = CarePassSync/Model/CPSyncInsurancePlanRequest.m; sourceTree = "<group>"; };
+		F2246B4F15A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsurancePlanRequestMarshaller.h; path = CarePassSync/Model/CPSyncInsurancePlanRequestMarshaller.h; sourceTree = "<group>"; };
+		F2246B5015A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsurancePlanRequestMarshaller.m; path = CarePassSync/Model/CPSyncInsurancePlanRequestMarshaller.m; sourceTree = "<group>"; };
+		F2246B5315A61AF2003B7479 /* CPSyncInsurancePlanResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsurancePlanResponse.h; path = CarePassSync/Model/CPSyncInsurancePlanResponse.h; sourceTree = "<group>"; };
+		F2246B5415A61AF2003B7479 /* CPSyncInsurancePlanResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsurancePlanResponse.m; path = CarePassSync/Model/CPSyncInsurancePlanResponse.m; sourceTree = "<group>"; };
+		F2246B5715A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsurancePlanResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncInsurancePlanResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2246B5815A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsurancePlanResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncInsurancePlanResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22CD50115A8937B007762DB /* CPSyncFitActivitiesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitActivitiesRequest.h; path = CarePassSync/Model/CPSyncFitActivitiesRequest.h; sourceTree = "<group>"; };
+		F22CD50215A8937B007762DB /* CPSyncFitActivitiesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitActivitiesRequest.m; path = CarePassSync/Model/CPSyncFitActivitiesRequest.m; sourceTree = "<group>"; };
+		F22CD50315A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitActivitiesRequestMarshaller.h; path = CarePassSync/Model/CPSyncFitActivitiesRequestMarshaller.h; sourceTree = "<group>"; };
+		F22CD50415A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitActivitiesRequestMarshaller.m; path = CarePassSync/Model/CPSyncFitActivitiesRequestMarshaller.m; sourceTree = "<group>"; };
+		F22CD50515A8937B007762DB /* CPSyncFitActivitiesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitActivitiesResponse.h; path = CarePassSync/Model/CPSyncFitActivitiesResponse.h; sourceTree = "<group>"; };
+		F22CD50615A8937B007762DB /* CPSyncFitActivitiesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitActivitiesResponse.m; path = CarePassSync/Model/CPSyncFitActivitiesResponse.m; sourceTree = "<group>"; };
+		F22CD50715A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitActivitiesResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncFitActivitiesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F22CD50815A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitActivitiesResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncFitActivitiesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22CD50915A8937B007762DB /* CPSyncFitActivitiesResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitActivitiesResult.h; path = CarePassSync/Model/CPSyncFitActivitiesResult.h; sourceTree = "<group>"; };
+		F22CD50A15A8937B007762DB /* CPSyncFitActivitiesResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitActivitiesResult.m; path = CarePassSync/Model/CPSyncFitActivitiesResult.m; sourceTree = "<group>"; };
+		F22CD50B15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitLookupActivitiesRequest.h; path = CarePassSync/Model/CPSyncFitLookupActivitiesRequest.h; sourceTree = "<group>"; };
+		F22CD50C15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitLookupActivitiesRequest.m; path = CarePassSync/Model/CPSyncFitLookupActivitiesRequest.m; sourceTree = "<group>"; };
+		F22CD50D15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitLookupActivitiesRequestMarshaller.h; path = CarePassSync/Model/CPSyncFitLookupActivitiesRequestMarshaller.h; sourceTree = "<group>"; };
+		F22CD50E15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitLookupActivitiesRequestMarshaller.m; path = CarePassSync/Model/CPSyncFitLookupActivitiesRequestMarshaller.m; sourceTree = "<group>"; };
+		F22CD50F15A8937B007762DB /* CPSyncFitLookupActivitiesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitLookupActivitiesResponse.h; path = CarePassSync/Model/CPSyncFitLookupActivitiesResponse.h; sourceTree = "<group>"; };
+		F22CD51015A8937B007762DB /* CPSyncFitLookupActivitiesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitLookupActivitiesResponse.m; path = CarePassSync/Model/CPSyncFitLookupActivitiesResponse.m; sourceTree = "<group>"; };
+		F22CD51115A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncFitLookupActivitiesResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncFitLookupActivitiesResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F22CD51215A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncFitLookupActivitiesResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncFitLookupActivitiesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22CD52515A8BDA6007762DB /* CPSyncLifestyleRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncLifestyleRequest.h; path = CarePassSync/Model/CPSyncLifestyleRequest.h; sourceTree = "<group>"; };
+		F22CD52615A8BDA6007762DB /* CPSyncLifestyleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncLifestyleRequest.m; path = CarePassSync/Model/CPSyncLifestyleRequest.m; sourceTree = "<group>"; };
+		F22CD52715A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncLifestyleRequestMarshaller.h; path = CarePassSync/Model/CPSyncLifestyleRequestMarshaller.h; sourceTree = "<group>"; };
+		F22CD52815A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncLifestyleRequestMarshaller.m; path = CarePassSync/Model/CPSyncLifestyleRequestMarshaller.m; sourceTree = "<group>"; };
+		F22CD52915A8BDA6007762DB /* CPSyncLifestyleResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncLifestyleResponse.h; path = CarePassSync/Model/CPSyncLifestyleResponse.h; sourceTree = "<group>"; };
+		F22CD52A15A8BDA6007762DB /* CPSyncLifestyleResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncLifestyleResponse.m; path = CarePassSync/Model/CPSyncLifestyleResponse.m; sourceTree = "<group>"; };
+		F22CD52B15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncLifestyleResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncLifestyleResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F22CD52C15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncLifestyleResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncLifestyleResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F22CD52D15A8BDA6007762DB /* CPSyncLifestyleResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncLifestyleResult.h; path = CarePassSync/Model/CPSyncLifestyleResult.h; sourceTree = "<group>"; };
+		F22CD52E15A8BDA6007762DB /* CPSyncLifestyleResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncLifestyleResult.m; path = CarePassSync/Model/CPSyncLifestyleResult.m; sourceTree = "<group>"; };
+		F230A53F15A6019000F5FF59 /* CPSyncBiographyRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBiographyRequest.h; path = CarePassSync/Model/CPSyncBiographyRequest.h; sourceTree = "<group>"; };
+		F230A54015A6019000F5FF59 /* CPSyncBiographyRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBiographyRequest.m; path = CarePassSync/Model/CPSyncBiographyRequest.m; sourceTree = "<group>"; };
+		F230A54415A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBiographyRequestMarshaller.h; path = CarePassSync/Model/CPSyncBiographyRequestMarshaller.h; sourceTree = "<group>"; };
+		F230A54515A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBiographyRequestMarshaller.m; path = CarePassSync/Model/CPSyncBiographyRequestMarshaller.m; sourceTree = "<group>"; };
+		F230A54A15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsuranceLookupRequest.h; path = CarePassSync/Model/CPSyncInsuranceLookupRequest.h; sourceTree = "<group>"; };
+		F230A54B15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsuranceLookupRequest.m; path = CarePassSync/Model/CPSyncInsuranceLookupRequest.m; sourceTree = "<group>"; };
+		F230A54E15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsuranceLookupRequestMarshaller.h; path = CarePassSync/Model/CPSyncInsuranceLookupRequestMarshaller.h; sourceTree = "<group>"; };
+		F230A54F15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsuranceLookupRequestMarshaller.m; path = CarePassSync/Model/CPSyncInsuranceLookupRequestMarshaller.m; sourceTree = "<group>"; };
+		F230A55215A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsLookupCarrierResponse.h; path = CarePassSync/Model/CPSyncInsLookupCarrierResponse.h; sourceTree = "<group>"; };
+		F230A55315A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsLookupCarrierResponse.m; path = CarePassSync/Model/CPSyncInsLookupCarrierResponse.m; sourceTree = "<group>"; };
+		F230A55615A60DF600F5FF59 /* CPSyncInsLookupPlanResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsLookupPlanResponse.h; path = CarePassSync/Model/CPSyncInsLookupPlanResponse.h; sourceTree = "<group>"; };
+		F230A55715A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsLookupPlanResponse.m; path = CarePassSync/Model/CPSyncInsLookupPlanResponse.m; sourceTree = "<group>"; };
+		F230A55A15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsLookupCarrierResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncInsLookupCarrierResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F230A55B15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsLookupCarrierResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncInsLookupCarrierResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F230A55E15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsLookupPlanResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncInsLookupPlanResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F230A55F15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsLookupPlanResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncInsLookupPlanResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F230A56215A60FA700F5FF59 /* CPSyncInsLookupPlanResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncInsLookupPlanResult.h; path = CarePassSync/Model/CPSyncInsLookupPlanResult.h; sourceTree = "<group>"; };
+		F230A56315A60FA800F5FF59 /* CPSyncInsLookupPlanResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncInsLookupPlanResult.m; path = CarePassSync/Model/CPSyncInsLookupPlanResult.m; sourceTree = "<group>"; };
 		F2431F1315756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTResponsibleParty.h; path = HHS/Model/HHSClinicalTrialsNCTResponsibleParty.h; sourceTree = "<group>"; };
 		F2431F1415756AE20055345F /* HHSClinicalTrialsNCTResponsibleParty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSClinicalTrialsNCTResponsibleParty.m; path = HHS/Model/HHSClinicalTrialsNCTResponsibleParty.m; sourceTree = "<group>"; };
 		F2431F1815756B540055345F /* HHSClinicalTrialsNCTUrlContactInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSClinicalTrialsNCTUrlContactInfo.h; path = HHS/Model/HHSClinicalTrialsNCTUrlContactInfo.h; sourceTree = "<group>"; };
@@ -371,6 +547,20 @@
 		F290044B15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsDocumentsResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsDocumentsResponseUnmarshaller.m; sourceTree = "<group>"; };
 		F290044E15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HHSFDADrugsResourcesResponseUnmarshaller.h; path = HHS/Model/HHSFDADrugsResourcesResponseUnmarshaller.h; sourceTree = "<group>"; };
 		F290044F15798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HHSFDADrugsResourcesResponseUnmarshaller.m; path = HHS/Model/HHSFDADrugsResourcesResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2B0447515A2475200B1ECC9 /* CarePassSyncClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassSyncClientTests.h; path = CPSync/CarePassSyncClientTests.h; sourceTree = "<group>"; };
+		F2B0447615A2475200B1ECC9 /* CarePassSyncClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassSyncClientTests.m; path = CPSync/CarePassSyncClientTests.m; sourceTree = "<group>"; };
+		F2B0447E15A33C3300B1ECC9 /* CPSyncBiographyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBiographyResponse.h; path = CarePassSync/Model/CPSyncBiographyResponse.h; sourceTree = "<group>"; };
+		F2B0447F15A33C3400B1ECC9 /* CPSyncBiographyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBiographyResponse.m; path = CarePassSync/Model/CPSyncBiographyResponse.m; sourceTree = "<group>"; };
+		F2B0448215A33C4700B1ECC9 /* CPSyncBiographyResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBiographyResponseUnmarshaller.h; path = CarePassSync/Model/CPSyncBiographyResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2B0448315A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBiographyResponseUnmarshaller.m; path = CarePassSync/Model/CPSyncBiographyResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2B0448615A33CBB00B1ECC9 /* CPSyncBiographyResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBiographyResult.h; path = CarePassSync/Model/CPSyncBiographyResult.h; sourceTree = "<group>"; };
+		F2B0448715A33CBC00B1ECC9 /* CPSyncBiographyResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBiographyResult.m; path = CarePassSync/Model/CPSyncBiographyResult.m; sourceTree = "<group>"; };
+		F2B0448A15A33E3700B1ECC9 /* CPSyncBioPhoneResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBioPhoneResult.h; path = CarePassSync/Model/CPSyncBioPhoneResult.h; sourceTree = "<group>"; };
+		F2B0448B15A33E3800B1ECC9 /* CPSyncBioPhoneResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBioPhoneResult.m; path = CarePassSync/Model/CPSyncBioPhoneResult.m; sourceTree = "<group>"; };
+		F2B0448E15A33E4900B1ECC9 /* CPSyncBioEmailResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBioEmailResult.h; path = CarePassSync/Model/CPSyncBioEmailResult.h; sourceTree = "<group>"; };
+		F2B0448F15A33E4A00B1ECC9 /* CPSyncBioEmailResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBioEmailResult.m; path = CarePassSync/Model/CPSyncBioEmailResult.m; sourceTree = "<group>"; };
+		F2B0449215A33E5B00B1ECC9 /* CPSyncBioAddressResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPSyncBioAddressResult.h; path = CarePassSync/Model/CPSyncBioAddressResult.h; sourceTree = "<group>"; };
+		F2B0449315A33E5B00B1ECC9 /* CPSyncBioAddressResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPSyncBioAddressResult.m; path = CarePassSync/Model/CPSyncBioAddressResult.m; sourceTree = "<group>"; };
 		F2BDA1E8156D60090008C2C8 /* libCarePassFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCarePassFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BDA1EB156D60090008C2C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2BDA1EF156D60090008C2C8 /* CarePassFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CarePassFramework-Prefix.pch"; sourceTree = "<group>"; };
@@ -413,6 +603,26 @@
 		F2BDA24D156EA2450008C2C8 /* CarePassWebServiceClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassWebServiceClient.m; sourceTree = "<group>"; };
 		F2BDA250156EA3E90008C2C8 /* CarePassRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarePassRequestDelegate.h; sourceTree = "<group>"; };
 		F2BDA251156EA3E90008C2C8 /* CarePassRequestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePassRequestDelegate.m; sourceTree = "<group>"; };
+		F2FD2455157D47D900E5FF25 /* CarePassDICClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassDICClient.h; path = DeidentifiedClaims/CarePassDICClient.h; sourceTree = "<group>"; };
+		F2FD2456157D47D900E5FF25 /* CarePassDICClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassDICClient.m; path = DeidentifiedClaims/CarePassDICClient.m; sourceTree = "<group>"; };
+		F2FD2459157D482100E5FF25 /* DICRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICRequest.h; path = DeidentifiedClaims/DICRequest.h; sourceTree = "<group>"; };
+		F2FD245A157D482100E5FF25 /* DICRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICRequest.m; path = DeidentifiedClaims/DICRequest.m; sourceTree = "<group>"; };
+		F2FD245D157D482F00E5FF25 /* DICResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICResponse.h; path = DeidentifiedClaims/DICResponse.h; sourceTree = "<group>"; };
+		F2FD245E157D482F00E5FF25 /* DICResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICResponse.m; path = DeidentifiedClaims/DICResponse.m; sourceTree = "<group>"; };
+		F2FD2461157D489600E5FF25 /* DICSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICSearchRequest.h; path = DeidentifiedClaims/Model/DICSearchRequest.h; sourceTree = "<group>"; };
+		F2FD2462157D489600E5FF25 /* DICSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICSearchRequest.m; path = DeidentifiedClaims/Model/DICSearchRequest.m; sourceTree = "<group>"; };
+		F2FD2465157D4CDF00E5FF25 /* DICSearchRequestMarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICSearchRequestMarshaller.h; path = DeidentifiedClaims/Model/DICSearchRequestMarshaller.h; sourceTree = "<group>"; };
+		F2FD2466157D4CDF00E5FF25 /* DICSearchRequestMarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICSearchRequestMarshaller.m; path = DeidentifiedClaims/Model/DICSearchRequestMarshaller.m; sourceTree = "<group>"; };
+		F2FD2469157D4CF000E5FF25 /* DICSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICSearchResponse.h; path = DeidentifiedClaims/Model/DICSearchResponse.h; sourceTree = "<group>"; };
+		F2FD246A157D4CF000E5FF25 /* DICSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICSearchResponse.m; path = DeidentifiedClaims/Model/DICSearchResponse.m; sourceTree = "<group>"; };
+		F2FD246D157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICSearchResponseUnmarshaller.h; path = DeidentifiedClaims/Model/DICSearchResponseUnmarshaller.h; sourceTree = "<group>"; };
+		F2FD246E157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICSearchResponseUnmarshaller.m; path = DeidentifiedClaims/Model/DICSearchResponseUnmarshaller.m; sourceTree = "<group>"; };
+		F2FD2471157D4D1600E5FF25 /* DICSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICSearchResult.h; path = DeidentifiedClaims/Model/DICSearchResult.h; sourceTree = "<group>"; };
+		F2FD2472157D4D1600E5FF25 /* DICSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICSearchResult.m; path = DeidentifiedClaims/Model/DICSearchResult.m; sourceTree = "<group>"; };
+		F2FD2475157D522A00E5FF25 /* DICResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DICResult.h; path = DeidentifiedClaims/Model/DICResult.h; sourceTree = "<group>"; };
+		F2FD2476157D522A00E5FF25 /* DICResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DICResult.m; path = DeidentifiedClaims/Model/DICResult.m; sourceTree = "<group>"; };
+		F2FD247A157D569B00E5FF25 /* CarePassDICClientTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarePassDICClientTests.h; path = DeidentifiedClaims/CarePassDICClientTests.h; sourceTree = "<group>"; };
+		F2FD247B157D569B00E5FF25 /* CarePassDICClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarePassDICClientTests.m; path = DeidentifiedClaims/CarePassDICClientTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +648,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2192EBC1594ED3E00CE3B19 /* CarePassSync */ = {
+			isa = PBXGroup;
+			children = (
+				F2192EBF1594EDCE00CE3B19 /* CarePassSyncClient.h */,
+				F2192EC01594EDCE00CE3B19 /* CarePassSyncClient.m */,
+				F2192EC11594EDCE00CE3B19 /* CPSyncRequest.h */,
+				F2192EC21594EDCE00CE3B19 /* CPSyncRequest.m */,
+				F2192EC31594EDCE00CE3B19 /* CPSyncResponse.h */,
+				F2192EC41594EDCE00CE3B19 /* CPSyncResponse.m */,
+				F2192EBE1594ED4A00CE3B19 /* Model */,
+			);
+			name = CarePassSync;
+			sourceTree = "<group>";
+		};
+		F2192EBE1594ED4A00CE3B19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F22CD50015A71EBE007762DB /* Lifestyle */,
+				F22CD4FE15A71EB3007762DB /* Fitness */,
+				F230A54915A60B1C00F5FF59 /* Insurance */,
+				F230A54815A60B0500F5FF59 /* Biography */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F224639E1578FE08009323FE /* RetailRx */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +759,112 @@
 				F224640E15793A70009323FE /* CarePassECCClientTests.m */,
 			);
 			name = EstimatedCostOfCare;
+			sourceTree = "<group>";
+		};
+		F22CD4FE15A71EB3007762DB /* Fitness */ = {
+			isa = PBXGroup;
+			children = (
+				F22CD50115A8937B007762DB /* CPSyncFitActivitiesRequest.h */,
+				F22CD50215A8937B007762DB /* CPSyncFitActivitiesRequest.m */,
+				F22CD50315A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.h */,
+				F22CD50415A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.m */,
+				F22CD50515A8937B007762DB /* CPSyncFitActivitiesResponse.h */,
+				F22CD50615A8937B007762DB /* CPSyncFitActivitiesResponse.m */,
+				F22CD50715A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.h */,
+				F22CD50815A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.m */,
+				F22CD50915A8937B007762DB /* CPSyncFitActivitiesResult.h */,
+				F22CD50A15A8937B007762DB /* CPSyncFitActivitiesResult.m */,
+				F22CD50B15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.h */,
+				F22CD50C15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.m */,
+				F22CD50D15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.h */,
+				F22CD50E15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.m */,
+				F22CD50F15A8937B007762DB /* CPSyncFitLookupActivitiesResponse.h */,
+				F22CD51015A8937B007762DB /* CPSyncFitLookupActivitiesResponse.m */,
+				F22CD51115A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.h */,
+				F22CD51215A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.m */,
+			);
+			name = Fitness;
+			sourceTree = "<group>";
+		};
+		F22CD50015A71EBE007762DB /* Lifestyle */ = {
+			isa = PBXGroup;
+			children = (
+				F22CD52515A8BDA6007762DB /* CPSyncLifestyleRequest.h */,
+				F22CD52615A8BDA6007762DB /* CPSyncLifestyleRequest.m */,
+				F22CD52715A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.h */,
+				F22CD52815A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.m */,
+				F22CD52915A8BDA6007762DB /* CPSyncLifestyleResponse.h */,
+				F22CD52A15A8BDA6007762DB /* CPSyncLifestyleResponse.m */,
+				F22CD52B15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.h */,
+				F22CD52C15A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.m */,
+				F22CD52D15A8BDA6007762DB /* CPSyncLifestyleResult.h */,
+				F22CD52E15A8BDA6007762DB /* CPSyncLifestyleResult.m */,
+			);
+			name = Lifestyle;
+			sourceTree = "<group>";
+		};
+		F230A54815A60B0500F5FF59 /* Biography */ = {
+			isa = PBXGroup;
+			children = (
+				F2192ECB1594F98500CE3B19 /* CPSyncIdentityResponse.h */,
+				F2192ECC1594F98500CE3B19 /* CPSyncIdentityResponse.m */,
+				F2192ECF1594F99800CE3B19 /* CPSyncIdentityRequest.h */,
+				F2192ED01594F99800CE3B19 /* CPSyncIdentityRequest.m */,
+				F2192ED31594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.h */,
+				F2192ED41594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.m */,
+				F2192ED71594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.h */,
+				F2192ED81594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.m */,
+				F2192EDB1594FBF200CE3B19 /* CPSyncIdentityResult.h */,
+				F2192EDC1594FBF200CE3B19 /* CPSyncIdentityResult.m */,
+				F2B0447E15A33C3300B1ECC9 /* CPSyncBiographyResponse.h */,
+				F2B0447F15A33C3400B1ECC9 /* CPSyncBiographyResponse.m */,
+				F2B0448215A33C4700B1ECC9 /* CPSyncBiographyResponseUnmarshaller.h */,
+				F2B0448315A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.m */,
+				F2B0448615A33CBB00B1ECC9 /* CPSyncBiographyResult.h */,
+				F2B0448715A33CBC00B1ECC9 /* CPSyncBiographyResult.m */,
+				F2B0448A15A33E3700B1ECC9 /* CPSyncBioPhoneResult.h */,
+				F2B0448B15A33E3800B1ECC9 /* CPSyncBioPhoneResult.m */,
+				F2B0448E15A33E4900B1ECC9 /* CPSyncBioEmailResult.h */,
+				F2B0448F15A33E4A00B1ECC9 /* CPSyncBioEmailResult.m */,
+				F2B0449215A33E5B00B1ECC9 /* CPSyncBioAddressResult.h */,
+				F2B0449315A33E5B00B1ECC9 /* CPSyncBioAddressResult.m */,
+				F230A53F15A6019000F5FF59 /* CPSyncBiographyRequest.h */,
+				F230A54015A6019000F5FF59 /* CPSyncBiographyRequest.m */,
+				F230A54415A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.h */,
+				F230A54515A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.m */,
+			);
+			name = Biography;
+			sourceTree = "<group>";
+		};
+		F230A54915A60B1C00F5FF59 /* Insurance */ = {
+			isa = PBXGroup;
+			children = (
+				F230A54A15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.h */,
+				F230A54B15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.m */,
+				F230A54E15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.h */,
+				F230A54F15A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.m */,
+				F230A55215A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.h */,
+				F230A55315A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.m */,
+				F230A55615A60DF600F5FF59 /* CPSyncInsLookupPlanResponse.h */,
+				F230A55715A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.m */,
+				F230A55A15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.h */,
+				F230A55B15A60E0A00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.m */,
+				F230A55E15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.h */,
+				F230A55F15A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.m */,
+				F230A56215A60FA700F5FF59 /* CPSyncInsLookupPlanResult.h */,
+				F230A56315A60FA800F5FF59 /* CPSyncInsLookupPlanResult.m */,
+				F2246B4615A619C4003B7479 /* CPSyncInsurancePlanResult.h */,
+				F2246B4715A619C4003B7479 /* CPSyncInsurancePlanResult.m */,
+				F2246B4B15A61AD9003B7479 /* CPSyncInsurancePlanRequest.h */,
+				F2246B4C15A61AD9003B7479 /* CPSyncInsurancePlanRequest.m */,
+				F2246B4F15A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.h */,
+				F2246B5015A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.m */,
+				F2246B5315A61AF2003B7479 /* CPSyncInsurancePlanResponse.h */,
+				F2246B5415A61AF2003B7479 /* CPSyncInsurancePlanResponse.m */,
+				F2246B5715A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.h */,
+				F2246B5815A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.m */,
+			);
+			name = Insurance;
 			sourceTree = "<group>";
 		};
 		F270F332156ED902008E8AEC /* ThirdParty */ = {
@@ -689,6 +1030,15 @@
 			name = ClinicalTrials;
 			sourceTree = "<group>";
 		};
+		F2B0447315A2472700B1ECC9 /* CPSync */ = {
+			isa = PBXGroup;
+			children = (
+				F2B0447515A2475200B1ECC9 /* CarePassSyncClientTests.h */,
+				F2B0447615A2475200B1ECC9 /* CarePassSyncClientTests.m */,
+			);
+			name = CPSync;
+			sourceTree = "<group>";
+		};
 		F2BDA1DD156D60080008C2C8 = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +1071,8 @@
 		F2BDA1ED156D60090008C2C8 /* CarePassFramework */ = {
 			isa = PBXGroup;
 			children = (
+				F2192EBC1594ED3E00CE3B19 /* CarePassSync */,
+				F2FD2452157D478000E5FF25 /* DeidentifiedClaims */,
 				F22463DA15792092009323FE /* EstimatedCostOfCare */,
 				F224639E1578FE08009323FE /* RetailRx */,
 				F270F332156ED902008E8AEC /* ThirdParty */,
@@ -763,6 +1115,8 @@
 		F2BDA201156D60090008C2C8 /* CarePassFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				F2B0447315A2472700B1ECC9 /* CPSync */,
+				F2FD2479157D567800E5FF25 /* DeidentifiedClaims */,
 				F224640C15793A50009323FE /* EstimatedCostOfCare */,
 				F22463D415791923009323FE /* RetailRx */,
 				F270F346156FD278008E8AEC /* HHS */,
@@ -810,6 +1164,48 @@
 				F270F321156EABE0008E8AEC /* HHSValidationErrorException.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		F2FD2452157D478000E5FF25 /* DeidentifiedClaims */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD2454157D479000E5FF25 /* Model */,
+				F2FD2455157D47D900E5FF25 /* CarePassDICClient.h */,
+				F2FD2456157D47D900E5FF25 /* CarePassDICClient.m */,
+				F2FD2459157D482100E5FF25 /* DICRequest.h */,
+				F2FD245A157D482100E5FF25 /* DICRequest.m */,
+				F2FD245D157D482F00E5FF25 /* DICResponse.h */,
+				F2FD245E157D482F00E5FF25 /* DICResponse.m */,
+			);
+			name = DeidentifiedClaims;
+			sourceTree = "<group>";
+		};
+		F2FD2454157D479000E5FF25 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD2461157D489600E5FF25 /* DICSearchRequest.h */,
+				F2FD2462157D489600E5FF25 /* DICSearchRequest.m */,
+				F2FD2465157D4CDF00E5FF25 /* DICSearchRequestMarshaller.h */,
+				F2FD2466157D4CDF00E5FF25 /* DICSearchRequestMarshaller.m */,
+				F2FD2469157D4CF000E5FF25 /* DICSearchResponse.h */,
+				F2FD246A157D4CF000E5FF25 /* DICSearchResponse.m */,
+				F2FD246D157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.h */,
+				F2FD246E157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.m */,
+				F2FD2471157D4D1600E5FF25 /* DICSearchResult.h */,
+				F2FD2472157D4D1600E5FF25 /* DICSearchResult.m */,
+				F2FD2475157D522A00E5FF25 /* DICResult.h */,
+				F2FD2476157D522A00E5FF25 /* DICResult.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F2FD2479157D567800E5FF25 /* DeidentifiedClaims */ = {
+			isa = PBXGroup;
+			children = (
+				F2FD247A157D569B00E5FF25 /* CarePassDICClientTests.h */,
+				F2FD247B157D569B00E5FF25 /* CarePassDICClientTests.m */,
+			);
+			name = DeidentifiedClaims;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -910,6 +1306,57 @@
 				F290044715798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.h in Headers */,
 				F290044C15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.h in Headers */,
 				F290045015798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.h in Headers */,
+				F2FD2457157D47D900E5FF25 /* CarePassDICClient.h in Headers */,
+				F2FD245B157D482100E5FF25 /* DICRequest.h in Headers */,
+				F2FD245F157D482F00E5FF25 /* DICResponse.h in Headers */,
+				F2FD2463157D489600E5FF25 /* DICSearchRequest.h in Headers */,
+				F2FD2467157D4CDF00E5FF25 /* DICSearchRequestMarshaller.h in Headers */,
+				F2FD246B157D4CF000E5FF25 /* DICSearchResponse.h in Headers */,
+				F2FD246F157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.h in Headers */,
+				F2FD2473157D4D1700E5FF25 /* DICSearchResult.h in Headers */,
+				F2FD2477157D522A00E5FF25 /* DICResult.h in Headers */,
+				F2192EC51594EDCE00CE3B19 /* CarePassSyncClient.h in Headers */,
+				F2192EC71594EDCE00CE3B19 /* CPSyncRequest.h in Headers */,
+				F2192EC91594EDCE00CE3B19 /* CPSyncResponse.h in Headers */,
+				F2192ECD1594F98500CE3B19 /* CPSyncIdentityResponse.h in Headers */,
+				F2192ED11594F99800CE3B19 /* CPSyncIdentityRequest.h in Headers */,
+				F2192ED51594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.h in Headers */,
+				F2192ED91594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.h in Headers */,
+				F2192EDD1594FBF300CE3B19 /* CPSyncIdentityResult.h in Headers */,
+				F2B0448015A33C3500B1ECC9 /* CPSyncBiographyResponse.h in Headers */,
+				F2B0448415A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.h in Headers */,
+				F2B0448815A33CBC00B1ECC9 /* CPSyncBiographyResult.h in Headers */,
+				F2B0448C15A33E3900B1ECC9 /* CPSyncBioPhoneResult.h in Headers */,
+				F2B0449015A33E4A00B1ECC9 /* CPSyncBioEmailResult.h in Headers */,
+				F2B0449415A33E5C00B1ECC9 /* CPSyncBioAddressResult.h in Headers */,
+				F230A54115A6019000F5FF59 /* CPSyncBiographyRequest.h in Headers */,
+				F230A54615A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.h in Headers */,
+				F230A54C15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.h in Headers */,
+				F230A55015A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.h in Headers */,
+				F230A55415A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.h in Headers */,
+				F230A55815A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.h in Headers */,
+				F230A55C15A60E0B00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.h in Headers */,
+				F230A56015A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.h in Headers */,
+				F230A56415A60FA800F5FF59 /* CPSyncInsLookupPlanResult.h in Headers */,
+				F2246B4815A619C4003B7479 /* CPSyncInsurancePlanResult.h in Headers */,
+				F2246B4D15A61AD9003B7479 /* CPSyncInsurancePlanRequest.h in Headers */,
+				F2246B5115A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.h in Headers */,
+				F2246B5515A61AF2003B7479 /* CPSyncInsurancePlanResponse.h in Headers */,
+				F2246B5915A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.h in Headers */,
+				F22CD51315A8937B007762DB /* CPSyncFitActivitiesRequest.h in Headers */,
+				F22CD51515A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.h in Headers */,
+				F22CD51715A8937B007762DB /* CPSyncFitActivitiesResponse.h in Headers */,
+				F22CD51915A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.h in Headers */,
+				F22CD51B15A8937B007762DB /* CPSyncFitActivitiesResult.h in Headers */,
+				F22CD51D15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.h in Headers */,
+				F22CD51F15A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.h in Headers */,
+				F22CD52115A8937B007762DB /* CPSyncFitLookupActivitiesResponse.h in Headers */,
+				F22CD52315A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.h in Headers */,
+				F22CD52F15A8BDA6007762DB /* CPSyncLifestyleRequest.h in Headers */,
+				F22CD53115A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.h in Headers */,
+				F22CD53315A8BDA6007762DB /* CPSyncLifestyleResponse.h in Headers */,
+				F22CD53515A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.h in Headers */,
+				F22CD53715A8BDA6007762DB /* CPSyncLifestyleResult.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1564,57 @@
 				F290044815798B9400F545DF /* HHSFDADrugsAlternativesResponseUnmarshaller.m in Sources */,
 				F290044D15798BA600F545DF /* HHSFDADrugsDocumentsResponseUnmarshaller.m in Sources */,
 				F290045115798BC700F545DF /* HHSFDADrugsResourcesResponseUnmarshaller.m in Sources */,
+				F2FD2458157D47D900E5FF25 /* CarePassDICClient.m in Sources */,
+				F2FD245C157D482100E5FF25 /* DICRequest.m in Sources */,
+				F2FD2460157D482F00E5FF25 /* DICResponse.m in Sources */,
+				F2FD2464157D489600E5FF25 /* DICSearchRequest.m in Sources */,
+				F2FD2468157D4CDF00E5FF25 /* DICSearchRequestMarshaller.m in Sources */,
+				F2FD246C157D4CF000E5FF25 /* DICSearchResponse.m in Sources */,
+				F2FD2470157D4CFD00E5FF25 /* DICSearchResponseUnmarshaller.m in Sources */,
+				F2FD2474157D4D1700E5FF25 /* DICSearchResult.m in Sources */,
+				F2FD2478157D522A00E5FF25 /* DICResult.m in Sources */,
+				F2192EC61594EDCE00CE3B19 /* CarePassSyncClient.m in Sources */,
+				F2192EC81594EDCE00CE3B19 /* CPSyncRequest.m in Sources */,
+				F2192ECA1594EDCE00CE3B19 /* CPSyncResponse.m in Sources */,
+				F2192ECE1594F98500CE3B19 /* CPSyncIdentityResponse.m in Sources */,
+				F2192ED21594F99800CE3B19 /* CPSyncIdentityRequest.m in Sources */,
+				F2192ED61594FAE100CE3B19 /* CPSyncIdentityRequestMarshaller.m in Sources */,
+				F2192EDA1594FAFB00CE3B19 /* CPSyncIdentityResponseUnmarshaller.m in Sources */,
+				F2192EDE1594FBF300CE3B19 /* CPSyncIdentityResult.m in Sources */,
+				F2B0448115A33C3500B1ECC9 /* CPSyncBiographyResponse.m in Sources */,
+				F2B0448515A33C4800B1ECC9 /* CPSyncBiographyResponseUnmarshaller.m in Sources */,
+				F2B0448915A33CBC00B1ECC9 /* CPSyncBiographyResult.m in Sources */,
+				F2B0448D15A33E3900B1ECC9 /* CPSyncBioPhoneResult.m in Sources */,
+				F2B0449115A33E4A00B1ECC9 /* CPSyncBioEmailResult.m in Sources */,
+				F2B0449515A33E5C00B1ECC9 /* CPSyncBioAddressResult.m in Sources */,
+				F230A54215A6019000F5FF59 /* CPSyncBiographyRequest.m in Sources */,
+				F230A54715A6039700F5FF59 /* CPSyncBiographyRequestMarshaller.m in Sources */,
+				F230A54D15A60BCA00F5FF59 /* CPSyncInsuranceLookupRequest.m in Sources */,
+				F230A55115A60C0D00F5FF59 /* CPSyncInsuranceLookupRequestMarshaller.m in Sources */,
+				F230A55515A60DE300F5FF59 /* CPSyncInsLookupCarrierResponse.m in Sources */,
+				F230A55915A60DF700F5FF59 /* CPSyncInsLookupPlanResponse.m in Sources */,
+				F230A55D15A60E0B00F5FF59 /* CPSyncInsLookupCarrierResponseUnmarshaller.m in Sources */,
+				F230A56115A60E1F00F5FF59 /* CPSyncInsLookupPlanResponseUnmarshaller.m in Sources */,
+				F230A56515A60FA800F5FF59 /* CPSyncInsLookupPlanResult.m in Sources */,
+				F2246B4915A619C4003B7479 /* CPSyncInsurancePlanResult.m in Sources */,
+				F2246B4E15A61AD9003B7479 /* CPSyncInsurancePlanRequest.m in Sources */,
+				F2246B5215A61AE6003B7479 /* CPSyncInsurancePlanRequestMarshaller.m in Sources */,
+				F2246B5615A61AF2003B7479 /* CPSyncInsurancePlanResponse.m in Sources */,
+				F2246B5A15A61B00003B7479 /* CPSyncInsurancePlanResponseUnmarshaller.m in Sources */,
+				F22CD51415A8937B007762DB /* CPSyncFitActivitiesRequest.m in Sources */,
+				F22CD51615A8937B007762DB /* CPSyncFitActivitiesRequestMarshaller.m in Sources */,
+				F22CD51815A8937B007762DB /* CPSyncFitActivitiesResponse.m in Sources */,
+				F22CD51A15A8937B007762DB /* CPSyncFitActivitiesResponseUnmarshaller.m in Sources */,
+				F22CD51C15A8937B007762DB /* CPSyncFitActivitiesResult.m in Sources */,
+				F22CD51E15A8937B007762DB /* CPSyncFitLookupActivitiesRequest.m in Sources */,
+				F22CD52015A8937B007762DB /* CPSyncFitLookupActivitiesRequestMarshaller.m in Sources */,
+				F22CD52215A8937B007762DB /* CPSyncFitLookupActivitiesResponse.m in Sources */,
+				F22CD52415A8937B007762DB /* CPSyncFitLookupActivitiesResponseUnmarshaller.m in Sources */,
+				F22CD53015A8BDA6007762DB /* CPSyncLifestyleRequest.m in Sources */,
+				F22CD53215A8BDA6007762DB /* CPSyncLifestyleRequestMarshaller.m in Sources */,
+				F22CD53415A8BDA6007762DB /* CPSyncLifestyleResponse.m in Sources */,
+				F22CD53615A8BDA6007762DB /* CPSyncLifestyleResponseUnmarshaller.m in Sources */,
+				F22CD53815A8BDA6007762DB /* CPSyncLifestyleResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1128,6 +1626,8 @@
 				F270F34A156FD2BE008E8AEC /* CarePassHHSClientTests.m in Sources */,
 				F22463D9157919A8009323FE /* CarePassRRXClientTests.m in Sources */,
 				F224641115793A78009323FE /* CarePassECCClientTests.m in Sources */,
+				F2FD247E157D58A500E5FF25 /* CarePassDICClientTests.m in Sources */,
+				F2B0447915A2476900B1ECC9 /* CarePassSyncClientTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,20 +21,44 @@
     HHSFDARecallsSearchResponse *results = [[[HHSFDARecallsSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        
-        // pull out the values
-        for (id recall in jsonObject) {
-            HHSFDARecallsSearchResult *recallResult = [[HHSFDARecallsSearchResult alloc] init];
-            recallResult.date = [recall objectForKey:@"date"];
-            recallResult.reason = [recall objectForKey:@"reason"];
-            recallResult.company = [recall objectForKey:@"company"];
-            recallResult.brandName = [recall objectForKey:@"brandName"];
-            recallResult.productDescription = [recall objectForKey:@"productDescription"];
-            recallResult.companyReleaseLink = [recall objectForKey:@"companyReleaseLink"];
-            recallResult.photosLink = [recall objectForKey:@"photosLink"];
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
             
-            [[results searchResults] addObject:recallResult];        
-            [recallResult release];
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no recalls for this drug - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS FDA REcall data: %@ - %@", error, message];
+                    [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+                }
+            } 
+        } else {        // loop through the list values
+            
+            // pull out the values
+            for (id recall in jsonObject) {
+                HHSFDARecallsSearchResult *recallResult = [[HHSFDARecallsSearchResult alloc] init];
+                recallResult.date = [recall objectForKey:@"date"];
+                recallResult.reason = [recall objectForKey:@"reason"];
+                recallResult.company = [recall objectForKey:@"company"];
+                recallResult.brandName = [recall objectForKey:@"brandName"];
+                recallResult.productDescription = [recall objectForKey:@"productDescription"];
+                recallResult.companyReleaseLink = [recall objectForKey:@"companyReleaseLink"];
+                recallResult.photosLink = [recall objectForKey:@"photosLink"];
+                
+                [[results searchResults] addObject:recallResult];        
+                [recallResult release];
+            }
         }
     }
     

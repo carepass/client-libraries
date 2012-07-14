@@ -19,37 +19,44 @@
 
 @synthesize httpMethod;
 @synthesize parameters;
+@synthesize headers;
 @synthesize endpoint;
 @synthesize userAgent;
 @synthesize credentials;
 @synthesize urlConnection;
 @synthesize requestTag;
-@synthesize serviceName;
 @synthesize hostName;
+@synthesize jsonString;
 
 
--(void)sign
-{
-    [self setParameterValue:credentials.apiKey forKey:@"apikey"];
-//    [self setParameterValue:@"2"                                        forKey:@"SignatureVersion"];
-//    [self setParameterValue:[NSDate ISO8061FormattedCurrentTimestamp]   forKey:@"Timestamp"];
-//    [self setParameterValue:@"HmacSHA256"                               forKey:@"SignatureMethod"];
+-(void)sign {
     
-//    NSData   *dataToSign = [[CarePassAuthUtils getV2StringToSign:[NSURL URLWithString:self.endpoint] request:self] dataUsingEncoding:NSUTF8StringEncoding];
-//    NSString *signature  = [CarePassAuthUtils HMACSign:dataToSign withKey:credentials.secretKey usingAlgorithm:kCCHmacAlgSHA256];
-//    
-//    [self setParameterValue:signature forKey:@"Signature"];
-}
-
--(NSMutableURLRequest *)configureURLRequest
-{
-    if (self.credentials != nil && self.credentials.securityToken != nil) {
-        [self setParameterValue:self.credentials.securityToken forKey:@"SecurityToken"];
+    if (credentials.apiKey != nil) {
+        [self setParameterValue:credentials.apiKey forKey:@"apikey"];
     }
     
-    [self.urlRequest setHTTPMethod:@"GET"];
-//    [self.urlRequest setHTTPBody:[[self queryString] dataUsingEncoding:NSUTF8StringEncoding]];
-    [self.urlRequest setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    if (credentials.clientId != nil) {
+        if (credentials.accessToken == nil) {
+            // todo: throw an error, since the oauth stuff should happen before now to establish the accessToken
+            @throw [CarePassClientException exceptionWithMessage : @"Access token should be assigned before requests are made."];
+        } else {
+            // sign the request properly
+            // Add the appropriate headers
+            NSString *headerValue = [NSString stringWithFormat:@"Bearer %@", credentials.accessToken];
+            [self setHeaderValue:headerValue forKey:@"Authorization"];
+        }
+    }
+}
+
+-(NSMutableURLRequest *)configureURLRequest {
+    
+    if (httpMethod == nil) {
+        httpMethod = @"GET";
+    }
+    [self.urlRequest setHTTPMethod:httpMethod];
+    [self setHeaderValue:self.userAgent forKey:@"User-Agent"];
+    //[self.urlRequest setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    [self assignHeaders];
     
     NSString * uri = [NSString stringWithFormat:@"%@?%@", self.endpoint, [self queryString]];
     NSURL *url = [NSURL URLWithString:uri];
@@ -59,8 +66,20 @@
     return self.urlRequest;
 }
 
--(NSString *)queryString
-{
+-(void)assignHeaders {
+    
+    NSArray         *keys       = [[self headers] allKeys];
+    NSArray         *sortedKeys = [keys sortedArrayUsingSelector:@selector(compare:)];
+    for (int index = 0; index < [sortedKeys count]; index++) {
+        NSString *key   = [sortedKeys objectAtIndex:index];
+        NSString *value = (NSString *)[[self headers] valueForKey:key];
+        
+        [self.urlRequest setValue:value forHTTPHeaderField:key];
+    }
+}
+
+-(NSString *)queryString {
+    
     NSMutableString *buffer = [[NSMutableString alloc] initWithCapacity:256];
     
     NSArray         *keys       = [[self parameters] allKeys];
@@ -81,15 +100,15 @@
     return [buffer autorelease];
 }
 
--(void)setHostName:(NSString *)theHostName 
-{
+-(void)setHostName:(NSString *)theHostName  {
+    
     [hostName release];
     hostName = theHostName;
     [hostName retain];
 }
 
--(NSString *)hostName
-{
+-(NSString *)hostName {
+    
     // hostName was explicitly set
     if (hostName != nil) {
         return hostName;
@@ -100,25 +119,8 @@
     return [self.endpoint substringFromIndex:(startOfHost.location + 3)];
 }
 
--(void)setServiceName:(NSString *)theServiceName
-{
-    [serviceName release];
-    serviceName = theServiceName;
-    [serviceName retain];
-}
-
-//TODO: this needs to be fleshed out to handle all cases
--(NSString *)serviceName
-{
-    // serviceName was explicitly set
-    if (serviceName != nil) {
-        return serviceName;
-    }
-    return nil;
-}
-
--(CarePassURLRequest *)urlRequest
-{
+-(CarePassURLRequest *)urlRequest {
+    
     if (nil == urlRequest) {
         urlRequest = [[CarePassURLRequest alloc] init];
     }
@@ -126,8 +128,8 @@
     return urlRequest;
 }
 
--(void)setUrlRequest:(CarePassURLRequest *)request
-{
+-(void)setUrlRequest:(CarePassURLRequest *)request {
+    
     if (nil != urlRequest)
     {
         [urlRequest release];
@@ -136,41 +138,47 @@
     urlRequest = [request retain];
 }
 
--(void)setParameterValue:(NSString *)theValue forKey:(NSString *)theKey
-{
+-(void)setParameterValue:(NSString *)theValue forKey:(NSString *)theKey {
+    
     if (nil == parameters) {
         parameters = [[NSMutableDictionary alloc] initWithCapacity:1];
     }
     [parameters setValue:theValue forKey:theKey];
 }
 
--(NSURL *)url
-{
+-(void)setHeaderValue:(NSString *)theValue forKey:(NSString *)theKey {
+    
+    if (nil == headers) {
+        headers = [[NSMutableDictionary alloc] initWithCapacity:1];
+    }
+    [headers setValue:theValue forKey:theKey];
+}
+
+-(NSURL *)url {
     return nil;
 }
 
--(void)setDelegate:(id<CarePassServiceRequestDelegate> )aDelegate
-{
+-(void)setDelegate:(id<CarePassServiceRequestDelegate> )aDelegate {
     delegate = aDelegate;
 }
 
--(id<CarePassServiceRequestDelegate> )delegate
-{
+-(id<CarePassServiceRequestDelegate> )delegate {
     return delegate;
 }
 
--(void)dealloc
-{
+-(void)dealloc {
+    
     delegate = nil;
     [credentials release];
     [endpoint release];
     [urlRequest release];
     [parameters release];
+    [headers release];
     [userAgent release];
     [urlConnection release];
     [requestTag release];
-    [serviceName release];
     [hostName release];
+    [jsonString release];
     
     [super dealloc];
 }

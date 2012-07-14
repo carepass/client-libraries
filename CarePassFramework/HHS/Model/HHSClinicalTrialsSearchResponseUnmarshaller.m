@@ -21,26 +21,41 @@
     HHSClinicalTrialsSearchResponse *results = [[[HHSClinicalTrialsSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        HHSClinicalTrialsSearchResult *searchResult = results.searchResult;
-        searchResult.page = [jsonObject objectForKey:@"page"];
-        searchResult.totalResults = [jsonObject objectForKey:@"totalResults"];
-        searchResult.totalPages = [jsonObject objectForKey:@"totalPages"];
-        
-        // now, to pull out the individual trial results
-        NSMutableDictionary *trials = [jsonObject objectForKey:@"clinicalTrials"];
-        for (id trial in trials) {
-            HHSClinicalTrialsResult *trialResult = [[HHSClinicalTrialsResult alloc] init];
-            trialResult.order = [trial objectForKey:@"order"];
-            trialResult.score = [trial objectForKey:@"score"];
-            trialResult.nctid = [trial objectForKey:@"nctid"];
-            trialResult.url = [trial objectForKey:@"url"];
-            trialResult.title = [trial objectForKey:@"title"];
-            trialResult.statusOpen = [trial objectForKey:@"statusOpen"];
-            trialResult.conditionSummary = [trial objectForKey:@"conditionSummary"];
-            trialResult.lastChanged = [trial objectForKey:@"lastChanged"];
+        NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+        NSString *error = [jsonObject objectForKey:@"error"];
+        NSString *message = [jsonObject objectForKey:@"message"];
+        if (errorCode != nil || error != nil || message != nil) {
+            if ([errorCode isEqualToString:@"000"]) {
+                // no activities for this user - return empty response
+                return results;
+            } else {
+                // error retrieving data - kick up an exception
+                NSString *errorMessage = [NSString stringWithFormat:@"error retrieving lifestyle data: %@%@", error, message];
+                [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+            }
+        } else {
             
-            [[searchResult trials] addObject:trialResult];
-            [trialResult release];
+            HHSClinicalTrialsSearchResult *searchResult = results.searchResult;
+            searchResult.page = [jsonObject objectForKey:@"page"];
+            searchResult.totalResults = [jsonObject objectForKey:@"totalResults"];
+            searchResult.totalPages = [jsonObject objectForKey:@"totalPages"];
+            
+            // now, to pull out the individual trial results
+            NSMutableDictionary *trials = [jsonObject objectForKey:@"clinicalTrials"];
+            for (id trial in trials) {
+                HHSClinicalTrialsResult *trialResult = [[HHSClinicalTrialsResult alloc] init];
+                trialResult.order = [trial objectForKey:@"order"];
+                trialResult.score = [trial objectForKey:@"score"];
+                trialResult.nctid = [trial objectForKey:@"nctid"];
+                trialResult.url = [trial objectForKey:@"url"];
+                trialResult.title = [trial objectForKey:@"title"];
+                trialResult.statusOpen = [trial objectForKey:@"statusOpen"];
+                trialResult.conditionSummary = [trial objectForKey:@"conditionSummary"];
+                trialResult.lastChanged = [trial objectForKey:@"lastChanged"];
+                
+                [[searchResult trials] addObject:trialResult];
+                [trialResult release];
+            }
         }
     }
     

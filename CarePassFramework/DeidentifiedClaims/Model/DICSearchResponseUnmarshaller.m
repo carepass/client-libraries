@@ -22,30 +22,44 @@
     DICSearchResponse *results = [[[DICSearchResponse alloc] init] autorelease];
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        DICSearchResult *searchResult = results.searchResult;
-        searchResult.page = [jsonObject objectForKey:@"page"];
-        searchResult.totalResults = [jsonObject objectForKey:@"totalResults"];
-        searchResult.totalPages = [jsonObject objectForKey:@"totalPages"];
-        
-        // now, to pull out the individual claims results
-        NSMutableDictionary *claims = [jsonObject objectForKey:@"claims"];
-        for (id claim in claims) {
-            DICResult *claimResult = [[DICResult alloc] init];
-            claimResult.ndc = [claim objectForKey:@"ndc"];
-            claimResult.ndc11Digit = [claim objectForKey:@"ndc11Digit"];
-            claimResult.gender = [claim objectForKey:@"gender"];
-            claimResult.birthYear = [claim objectForKey:@"birthYear"];
-            claimResult.prescSpecialty = [claim objectForKey:@"prescSpecialty"];
-            claimResult.threeDigitPhmZip = [claim objectForKey:@"threeDigitPhmZip"];
-            claimResult.dispenseQuarter = [claim objectForKey:@"dispenseQuarter"];
-            claimResult.generic = [claim objectForKey:@"generic"];
-            claimResult.refillCount = [claim objectForKey:@"newRefillCount"];
-            claimResult.untsDispensedQuantity = [claim objectForKey:@"untsDispensedQuantity"];
-            claimResult.daysSupplyCount = [claim objectForKey:@"daysSupplyCount"];
-            claimResult.threeDigitSubsZip = [claim objectForKey:@"threeDigitSubsZip"];
+        NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+        NSString *error = [jsonObject objectForKey:@"error"];
+        NSString *message = [jsonObject objectForKey:@"message"];
+        if (errorCode != nil || error != nil || message != nil) {
+            if ([errorCode isEqualToString:@"000"]) {
+                // no activities for this user - return empty response
+                return results;
+            } else {
+                // error retrieving data - kick up an exception
+                NSString *errorMessage = [NSString stringWithFormat:@"error retrieving lifestyle data: %@%@", error, message];
+                [results setException:[CarePassServiceException exceptionWithMessage:errorMessage]];
+            }
+        } else {
+            DICSearchResult *searchResult = results.searchResult;
+            searchResult.page = [jsonObject objectForKey:@"page"];
+            searchResult.totalResults = [jsonObject objectForKey:@"totalResults"];
+            searchResult.totalPages = [jsonObject objectForKey:@"totalPages"];
             
-            [[searchResult claims] addObject:claimResult];
-            [claimResult release];
+            // now, to pull out the individual claims results
+            NSMutableDictionary *claims = [jsonObject objectForKey:@"claims"];
+            for (id claim in claims) {
+                DICResult *claimResult = [[DICResult alloc] init];
+                claimResult.ndc = [claim objectForKey:@"ndc"];
+                claimResult.ndc11Digit = [claim objectForKey:@"ndc11Digit"];
+                claimResult.gender = [claim objectForKey:@"gender"];
+                claimResult.birthYear = [claim objectForKey:@"birthYear"];
+                claimResult.prescSpecialty = [claim objectForKey:@"prescSpecialty"];
+                claimResult.threeDigitPhmZip = [claim objectForKey:@"threeDigitPhmZip"];
+                claimResult.dispenseQuarter = [claim objectForKey:@"dispenseQuarter"];
+                claimResult.generic = [claim objectForKey:@"generic"];
+                claimResult.refillCount = [claim objectForKey:@"newRefillCount"];
+                claimResult.untsDispensedQuantity = [claim objectForKey:@"untsDispensedQuantity"];
+                claimResult.daysSupplyCount = [claim objectForKey:@"daysSupplyCount"];
+                claimResult.threeDigitSubsZip = [claim objectForKey:@"threeDigitSubsZip"];
+                
+                [[searchResult claims] addObject:claimResult];
+                [claimResult release];
+            }
         }
     }
     

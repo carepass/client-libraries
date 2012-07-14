@@ -21,14 +21,37 @@
     HHSResponse *results;
     
     if (jsonObject != nil && [jsonObject count] > 0) {
-        
-        // alternatives!
-        HHSFDADrugsAlternativesResponse *alternatives = [[[HHSFDADrugsAlternativesResponse alloc] init] autorelease];
-        for (id result in jsonObject) {
-            alternatives.alternatives = [HHSFDADrugsResponseUnmarshaller createAlternativesResult:result];
-            results = (HHSResponse *)alternatives;
+        // if we return anything other than a JKArray, make sure it's not just a message of some sort
+        if (![jsonObject isKindOfClass:NSClassFromString(@"JKArray")]) {
+            
+            NSString *errorCode = [jsonObject objectForKey:@"errorCode"];
+            NSString *message = [jsonObject objectForKey:@"message"];
+            id error = [jsonObject objectForKey:@"error"];
+            // error can be a string or another array
+            if ([error isKindOfClass:NSClassFromString(@"JKArray")]) {
+                errorCode = [error objectForKey:@"code"];
+                message = [error objectForKey:@"message"];
+            } 
+            
+            if (errorCode != nil || error != nil || message != nil) {
+                if ([errorCode isEqualToString:@"000"]) {
+                    // no activities for this user - return empty response
+                    return results;
+                } else {
+                    // error retrieving data - kick up an exception
+                    NSString *errorMessage = [NSString stringWithFormat:@"error retrieving HHS FDA drug alternatives data: %@ - %@", error, message];
+                    @throw [CarePassServiceException exceptionWithMessage:errorMessage];
+                }
+            } 
+        } else {        // loop through the list values
+            
+            // alternatives!
+            HHSFDADrugsAlternativesResponse *alternatives = [[[HHSFDADrugsAlternativesResponse alloc] init] autorelease];
+            for (id result in jsonObject) {
+                alternatives.alternatives = [HHSFDADrugsResponseUnmarshaller createAlternativesResult:result];
+                results = (HHSResponse *)alternatives;
+            }
         }
-        
     }
     
     return results;
