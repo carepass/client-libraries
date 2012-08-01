@@ -7,7 +7,7 @@ There are two main libraries, CarepassSync for interaction around the current us
 
 About CarePass APIs
 ===================
-Read all about the available API's at http://developer.carepass.com
+Read all about the available API's at https://developer.carepass.com
 
 CarePass Sync Configuration
 ===========================
