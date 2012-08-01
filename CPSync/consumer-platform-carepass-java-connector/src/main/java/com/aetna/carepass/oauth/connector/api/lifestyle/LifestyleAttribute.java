@@ -1,17 +1,19 @@
 package com.aetna.carepass.oauth.connector.api.lifestyle;
 
+
 public class LifestyleAttribute {
 
-	private int id;
+	private long id;
 	private String type;
 	private String name;
 	private String imageUrl;
+	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -38,5 +40,8 @@ public class LifestyleAttribute {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+
+	
+	
 
 }

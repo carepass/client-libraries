@@ -1,6 +1,7 @@
 package com.aetna.carepass.oauth.connector.service;
 
 import org.scribe.builder.ServiceBuilder;
+import org.scribe.exceptions.OAuthException;
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
@@ -35,9 +36,14 @@ public class CarePassOAuthImpl implements CarePassOAuth {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void grantOauthAccess(String responseCode) {
+	public void grantOauthAccess(String responseCode)throws EndpointException {
+		try{
 		Verifier verifier = new Verifier(responseCode);
 		accessToken = getService().getAccessToken(null, verifier);
+		}catch(OAuthException e){
+			throw new EndpointException (e.getMessage());
+		}
+	
 	}
 
 	/**

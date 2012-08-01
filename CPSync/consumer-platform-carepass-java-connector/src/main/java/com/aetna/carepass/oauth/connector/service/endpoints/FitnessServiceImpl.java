@@ -30,6 +30,34 @@ public class FitnessServiceImpl implements FitnessService {
 	/**
 	 * {@inheritDoc}
 	 */
+	public void getFitnessTypes()throws EndpointException{
+		if (!carePassOAuth.isAccessTokenReady()) {
+			throw new EndpointException("There is not a valid access token");
+		}
+		OAuthService service = carePassOAuth.getService();
+		Token accessToken = carePassOAuth.retrieveOauthToken();
+		OAuthRequest oauthRequest = new OAuthRequest(Verb.GET, BASE_URL
+				+ USER_DIR_API + "/fitness/activities/types");
+
+		oauthRequest.addHeader("Accept", "application/json");
+		oauthRequest.addHeader("Content-Type",
+				"application/json; charset=utf-8");
+		service.signRequest(accessToken, oauthRequest);
+		Response oauthResponse = oauthRequest.send();
+
+		if (oauthResponse.getCode() == HttpURLConnection.HTTP_OK) {
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(oauthResponse.getBody());
+
+			Gson gson = new Gson();
+			//return gson.fromJson(element, Fitness.class);
+		} else {
+			throw new EndpointException(oauthResponse.getBody());
+		}
+	}
+	/**
+	 * {@inheritDoc}
+	 */
 	public Fitness findFitnessById(int id) throws EndpointException {
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
@@ -144,7 +172,7 @@ public class FitnessServiceImpl implements FitnessService {
 			return fitnessList;
 		} else {
 			throw new EndpointException("Error code #"
-					+ oauthResponse.getCode() + " has occurred");
+					+ oauthResponse.getCode() + " has occurred\r\n"+oauthResponse.getBody());
 		}
 	}
 

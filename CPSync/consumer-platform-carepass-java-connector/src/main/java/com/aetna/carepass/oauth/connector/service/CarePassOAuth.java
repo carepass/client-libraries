@@ -8,12 +8,14 @@ public interface CarePassOAuth {
 	/**
 	 * Generates the OAuth hand shake for Care Pass
 	 * @param responseCode the authorization code
+	 * @throws EndpointException
 	 */
-	public void grantOauthAccess(String responseCode);
+	public void grantOauthAccess(String responseCode) throws EndpointException;;
 	
 	/**
 	 * Build the Scribe OAuthService
 	 * @return the CarePass OAuthService
+	 * 
 	 */
 	public OAuthService getService();
 	
