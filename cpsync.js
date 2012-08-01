@@ -437,7 +437,7 @@ var CPSyncObject = function() {
 				 */
 				getActivityTypes : function(options) {
 					
-					var theRequestUrl = baseURL + userDirApiUrl + '/users/currentUser/fitness/activities/types';
+					var theRequestUrl = baseURL + userDirApiUrl + '/fitness/activities/types';
 					
 					$.ajax({
 						type : "GET",
