@@ -5,6 +5,8 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.aetna.carepass.hhs.connector.RestConnectorService;
 import com.aetna.carepass.hhs.connector.RestConnectorServiceImpl;
 import com.aetna.carepass.hhs.ecc.types.Categories;
@@ -15,6 +17,7 @@ import com.aetna.carepass.hhs.util.InvalidCredentialException;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 
+@Service
 public class EccApiServiceImpl implements EccApiService {
 
 	private final String ECC_URL_PREFIX = "https://api.carepass.com/ecc-directory-api/";

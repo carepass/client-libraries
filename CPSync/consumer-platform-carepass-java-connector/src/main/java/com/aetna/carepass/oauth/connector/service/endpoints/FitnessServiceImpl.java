@@ -10,6 +10,7 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aetna.carepass.oauth.connector.api.fitness.Fitness;
@@ -20,6 +21,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+@Service
 public class FitnessServiceImpl implements FitnessService {
 
 	private static final String BASE_URL = "https://api.carepass.com";
@@ -30,7 +32,7 @@ public class FitnessServiceImpl implements FitnessService {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void getFitnessTypes()throws EndpointException{
+	public String getFitnessTypes()throws EndpointException{
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
 		}
@@ -48,12 +50,13 @@ public class FitnessServiceImpl implements FitnessService {
 		if (oauthResponse.getCode() == HttpURLConnection.HTTP_OK) {
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(oauthResponse.getBody());
+			if(element instanceof JsonArray){
+				return ((JsonArray)element).toString();
+			}
 
-			Gson gson = new Gson();
-			//return gson.fromJson(element, Fitness.class);
-		} else {
+		} 
 			throw new EndpointException(oauthResponse.getBody());
-		}
+
 	}
 	/**
 	 * {@inheritDoc}
