@@ -10,6 +10,7 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aetna.carepass.oauth.connector.api.appointment.Appointment;
@@ -20,6 +21,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 	private static final String BASE_URL = "https://api.carepass.com";
 	private static final String USER_DIR_API = "/user-directory-api";
@@ -50,7 +52,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 					.append("&");
 		}
 		if (npiProviderId != null && !npiProviderId.isEmpty()) {
-			sb.append("npiProviderId=").append(npiProviderId).append("&");
+			sb.append("ProviderIdValue=").append(npiProviderId).append("&");
 		}
 		if (sb.toString().isEmpty()) {
 			throw new EndpointException("No search parameters given");
@@ -116,7 +118,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 		if (!carePassOAuth.isAccessTokenReady()) {
 			throw new EndpointException("There is not a valid access token");
 		}
-		OAuthService service = carePassOAuth.getService();
+
 		Token accessToken = carePassOAuth.retrieveOauthToken();
 		OAuthRequest oauthRequest = new OAuthRequest(verb, BASE_URL
 				+ USER_DIR_API + uri);
@@ -124,7 +126,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 		oauthRequest.addHeader("Accept", "application/json");
 		oauthRequest.addHeader("Content-Type",
 				"application/json; charset=utf-8");
-		service.signRequest(accessToken, oauthRequest);
+		oauthRequest.addHeader("Authorization","Bearer "+ accessToken.getToken());
+
 		return parseResponseGet(oauthRequest.send());
 	}
 

@@ -5,9 +5,11 @@ import org.scribe.exceptions.OAuthException;
 import org.scribe.model.Token;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
+import org.springframework.stereotype.Service;
 
 import com.aetna.carepass.oauth.connector.scribe.api.CarePassOAuthData;
 
+@Service
 public class CarePassOAuthImpl implements CarePassOAuth {
 
 	private final Token EMPTY_TOKEN = null;

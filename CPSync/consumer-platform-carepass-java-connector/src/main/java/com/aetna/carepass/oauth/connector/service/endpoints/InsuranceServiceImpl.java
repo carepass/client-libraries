@@ -10,6 +10,7 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.aetna.carepass.oauth.connector.api.insurance.Insurance;
 import com.aetna.carepass.oauth.connector.service.CarePassOAuth;
@@ -19,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+@Service
 public class InsuranceServiceImpl implements InsuranceService {
 	private static final String BASE_URL = "https://api.carepass.com";
 	private static final String USER_DIR_API = "/user-directory-api";
