@@ -13,7 +13,7 @@ public interface FitnessService {
 	 * 
 	 * @throws EndpointException
 	 */
-	public void getFitnessTypes() throws EndpointException;
+	public String getFitnessTypes() throws EndpointException;
 
 	/**
 	 * Finds a fitness activity by the given id
