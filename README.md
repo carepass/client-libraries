@@ -16,7 +16,7 @@ we should be interested in :
 
 ### Retrieving Grant Code
 
-```javascript
+```html
     <script type="text/javascript" charset="utf-8">
       $(function () {
 
