@@ -5,8 +5,7 @@ The goal of these libraries is to remove the need for a CarePass developer to ma
 
 There are two main libraries, CarepassSync for interaction around the current user and HTS which contains interactions for drugs, claims, clinical trials.
 
-Installation
-============
+### Installation
 
 There is nothing to install. This library is simply a wrapper around existing REST services offered up by CarePass.
 
@@ -29,14 +28,14 @@ we should be interested in :
           , 'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
           };
 
-        var authHost     = "https://"     + setting.host;
-        var endUserAuthorizationEndpoint = authHost + "/authorize";
+        var endUserAuthorizationEndpoint = setting.host + "/authorize";
         
-        var authUrl = endUserAuthorizationEndpoint + 
-                      "?response_type=code" +
-                      "&client_id=" + setting.clientId + 
-                      "&scope="     + setting.scope +
-                      "&redirect_uri=" + setting.redirectUrl;
+        var authUrl = endUserAuthorizationEndpoint + $.param({		
+                      	response_type : code,
+                      	client_id : setting.clientId, 
+                      	scope : setting.scope,
+                      	redirect_uri : setting.redirectUrl
+                      });
 
           $("a.connect").attr("href", authUrl);
       });
@@ -50,7 +49,7 @@ we should be interested in :
 The application will redirect to Carepass for the user to enter their username/password. Once they are successfully 
 authenticated the user is redirected back to their application based on the redirect url setup with a grant code.
   	  	  	
-	`http://{YOUR_APPLICATION_CAREPASS_REDIRECT_URL}?code={ACCESS_CODE}`
+`http://{YOUR_APPLICATION_CAREPASS_REDIRECT_URL}?code={ACCESS_CODE}`
 	
 Using the received grant code, call is made to /token endpoint with additional parameters as seen below
 
@@ -62,14 +61,17 @@ Using the received grant code, call is made to /token endpoint with additional p
         $.ajax({
 			type : "POST",
 			url : endUserAuthorizationEndpoint,
-			data : "response_type=code" +
-            "&client_id="    + setting.clientId +
-            "&grant_type=authorization_code" + 
-            "&code=" + {ACCESS_CODE_FROM_SUCCESS_AUTH} +
-            "&client_secret=" + setting.client_secret +
-            "&redirect_uri=YOUR_APPLICATION_CAREPASS_REDIRECT_URL,
+			data : {
+				response_type : 'code',
+				client_id : setting.clientId,
+            	grant_type : 'authorization_code', 
+            	code : ACCESS_CODE_FROM_SUCCESS_AUTH,
+            	client_secret : setting.client_secret,
+            	redirect_uri : YOUR_APPLICATION_CAREPASS_REDIRECT_URL
+            },
 			success : function(data) {
 				//data.access_token;
+				console.log(data);
 			},
 			error : function(data) {
 				//Something went wrong
@@ -80,8 +82,8 @@ Using the received grant code, call is made to /token endpoint with additional p
 	
 The retrieved access_token should be stored locally as it is used in the CPSync calls as seen below in the examples.
 	
-Adding the CarePass JavaScript Client Libraries to Your Project
-=========================================================
+### Adding the CarePass JavaScript Client Libraries to Your Project
+
 To include the libraries in your project a reference to the api.js file must be made.
 
 > <script type="text/javascript" src = "api.js"></script>
@@ -90,8 +92,7 @@ To include the Carepass sync libraries a reference to the cpsync.js file must be
 
 > <script type="text/javascript" src = "cpsync.js"></script>
 
-Key Ideas and Basic Usage
-=========================
+### Key Ideas and Basic Usage
 
 The first step is to make a reference to the object you're interested in CarepassSync (CPSyncObject) or HTS (HTSObject). This is done by declaring a new instance of the object:
  
@@ -114,8 +115,7 @@ The same obtains for the CPSyncObject except the constructor parameter is the ac
 ```javascript
 	var cpSyncObj = new CPSyncObject();
 	var theBioApi = new cpObj.biographyApi('Bearer {token_retrieved_from carepass}');
-	var bioData = theBioApi.getUserIdentity();
-	
+	var bioData = theBioApi.getUserIdentity();	
 	bioData.firstName; 
 ```
 	
