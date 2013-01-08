@@ -17,6 +17,7 @@ we should be interested in :
 
 ### Retrieving Grant Code
 
+```javascript
     <script type="text/javascript" charset="utf-8">
       $(function () {
 
@@ -44,16 +45,18 @@ we should be interested in :
     <body> 
     	<a class="connect" href="">Connect</a> 
   	</body>
+```
   	
 The application will redirect to Carepass for the user to enter their username/password. Once they are successfully 
 authenticated the user is redirected back to their application based on the redirect url setup with a grant code.
   	  	  	
-	http://{YOUR_APPLICATION_CAREPASS_REDIRECT_URL}?code={ACCESS_CODE}
+	`http://{YOUR_APPLICATION_CAREPASS_REDIRECT_URL}?code={ACCESS_CODE}`
 	
 Using the received grant code, call is made to /token endpoint with additional parameters as seen below
 
 ### Exchanging Grant Code for Access Token
-	
+
+```javascript	
         var endUserAuthorizationEndpoint = authHost + "/token";
 
         $.ajax({
@@ -73,6 +76,7 @@ Using the received grant code, call is made to /token endpoint with additional p
 				console.log(data);
 			}
 		});  
+```
 	
 The retrieved access_token should be stored locally as it is used in the CPSync calls as seen below in the examples.
 	
@@ -95,9 +99,11 @@ The first step is to make a reference to the object you're interested in Carepas
 	
 FOr the HTSObject you can get an instance of the API you're interested in, in this case its the clinicalTrialsAPI. The developer API is a requirement for the constructor.
 
+```javascript
 	var theUserApi = 'your_user_api';
 	var clinicalTrialsObject = new htsObj.clinicalTrialsAPI(theUserApi);
 	var trialsData = clinicalTrialsObject.getTrialsByNCTId('myNCTID');
+```
 	
 This retrieves a JSON object which can be accessed using DOT notation
 
@@ -105,11 +111,13 @@ This retrieves a JSON object which can be accessed using DOT notation
 	
 The same obtains for the CPSyncObject except the constructor parameter is the access token for the user
 
+```javascript
 	var cpSyncObj = new CPSyncObject();
 	var theBioApi = new cpObj.biographyApi('Bearer {token_retrieved_from carepass}');
 	var bioData = theBioApi.getUserIdentity();
 	
 	bioData.firstName; 
+```
 	
 There is no requirement to close any connections or any other interaction.
 
