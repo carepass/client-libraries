@@ -56,7 +56,7 @@ Using the received grant code, call is made to /token endpoint with additional p
 ### Exchanging Grant Code for Access Token
 
 ```javascript	
-        var endUserAuthorizationEndpoint = authHost + "/token";
+        var endUserAuthorizationEndpoint = setting.host + "/token";
 
         $.ajax({
 			type : "POST",
