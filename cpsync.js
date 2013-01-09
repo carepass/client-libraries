@@ -324,7 +324,6 @@ var CPSyncObject = (function ($) {
                     });
                 },
 
-
                 /***
                  * Retrieves the Activities data for the current user for the given activity id.
                  * @param activityId
@@ -454,6 +453,7 @@ var CPSyncObject = (function ($) {
                         context: drugsContext
                     });
                 },
+
                 /**
                  * Creates (if one does not exist) or updates in context user's biography
                  * @param dataObject - user Biography object
@@ -484,7 +484,6 @@ var CPSyncObject = (function ($) {
 
             return {
 
-
                 /**
                  * Get all appointments by appointmentId
                  */
@@ -508,7 +507,6 @@ var CPSyncObject = (function ($) {
                  * @param dataObj - user Biography object
                  * @param options
                  */
-
                 updateAppointment: function (dataObj, options) {
 
                     var theUrl = baseURL + userDirApiUrl + '/users/currentUser/appointments';
@@ -547,6 +545,7 @@ var CPSyncObject = (function ($) {
                         context: drugsContext
                     });
                 },
+
                 /**
                  * Create an appointment for the current user
                  * @param npiProviderId
