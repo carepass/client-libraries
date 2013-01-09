@@ -96,13 +96,13 @@ To include the Carepass sync libraries a reference to the cpsync.js file must be
 
 The first step is to make a reference to the object you're interested in CarepassSync (CPSyncObject) or HTS (HTSObject). This is done by declaring a new instance of the object:
  
-	var htsObj = new HTSObject();
+	var htsObj = HTSObject;
 	
 FOr the HTSObject you can get an instance of the API you're interested in, in this case its the clinicalTrialsAPI. The developer API is a requirement for the constructor.
 
 ```javascript
 	var theUserApi = 'your_user_api';
-	var clinicalTrialsObject = new htsObj.clinicalTrialsAPI(theUserApi);
+	var clinicalTrialsObject = htsObj.clinicalTrialsAPI(theUserApi);
 	var trialsData = clinicalTrialsObject.getTrialsByNCTId('myNCTID');
 ```
 	
@@ -113,8 +113,8 @@ This retrieves a JSON object which can be accessed using DOT notation
 The same obtains for the CPSyncObject except the constructor parameter is the access token for the user
 
 ```javascript
-	var cpSyncObj = new CPSyncObject();
-	var theBioApi = new cpObj.biographyApi('Bearer {token_retrieved_from carepass}');
+	var cpSyncObj = CPSyncObject;
+	var theBioApi = cpSyncObj.biographyApi('Bearer {token_retrieved_from carepass}');
 	var bioData = theBioApi.getUserIdentity();	
 	bioData.firstName; 
 ```

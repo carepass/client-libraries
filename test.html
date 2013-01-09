@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="vendor/jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="cpsync.js"></script>
+    <script>
+        /*global CPSyncObject */
+        /*jslint devel: true */
+        var token = "Bearer {token here}";
+        CPSyncObject.biographyApi(token).getUserIdentity({
+            onSuccess: function (data) {
+                "use strict";
+                console.log(data);
+            },
+            onFailure: function (data) {
+                "use strict";
+                console.log(data);
+            }
+
+        });
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

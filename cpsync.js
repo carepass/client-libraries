@@ -528,7 +528,8 @@ var CPSyncObject = (function ($) {
 
                 /**
                  * Create an appointment for the current user
-                 * @param dataObject - user Biography object
+                 * @param dataObj
+                 * @param options
                  */
                 createAppointment: function (dataObj, options) {
 
