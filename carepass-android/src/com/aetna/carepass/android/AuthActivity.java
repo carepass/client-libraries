@@ -1,0 +1,314 @@
+package com.aetna.carepass.android;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.net.http.SslError;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+/**
+ * This activity using the Aetna CarePass OAuth 2 api. If you don't have an
+ * access token, or your access token is out of date, call 
+ * `startActivityForResult` it an `Intent` with 
+ * the EXTRA including the api key your app is using, its shared secret, and 
+ * the redirect URI.
+ * 
+ * When the activity completes, it will return a bundle including the access 
+ * code, if it is set, in the `EXTRA_ACCESS_TOKEN` extra. It will also return 
+ * the scope value in the `EXTRA_SCOPE` parameter, which *may* be different 
+ * from the passed in value, when / if CarePass supports *optional* 
+ * permissions. The expiration time, specified as a `long` in milliseconds, 
+ * is returned in the `EXTRA_EXPIRES_IN` extra. 
+ * 
+ * For mocking and testing, you may pass in a modified {@link CarePassUris}
+ * as the {@link #EXTRA_URIS} so that the requests are sent to the server of
+ * your choice.
+ * 
+ * @author David Mihalcik
+ */
+@SuppressLint("NewApi")
+public class AuthActivity extends Activity {
+
+	public static final String EXTRA_REDIRECT_URI = "EXTRA_REDIRECT_URI";
+	public static final String EXTRA_API_KEY = "EXTRA_API_KEY";
+	public static final String EXTRA_SHARED_SECRET = "EXTRA_SHARED_SECRET";
+	public static final String EXTRA_URIS = "EXTRA_URIS";
+
+	public static final String EXTRA_SCOPE = "EXTRA_SCOPE";
+	
+	public static final String EXTRA_ACCESS_TOKEN = "EXTRA_ACCESS_TOKEN";
+	public static final String EXTRA_EXPIRES_IN = "EXTRA_EXPIRES_IN";
+	public static final String EXTRA_ERROR = "EXTRA_ERROR";
+	public static final String EXTRA_ERROR_DESCRIPTION = "EXTRA_ERROR_DESCRIPTION";
+
+	public static final int RESULT_AUTH_ERR = RESULT_FIRST_USER + 0;
+	
+	protected static final boolean D = true;
+	private String apikey;
+	private String redirectUri;
+	private String sharedSecret;
+	private String scope;
+	private CarePassUris uris;
+
+	@SuppressLint("SetJavaScriptEnabled")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		Intent data = getIntent();
+		Bundle extras = data.getExtras();
+		apikey = extras.getString(EXTRA_API_KEY);
+		redirectUri = extras.getString(EXTRA_REDIRECT_URI);
+		sharedSecret = extras.getString(EXTRA_SHARED_SECRET);
+		scope = extras.getString(EXTRA_SCOPE);
+		if( extras.containsKey( EXTRA_URIS ) ) {
+			uris = extras.getParcelable( EXTRA_URIS );
+		} else {
+			uris = new CarePassUris();
+		}
+
+		WebView webview = new WebView(this);
+		// XXX is this necessary?
+		webview.getSettings().setJavaScriptEnabled(true);
+		webview.setVisibility(View.VISIBLE);
+
+		/* WebViewClient must be set BEFORE calling loadUrl! */
+		webview.setWebViewClient(new WebViewClient() {
+			private boolean done;
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				if (url.startsWith(redirectUri) && !done) {
+					Uri finishedPage = Uri.parse(url);
+					handleRedirect(finishedPage);
+					return true;
+				}
+				return super.shouldOverrideUrlLoading(view, url);
+			}
+			@Override
+			public void onReceivedError(WebView view, int errorCode,
+					String description, String failingUrl) {
+				if(done) return;
+				done = true;
+				errRespond(""+errorCode, description);
+			}
+			@Override
+			public void onReceivedSslError(WebView view,
+					SslErrorHandler handler, SslError error) {
+				if(done) return;
+				done = true;
+				errRespond(""+error.getPrimaryError(), error.toString());
+			}
+			@Override
+			public void onPageFinished(WebView view, String url) {
+				if(done) return;
+				if(D) Log.i(CarePassUris.TAG, "page finished: " + url);
+				Uri finishedPage = Uri.parse(url);
+				if (url.startsWith(redirectUri)) {
+					handleRedirect(finishedPage);
+					return;
+				}
+			}
+			private void handleRedirect(Uri finishedPage) {
+				final String code = finishedPage.getQueryParameter("code");
+				if(null != code && !"".equals(code)) {
+					handleAuthCode(code);
+					return;
+				}
+				final String error = finishedPage.getQueryParameter("error");
+				final String errorDescription = finishedPage.getQueryParameter("errorDescription");
+				done = true;
+				if(null != error) {
+					errRespond(error, errorDescription);
+				} else {
+					errRespond("Unspecified", "");
+				}
+			}
+			private void handleAuthCode(final String code) {
+				done = true;
+				setContentView(R.layout.activity_main);
+				Thread t = new Thread(new Runnable(){
+					@Override
+					public void run() {
+						Uri accessUrl = makeAccessUrl(code);
+						try {
+							URL u = new URL(accessUrl.toString());
+							int responseCode;
+							String responseString= "", errorString = "";
+							HttpURLConnection con = (HttpURLConnection) u.openConnection();
+							boolean httpErrCode = false;
+							try {
+							con.connect();
+							responseCode = con.getResponseCode();
+							httpErrCode = responseCode < 200 || 300 <= responseCode;
+							if(httpErrCode) {
+								// unexpected values
+								errorString = Utils.readAllAndClose(con.getErrorStream());
+							}
+							responseString = Utils.readAllAndClose(con.getInputStream());
+							} finally {
+								con.disconnect();
+							}
+							if(!"".equals(errorString)) {
+								// maybe an error was specified
+								try {
+									JSONObject errObj = new JSONObject(errorString);
+									if(errObj.has("error")) {
+										handleErrorResponse(responseCode, errObj);
+										return;
+									} else {
+										if(D) Log.w(CarePassUris.TAG, 
+												"error not found in error stream: " 
+														+ errorString);
+									}
+								} catch (JSONException e) {
+									if(D) Log.w(CarePassUris.TAG, 
+											"error not found in error stream: " 
+													+ errorString,
+												e);
+									handleErrorResponse(responseCode, null);
+								}
+							}
+							JSONObject obj = new JSONObject(responseString);
+							if(httpErrCode || obj.has("error")) {
+								handleErrorResponse(responseCode, obj);
+								return;
+							}
+							final long expiry = 1000L * obj.getLong("expires_in");
+							final String scope = obj.getString("scope");
+							final String accessToken = obj.getString("access_token");
+							// assert "bearer".equals(obj.getString("token_type"));
+							
+							runOnUiThread(new Runnable(){
+								@Override
+								public void run() {
+									Intent data = new Intent();
+									data.putExtra(EXTRA_ACCESS_TOKEN, accessToken);
+									data.putExtra(EXTRA_SCOPE, scope);
+									data.putExtra(EXTRA_EXPIRES_IN, expiry);
+									setResult(RESULT_OK, data);
+									finish();
+								}
+							});
+							
+						} catch (MalformedURLException e) {
+							if(D) Log.e(CarePassUris.TAG, "Bad auth uri: " + e.getMessage(), e);
+							else Log.w(CarePassUris.TAG, "Bad auth uri: " + e.getMessage());
+							errRespond("Invalid URI", e.getMessage());
+						} catch (IOException e) {
+							if(D) Log.e(CarePassUris.TAG, "Connection problem: " + e.getMessage(), e);
+							else Log.w(CarePassUris.TAG, "Connection problem: " + e.getMessage());
+							errRespond("IO Error", e.getMessage());
+						} catch (JSONException e) {
+							if(D) Log.e(CarePassUris.TAG, "JSON problem: " + e.getMessage(), e);
+							else Log.w(CarePassUris.TAG, "JSON problem: " + e.getMessage());
+							errRespond("Invalid Response", e.getMessage());
+						}
+					}
+
+					private void handleErrorResponse(int responseCode,
+							JSONObject errObj) {
+						if(null == errObj) {
+//							switch(responseCode) {
+//							case 401:
+//							case 403:
+//							default:
+//							}
+							errRespond("HTTP Error", "" + responseCode);
+							return;
+						}
+						if(403 == responseCode) {
+							try {
+								errRespond("invalid_client", errObj.getJSONObject("error").getString("message"));
+							} catch (JSONException e) {
+								errRespond("invalid_client", errObj.toString());
+							}
+							return;
+//						} else if(401 == responseCode) {
+						}
+						if(errObj.has("message")) {
+							try {
+							String msg = errObj.getString("message");
+							String desc = errObj.get("error").toString();
+							if("Expired Token".equals(msg)) {
+								msg = "expired_access_token";
+							} else if("Missing redirect_uri".equals(msg)) {
+								msg = "missing_redirect_uri";
+							} else if("Authorization code is invalid".equals(msg)) {
+								msg = "invalid_authorization_code";
+							}
+							errRespond(msg, desc);
+							return;
+							} catch (JSONException e) {
+								if(D) Log.e(CarePassUris.TAG, "JSON problem: " + e.getMessage(), e);
+								else Log.w(CarePassUris.TAG, "JSON problem: " + e.getMessage());
+							}
+						}
+						errRespond("Unspecified", errObj.toString());
+					}
+				});
+				t.setName("auth-access");
+				t.start();
+			}
+		});
+
+		Uri authUri = makeAuthUrl();
+		if(D) Log.i(CarePassUris.TAG, "Login URI: " + authUri);
+		// ??? Should we instead load in the user's preferred browser?
+		//startActivityForResult(new Intent(Intent.ACTION_VIEW, authUri), 2);
+		webview.loadUrl(authUri.toString());
+		setContentView(webview);
+	}
+	
+	
+	protected void errRespond(String err, String description) {
+		Intent data = new Intent();
+		data.putExtra(EXTRA_ERROR, err);
+		data.putExtra(EXTRA_ERROR_DESCRIPTION, description);
+		setResult(RESULT_AUTH_ERR, data);
+		finish();
+	}
+
+
+	private Uri makeAccessUrl(String userAuthCode) {
+		return makeAccessUrl(apikey, redirectUri, userAuthCode);
+	}
+	private Uri makeAccessUrl(String clientId, String redirectUri, String authCode) {
+		
+//		https://www.carepass.com/carepass/oauth/token?grant_type=authorization_code
+//			 &client_id={client_id}&code={code}&redirect_uri={redirect_uri}&client_secret={client_secret}
+	return Uri.parse(uris.OAUTH_TOKEN)
+			.buildUpon().appendQueryParameter("grant_type", "authorization_code")
+			.appendQueryParameter("redirect_uri", redirectUri)
+			.appendQueryParameter("client_id", clientId)
+			.appendQueryParameter("code", authCode)
+			.appendQueryParameter("client_secret", sharedSecret) // TODO replace with pref
+			.build();
+	}
+
+	private Uri makeAuthUrl() {
+		return makeAuthUrl(scope, redirectUri, apikey);
+	}
+
+	private Uri makeAuthUrl(String scope, String redirectUri, String clientId) {
+		return Uri.parse(uris.OAUTH_AUTH)
+				.buildUpon().appendQueryParameter("scope", scope)
+				.appendQueryParameter("redirect_uri", redirectUri)
+				.appendQueryParameter("client_id", clientId)
+				.appendQueryParameter("response_type", "code")
+				.build();
+	}
+}

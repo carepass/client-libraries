@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">carepass oath library</string>
+    <string name="menu_settings">Settings</string>
+    <string name="configure_key">Please set an app key using the settings</string>
+    <string name="hello_s">hello %s</string>
+    <string name="loading_">Loading&#8230;</string>
+    <string name="logged_in_as">Logged in as: %s</string>
+    <string name="failure">Failure</string>
+    <string name="login_with_carepass">Login with CarePass</string>
+    <string name="carepass_sync">CarePass sync</string>
+    <string name="username">username</string>
+    
+    
+    <string name="carepass_api_key"><!--  the API key assigned to your app --></string>
+    <string name="carepass_shared_secret"><!-- your app 'shared secret' --></string>
+    <string name="carepass_redirect_uri"><!-- your redirect URI, as registered with CarePass --></string>
+    
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    >
+	<ImageView 
+	    android:id="@+id/button_carepass_sync"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/btn_carepass_sync"
+	    android:contentDescription="@string/login_with_carepass"
+	    />
+	<TextView 
+	    android:id="@+id/carepass_login_text"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:paddingRight="5dp"
+       />
+</LinearLayout>
+    
