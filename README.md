@@ -24,7 +24,7 @@ we should be interested in :
           {
             'host':     "https://www.carepass.com/carepass/oauth"
           , 'clientId': YOUR_CLIENT_ID
-          , 'scope': : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT"
+          , 'scope': "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT"
           , 'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
           };
 
