@@ -22,10 +22,10 @@ we should be interested in :
 
         var setting =
           {
-            'host':     "https://www.carepass.com/carepass/oauth"
-          , 'clientId': YOUR_CLIENT_ID
-          , 'scope': : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT"
-          , 'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
+            'host': "https://www.carepass.com/carepass/oauth", 
+            'clientId': YOUR_CLIENT_ID, 
+            'scope' : "IDENTITY,INSURANCE,FITNESS,LIFESTYLE,APPOINTMENT",
+            'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
           };
 
         var endUserAuthorizationEndpoint = setting.host + "/authorize";
