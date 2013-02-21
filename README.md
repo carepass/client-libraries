@@ -28,7 +28,7 @@ we should be interested in :
             'redirectUrl': YOUR_APPLICATION_CAREPASS_REDIRECT_URL
           };
 
-        var endUserAuthorizationEndpoint = setting.host + "/authorize";
+        var endUserAuthorizationEndpoint = setting.host + "/authorize?";
         
         var authUrl = endUserAuthorizationEndpoint + $.param({		
                       	response_type : code,
