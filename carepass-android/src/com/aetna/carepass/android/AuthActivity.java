@@ -43,25 +43,19 @@ import android.webkit.WebViewClient;
 @SuppressLint("NewApi")
 public class AuthActivity extends Activity {
 
-	public static final String EXTRA_REDIRECT_URI = "EXTRA_REDIRECT_URI";
-	public static final String EXTRA_API_KEY = "EXTRA_API_KEY";
-	public static final String EXTRA_SHARED_SECRET = "EXTRA_SHARED_SECRET";
 	public static final String EXTRA_URIS = "EXTRA_URIS";
+	public static final String EXTRA_AUTH_REQUEST = "EXTRA_AUTH_REQUEST";
 
-	public static final String EXTRA_SCOPE = "EXTRA_SCOPE";
+	public static final String EXTRA_AUTH_RESPONSE = "EXTRA_AUTH_RESPONSE";
 	
-	public static final String EXTRA_ACCESS_TOKEN = "EXTRA_ACCESS_TOKEN";
-	public static final String EXTRA_EXPIRES_IN = "EXTRA_EXPIRES_IN";
 	public static final String EXTRA_ERROR = "EXTRA_ERROR";
-	public static final String EXTRA_ERROR_DESCRIPTION = "EXTRA_ERROR_DESCRIPTION";
 
 	public static final int RESULT_AUTH_ERR = RESULT_FIRST_USER + 0;
 	
-	protected static final boolean D = true;
-	private String apikey;
-	private String redirectUri;
-	private String sharedSecret;
-	private String scope;
+	protected static final boolean D = false;
+
+	private AuthRequestDetails request;
+
 	private CarePassUris uris;
 
 	@SuppressLint("SetJavaScriptEnabled")
@@ -71,10 +65,7 @@ public class AuthActivity extends Activity {
 		
 		Intent data = getIntent();
 		Bundle extras = data.getExtras();
-		apikey = extras.getString(EXTRA_API_KEY);
-		redirectUri = extras.getString(EXTRA_REDIRECT_URI);
-		sharedSecret = extras.getString(EXTRA_SHARED_SECRET);
-		scope = extras.getString(EXTRA_SCOPE);
+		request = extras.getParcelable( EXTRA_AUTH_REQUEST );
 		if( extras.containsKey( EXTRA_URIS ) ) {
 			uris = extras.getParcelable( EXTRA_URIS );
 		} else {
@@ -91,7 +82,7 @@ public class AuthActivity extends Activity {
 			private boolean done;
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if (url.startsWith(redirectUri) && !done) {
+				if (url.startsWith( request.getRedirectUri() ) && !done) {
 					Uri finishedPage = Uri.parse(url);
 					handleRedirect(finishedPage);
 					return true;
@@ -117,7 +108,7 @@ public class AuthActivity extends Activity {
 				if(done) return;
 				if(D) Log.i(CarePassUris.TAG, "page finished: " + url);
 				Uri finishedPage = Uri.parse(url);
-				if (url.startsWith(redirectUri)) {
+				if (url.startsWith( request.getRedirectUri() )) {
 					handleRedirect(finishedPage);
 					return;
 				}
@@ -190,15 +181,18 @@ public class AuthActivity extends Activity {
 							final long expiry = 1000L * obj.getLong("expires_in");
 							final String scope = obj.getString("scope");
 							final String accessToken = obj.getString("access_token");
+							final long expiration = expiry + System.currentTimeMillis();
+							final AuthResponseDetails currentResponse 
+								= new AuthResponseDetails( expiration, scope, 
+										accessToken); 
+							
 							// assert "bearer".equals(obj.getString("token_type"));
 							
 							runOnUiThread(new Runnable(){
 								@Override
 								public void run() {
 									Intent data = new Intent();
-									data.putExtra(EXTRA_ACCESS_TOKEN, accessToken);
-									data.putExtra(EXTRA_SCOPE, scope);
-									data.putExtra(EXTRA_EXPIRES_IN, expiry);
+									data.putExtra(EXTRA_AUTH_RESPONSE, currentResponse);
 									setResult(RESULT_OK, data);
 									finish();
 								}
@@ -276,15 +270,15 @@ public class AuthActivity extends Activity {
 	
 	protected void errRespond(String err, String description) {
 		Intent data = new Intent();
-		data.putExtra(EXTRA_ERROR, err);
-		data.putExtra(EXTRA_ERROR_DESCRIPTION, description);
+		data.putExtra(EXTRA_ERROR, new AuthErrorDetails( err, description ));
 		setResult(RESULT_AUTH_ERR, data);
 		finish();
 	}
 
 
 	private Uri makeAccessUrl(String userAuthCode) {
-		return makeAccessUrl(apikey, redirectUri, userAuthCode);
+		return makeAccessUrl(request.getApiKey(), request.getRedirectUri(),
+				userAuthCode);
 	}
 	private Uri makeAccessUrl(String clientId, String redirectUri, String authCode) {
 		
@@ -295,12 +289,13 @@ public class AuthActivity extends Activity {
 			.appendQueryParameter("redirect_uri", redirectUri)
 			.appendQueryParameter("client_id", clientId)
 			.appendQueryParameter("code", authCode)
-			.appendQueryParameter("client_secret", sharedSecret) // TODO replace with pref
+			.appendQueryParameter("client_secret", request.getSharedSecret()) 
 			.build();
 	}
 
 	private Uri makeAuthUrl() {
-		return makeAuthUrl(scope, redirectUri, apikey);
+		return makeAuthUrl(request.getRequestedScope(),
+				request.getRedirectUri(), request.getApiKey());
 	}
 
 	private Uri makeAuthUrl(String scope, String redirectUri, String clientId) {

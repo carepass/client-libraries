@@ -15,11 +15,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -41,39 +38,20 @@ import android.widget.TextView;
  * @author David Mihalcik
  */
 public class InitFragment extends Fragment implements OnClickListener {
-	public static interface AuthResponseHandler {
-		void onAccessTokenReceived(String token, long expiresOn, String scope);
-
-		void onAuthFailed(String error, String errorDescription);
-	}
-	
 	private static final int REQ_CODE_AUTH = 0x1A1;
 
-	protected static final boolean D = true;
+	protected static final boolean D = false;
 	
-	public static final String PREF_TOKEN = "com.aetna.carepass.android.AccessToken";
-	public static final String PREF_TOKEN_EXP = "com.aetna.carepass.android.AccessTokenExpiry";
-
-	private String accessToken;
+	protected static final String TAG = "CarePass";
 
 	private TextView text_username;
 	private ImageView button_login;
-
-	private String apiKey;
-
-	private String sharedSecret;
-
-	private String redirectUri;
-
-	private String requestedScope = "IDENTITY";
-
-	private long expiry;
-
-	private String receivedScope;
 	
+	private AuthRequestDetails request;
+
 	protected AuthResponseHandler responseHandler = new AuthResponseHandler() {
-		public void onAuthFailed(String error, String errorDescription) {
-			final String s = errorDescription;
+		public void onAuthFailed(AuthErrorDetails err) {
+			final String s = err.getErrorDescription();
 			FragmentActivity activity = getActivity();
 			if(null == activity) return; // already closed
 			activity.runOnUiThread(new Runnable(){
@@ -84,7 +62,7 @@ public class InitFragment extends Fragment implements OnClickListener {
 			});
 		}
 		@Override
-		public void onAccessTokenReceived(String token, long expiresOn, String scope) {
+		public void onAccessTokenReceived(AuthResponseDetails response) {
 			String toSay = getString(R.string.failure);
 			try {
 				URL u = new URL("https://api.carepass.com/user-directory-api/users/currentUser");
@@ -92,7 +70,7 @@ public class InitFragment extends Fragment implements OnClickListener {
 				BufferedReader reader = null;
 				InputStream is = null;
 				try {
-				con.addRequestProperty("Authorization", "Bearer " + accessToken);
+				con.addRequestProperty("Authorization", "Bearer " + response.getAccessToken());
 				con.addRequestProperty("Accept", "application/json");
 				//con.addRequestProperty("Apikey", getString(R.string.carepass_api_key));
 				reader = null;
@@ -145,9 +123,7 @@ public class InitFragment extends Fragment implements OnClickListener {
 		}
 	};
 
-	private String error;
-
-	private String errorDescription;
+	private AuthTool authTool;
 
 	/**
 	 * 
@@ -162,9 +138,11 @@ public class InitFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		apiKey = getString(R.string.carepass_api_key);
-		sharedSecret = getString(R.string.carepass_shared_secret);
-		redirectUri = getString(R.string.carepass_redirect_uri);
+		request = new AuthRequestDetails(
+				getString(R.string.carepass_api_key),
+				getString(R.string.carepass_shared_secret),
+				getString(R.string.carepass_redirect_uri),
+				"IDENTITY");
 	}
 	
 	@Override
@@ -179,108 +157,35 @@ public class InitFragment extends Fragment implements OnClickListener {
 	}
 	
 	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		authTool = new AuthTool(getActivity(), request);
+	}
+	
+	@Override
 	public void onClick(View arg0) {
-		startAuth();
+		Intent i = authTool.startAuth();
+		startActivityForResult( i, REQ_CODE_AUTH );
 	}
 
-	private void startAuth() {
-		Intent intent = new Intent(getActivity(), AuthActivity.class);
-		intent.putExtra(AuthActivity.EXTRA_API_KEY, apiKey);
-		intent.putExtra(AuthActivity.EXTRA_SHARED_SECRET, sharedSecret);
-		intent.putExtra(AuthActivity.EXTRA_REDIRECT_URI, redirectUri);
-		intent.putExtra(AuthActivity.EXTRA_SCOPE, requestedScope);
-		startActivityForResult(intent, REQ_CODE_AUTH);
-	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(REQ_CODE_AUTH == requestCode) {
-			if(Activity.RESULT_CANCELED == resultCode) {
-				error = "Canceled";
-				errorDescription = "";
-				if(null != responseHandler) {
-					responseHandler.onAuthFailed(error,
-							errorDescription);
-				}
-				return;
+			if( authTool.handleResult( resultCode, data ) ){
+				text_username.setText(R.string.loading_);
 			}
-			if(Activity.RESULT_OK != resultCode) {
-				error = data.getExtras().getString(AuthActivity.EXTRA_ERROR);
-				errorDescription = data.getExtras().getString(AuthActivity.EXTRA_ERROR_DESCRIPTION);
-				if(null != responseHandler) {
-					responseHandler.onAuthFailed(error,
-							errorDescription);
-				}
-				return;
-			}
-			text_username.setText(R.string.loading_);
-			accessToken = data.getExtras().getString(AuthActivity.EXTRA_ACCESS_TOKEN);
-			long expiresIn = data.getExtras().getLong(AuthActivity.EXTRA_EXPIRES_IN);
-			expiry = expiresIn + System.currentTimeMillis();
-			receivedScope = data.getExtras().getString(AuthActivity.EXTRA_SCOPE);
-			final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-			Runnable r = new Runnable() {
-				@Override
-				public void run() {
-					prefs.edit().putString(PREF_TOKEN, accessToken).putLong(PREF_TOKEN_EXP, expiry).commit();
-					if(null != responseHandler) {
-						responseHandler.onAccessTokenReceived(accessToken,
-								expiry, receivedScope);
-					}
-				}
-			};
-			Thread t = new Thread(r);
-			t.setName("carepass-identity");
-			t.start();
 		}
-	}
-
-	public String getApiKey() {
-		return apiKey;
-	}
-
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
-	}
-
-	public String getSharedSecret() {
-		return sharedSecret;
-	}
-
-	public void setSharedSecret(String sharedSecret) {
-		this.sharedSecret = sharedSecret;
-	}
-
-	public String getRedirectUri() {
-		return redirectUri;
-	}
-
-	public void setRedirectUri(String redirectUri) {
-		this.redirectUri = redirectUri;
-	}
-
-	public String getRequestedScope() {
-		return requestedScope;
-	}
-
-	public void setRequestedScope(String requestedScope) {
-		this.requestedScope = requestedScope;
-	}
-
-	public String getAccessToken() {
-		return accessToken;
-	}
-
-	public long getExpiry() {
-		return expiry;
-	}
-
-	public String getReceivedScope() {
-		return receivedScope;
 	}
 
 	public void setDisplayedTextMessage(final String s) {
 		text_username.setText(s);
 	}
+
+	public void setRequestedScope(String requestedScope) {
+		request.setRequestedScope(requestedScope);
+	}
+	
+	
 }
