@@ -130,7 +130,7 @@ public class AuthActivity extends Activity {
 			}
 			private void handleAuthCode(final String code) {
 				done = true;
-				setContentView(R.layout.activity_main);
+				setContentView(R.layout.carepass_loading);
 				Thread t = new Thread(new Runnable(){
 					@Override
 					public void run() {
