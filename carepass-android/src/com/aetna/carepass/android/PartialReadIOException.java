@@ -1,15 +1,14 @@
 package com.aetna.carepass.android;
 
+import java.io.IOException;
+
 import android.annotation.TargetApi;
 import android.os.Build;
-import java.io.IOException;
 
 /**
  * An exception occurred while 
  * {@link Utils#readAllAndClose(java.io.InputStream) reading to a `String`} and
  * this returns what has been read so far.
- * 
- * @author David Mihalcik
  */
 public class PartialReadIOException extends IOException {
 	private static final long serialVersionUID = 1L;

@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentActivity;
  * A test activity for viewing the {@link InitFragment}. You will most likely
  * want to insert {@link InitFragment} or a subclass of it into your project
  * instead.
- * 
- * @author David Mihalcik
  */
 public class InitActivity extends FragmentActivity {
 	@Override

@@ -10,7 +10,7 @@
 		android:id="@+id/button_carepass_sync"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:src="@drawable/btn_carepass_sync"
+		android:src="@drawable/btn_carepass_connect"
 		android:contentDescription="@string/login_with_carepass"
 		/>
 	<TextView 

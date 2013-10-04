@@ -6,8 +6,6 @@ import android.os.Parcelable;
 /**
  * Class for configuring which server to connect to, and how. Useful for 
  * testing with a development CarePass endpoint.
- * 
- * @author David Mihalcik
  */
 public class CarePassUris implements Parcelable {
 	static final String TAG = "CarePassAuth";

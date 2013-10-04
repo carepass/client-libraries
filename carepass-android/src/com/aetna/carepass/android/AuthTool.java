@@ -5,6 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 
+/**
+ * A utility class for getting OAuthorized with Aetna CarePass, this class 
+ * can be added to a fragment or activity to handle the OAuth flow.
+ * 
+ * Example usage:
+ * 
+ * In your click or menu handler, when the user requests an auth:
+ * <pre>
+ *  authTool.setResponseHandler( this );
+ * 	Intent i = authTool.startAuth();
+ * 	startActivityForResult( i, REQ_CODE_AUTH );
+ * </pre>
+ */
 public class AuthTool {
 	public static final String PREF_TOKEN = "com.aetna.carepass.android.AccessToken";
 	public static final String PREF_TOKEN_EXP = "com.aetna.carepass.android.AccessTokenExpiry";

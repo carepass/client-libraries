@@ -32,10 +32,10 @@ import android.widget.TextView;
  * When the user connects, it saves the current access token to the current
  * context's shared preferences, notably:
  * 
+ * <pre>
  *     PREF_TOKEN: the access bearer token 
  *     PREF_TOKEN_EXP: the expiry time, in system time
- * 
- * @author David Mihalcik
+ * </pre>
  */
 public class InitFragment extends Fragment implements OnClickListener {
 	private static final int REQ_CODE_AUTH = 0x1A1;
@@ -51,13 +51,14 @@ public class InitFragment extends Fragment implements OnClickListener {
 
 	protected AuthResponseHandler responseHandler = new AuthResponseHandler() {
 		public void onAuthFailed(AuthErrorDetails err) {
-			final String s = err.getErrorDescription();
+			final String s1 = err.getError();
+			// final String s2 = err.getErrorDescription();
 			FragmentActivity activity = getActivity();
 			if(null == activity) return; // already closed
 			activity.runOnUiThread(new Runnable(){
 				@Override
 				public void run() {
-					setDisplayedTextMessage(s);
+					setDisplayedTextMessage(s1);
 				}
 			});
 		}

@@ -11,6 +11,7 @@
     <string name="login_with_carepass">Login with CarePass</string>
     <string name="carepass_sync">CarePass sync</string>
     <string name="username">username</string>
+    <string name="error_ssl_untrusted">CarePass SSL Connection Certificate is untrusted.</string>
     
     
     <string name="carepass_api_key"><!--  the API key assigned to your app --></string>

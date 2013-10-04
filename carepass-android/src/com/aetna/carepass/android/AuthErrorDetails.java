@@ -3,6 +3,11 @@ package com.aetna.carepass.android;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Sent back in an {@link AuthActivity#EXTRA_ERROR extra} when authorization
+ * fails, this object includes some details about the error that may be useful
+ * to the application to recover, or at least explain the problem to the user. 
+ */
 public class AuthErrorDetails implements Parcelable {
 	protected String error;
 	

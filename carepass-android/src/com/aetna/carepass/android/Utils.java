@@ -9,8 +9,6 @@ import android.os.Build;
 
 /**
  * Generic support methods.
- * 
- * @author David Mihalcik
  */
 class Utils {
 

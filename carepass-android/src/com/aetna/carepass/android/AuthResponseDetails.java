@@ -3,6 +3,9 @@ package com.aetna.carepass.android;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * A utility object encapsulating the information in a CarePass authorization.
+ */
 public class AuthResponseDetails implements Parcelable {
 
 	private long expiry;

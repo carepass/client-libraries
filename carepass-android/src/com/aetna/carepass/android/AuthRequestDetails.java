@@ -3,6 +3,11 @@ package com.aetna.carepass.android;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * All of the parameters that an application may send to enable authorization
+ * of the client app with CarePass. Notably, this allows the application to
+ * request more than the default IDENTITY rights with the user's CarePass login. 
+ */
 public class AuthRequestDetails implements Parcelable {
 	private String apiKey;
 
