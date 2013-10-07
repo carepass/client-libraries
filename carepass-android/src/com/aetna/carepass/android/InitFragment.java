@@ -49,7 +49,7 @@ public class InitFragment extends Fragment implements OnClickListener {
 	
 	private AuthRequestDetails request;
 
-	protected AuthResponseHandler responseHandler = new AuthResponseHandler() {
+	protected AuthResponseHandler defaultResponseHandler = new AuthResponseHandler() {
 		public void onAuthFailed(AuthErrorDetails err) {
 			final String s1 = err.getError();
 			// final String s2 = err.getErrorDescription();
@@ -133,7 +133,11 @@ public class InitFragment extends Fragment implements OnClickListener {
 	}
 	
 	public void setResponseHandler(AuthResponseHandler responseHandler) {
-		this.responseHandler = responseHandler;
+		if( null == authTool ) {
+			defaultResponseHandler = responseHandler;
+		} else {
+			authTool.setResponseHandler( responseHandler );
+		}
 	}
 
 	@Override
@@ -161,6 +165,7 @@ public class InitFragment extends Fragment implements OnClickListener {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		authTool = new AuthTool(getActivity(), request);
+		authTool.setResponseHandler( defaultResponseHandler );
 	}
 	
 	@Override
@@ -187,6 +192,4 @@ public class InitFragment extends Fragment implements OnClickListener {
 	public void setRequestedScope(String requestedScope) {
 		request.setRequestedScope(requestedScope);
 	}
-	
-	
 }
